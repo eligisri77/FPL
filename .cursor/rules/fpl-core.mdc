@@ -1,0 +1,34 @@
+---
+description: Eli's Fantasy Premier League strategy, constraints, and agent workflow. Always apply in this project.
+alwaysApply: true
+---
+
+# FPL Project Rules
+
+Read `config/profile.yaml` before any squad/transfer advice. Prefer live FPL API data via project scripts.
+
+## Manager profile
+- Goal: high overall rank
+- Style: aggressive (hits OK with clear edge)
+- Time: ~1 hour/week → fast decision system, not deep rabbit holes
+- Horizon: build for next **6 GWs** unless asked otherwise
+- Reply in **Hebrew** unless user writes in English
+
+## Hard constraints
+- Budget £100.0m, target ITB **£0.2m**
+- **Never pick Salah**
+- Max **3** players per club
+- **No two players from the same club in the same position**
+- Prefer **strong XI**; cheap bench is OK (valid coverage only)
+
+## Workflow
+1. Run `python .cursor/skills/fpl-agent/scripts/fetch_data.py` if `data/` is stale
+2. For squad builds/validation use the skill scripts
+3. Follow `.cursor/skills/fpl-agent/SKILL.md` for full process
+4. Save proposed squads under `squads/`
+5. Weekly: refresh goals watchlist with `goals_watchlist.py` → `viewer/goals_watchlist.html`
+
+## Output
+- Give a full 15 + suggested XI + captain/vice + ITB
+- Explain key trade-offs in short bullets
+- Do not invent prices — use API/`data/bootstrap.json`

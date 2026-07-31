@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eli FPL — Squad Viewer</title>
+  <style>
+    :root {
+      --bg: #0f1410;
+      --panel: #182018;
+      --pitch: #1f6b3a;
+      --pitch-line: rgba(255,255,255,0.18);
+      --ink: #f2f5f0;
+      --muted: #9aab9d;
+      --card: #f4f7f2;
+      --card-ink: #122016;
+      --accent: #c8f06c;
+      --warn: #e8b84a;
+      --bad: #e07a5f;
+      --ok: #6fbf73;
+      --font: "Segoe UI", "Heebo", Tahoma, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub { color: var(--muted); margin-top: 4px; font-size: 0.95rem; }
+    .stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid #2a3a2c;
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 96px;
+    }
+    .stat b { display: block; font-size: 1.15rem; }
+    .stat span { color: var(--muted); font-size: 0.8rem; }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .pitch {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%),
+        repeating-linear-gradient(
+          0deg,
+          var(--pitch) 0 12.5%,
+          #1a5f34 12.5% 25%
+        );
+      border-radius: 16px;
+      border: 2px solid var(--pitch-line);
+      min-height: 640px;
+      position: relative;
+      padding: 18px 10px 22px;
+      overflow: hidden;
+    }
+    .pitch::before {
+      content: "";
+      position: absolute;
+      inset: 8% 18%;
+      border: 2px solid var(--pitch-line);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .pitch::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8%;
+      bottom: 8%;
+      width: 2px;
+      background: var(--pitch-line);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .player {
+      width: 104px;
+      background: var(--card);
+      color: var(--card-ink);
+      border-radius: 12px;
+      padding: 8px 8px 10px;
+      text-align: center;
+      position: relative;
+      border: 2px solid transparent;
+    }
+    .player.captain { border-color: #d4a017; }
+    .player.vice { border-color: #7a8fa3; }
+    .player.bench-card {
+      background: #e8ece6;
+    }
+    .badge {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      background: #d4a017;
+      color: #1a1400;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .badge.vc { background: #8ea0b0; color: #0f1418; }
+    .name {
+      font-weight: 700;
+      font-size: 0.82rem;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+    .meta {
+      font-size: 0.72rem;
+      color: #4d5c52;
+      margin-top: 2px;
+    }
+    .price {
+      margin-top: 6px;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .opp {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #dfe8df;
+    }
+    .fdr-2 { background: #b8e0b8; }
+    .fdr-3 { background: #e6e2a8; }
+    .fdr-4 { background: #f0c49a; }
+    .fdr-5 { background: #efb0a4; }
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #2a3a2c;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 7px 6px;
+      border-bottom: 1px solid #2a3a2c;
+      text-align: right;
+    }
+    th { color: var(--muted); font-weight: 600; }
+    .bench-title {
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      margin: 28px 0 8px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #243328;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Eli's Team <span class="pill">GW1–6</span></h1>
+        <div class="sub">LTFPL Value · GW1–6 · בלי Salah</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="cost">£100.0m</b><span>עלות</span></div>
+        <div class="stat"><b id="itb">£0.0m</b><span>בצד</span></div>
+        <div class="stat"><b>15/15</b><span>שחקנים</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="pitch" id="pitch"></section>
+      <aside class="side">
+        <div class="panel">
+          <h2>טבלת סגל</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>שחקן</th>
+                <th>מחיר</th>
+                <th>יריב</th>
+                <th>EP</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody id="table"></tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <h2>סיכום</h2>
+          <p class="note">C: <b>Haaland</b> · VC: <b>B.Fernandes</b><br/>Henry differentials: Brobbey→Šeško, N.Williams→Rodon. 3-4-3 Haaland/Isak/Šeško. MUN triple OK (Shaw DEF + Bruno MID + Šeško FWD). Šeško yellow flag (shin 75%) — monitor preseason. C: Haaland · VC: Bruno. No Salah.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {"meta": {"cost": 100.0, "itb": 0.0, "gw": 1, "label": "top1k_harry_isak_sesko"}, "players": [{"id": 496, "name": "Kinsky", "team": "TOT", "pos": "GK", "price": 4.5, "own": 17.2, "ep": 2.0, "opp": "BRE(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 273, "name": "Phillips", "team": "HUL", "pos": "GK", "price": 4.0, "own": 2.3, "ep": 1.0, "opp": "MUN(H)", "fdr": 4, "captain": false, "vice": false}, {"id": 11, "name": "Mosquera", "team": "ARS", "pos": "DEF", "price": 5.5, "own": 17.3, "ep": 2.5, "opp": "COV(H)", "fdr": 2, "captain": false, "vice": false}, {"id": 204, "name": "Mitchell", "team": "CRY", "pos": "DEF", "price": 4.5, "own": 7.2, "ep": 1.7, "opp": "EVE(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 329, "name": "Rodon", "team": "LEE", "pos": "DEF", "price": 4.5, "own": 2.0, "ep": 1.7, "opp": "NFO(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 423, "name": "Shaw", "team": "MUN", "pos": "DEF", "price": 4.5, "own": 24.0, "ep": 1.7, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": false}, {"id": 173, "name": "Thomas", "team": "COV", "pos": "DEF", "price": 4.0, "own": 8.1, "ep": 1.0, "opp": "ARS(A)", "fdr": 5, "captain": false, "vice": false}, {"id": 426, "name": "B.Fernandes", "team": "MUN", "pos": "MID", "price": 12.0, "own": 48.8, "ep": 4.0, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": true}, {"id": 40, "name": "Rogers", "team": "CHE", "pos": "MID", "price": 7.5, "own": 32.3, "ep": 2.6, "opp": "FUL(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 368, "name": "Szoboszlai", "team": "LIV", "pos": "MID", "price": 7.0, "own": 48.2, "ep": 2.5, "opp": "NEW(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 237, "name": "Ndiaye", "team": "EVE", "pos": "MID", "price": 6.0, "own": 18.6, "ep": 2.1, "opp": "CRY(H)", "fdr": 3, "captain": false, "vice": false}, {"id": 489, "name": "Yates", "team": "NFO", "pos": "MID", "price": 4.5, "own": 7.6, "ep": 1.0, "opp": "LEE(H)", "fdr": 2, "captain": false, "vice": false}, {"id": 411, "name": "Haaland", "team": "MCI", "pos": "FWD", "price": 15.5, "own": 75.2, "ep": 4.0, "opp": "BOU(H)", "fdr": 3, "captain": true, "vice": false}, {"id": 379, "name": "Isak", "team": "LIV", "pos": "FWD", "price": 9.0, "own": 11.4, "ep": 2.7, "opp": "NEW(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 439, "name": "Šeško", "team": "MUN", "pos": "FWD", "price": 7.0, "own": 3.1, "ep": 1.7, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": false}]};
+
+    const XI_IDS = [496, 11, 204, 423, 426, 40, 368, 237, 411, 379, 439]; // live screenshot // 4-4-2 attacking FBs // 4-4-2 // 4-4-2 // 3-5-2
+
+    const byId = Object.fromEntries(DATA.players.map(p => [p.id, p]));
+    const xi = XI_IDS.map(id => byId[id]);
+    const bench = DATA.players.filter(p => !XI_IDS.includes(p.id));
+
+    document.getElementById('cost').textContent = `£${DATA.meta.cost.toFixed(1)}m`;
+    document.getElementById('itb').textContent = `£${DATA.meta.itb.toFixed(1)}m`;
+
+    function card(p, isBench=false) {
+      const cls = [
+        'player',
+        isBench ? 'bench-card' : '',
+        p.captain ? 'captain' : '',
+        p.vice ? 'vice' : '',
+      ].filter(Boolean).join(' ');
+      const badge = p.captain ? '<div class="badge">C</div>' :
+                    p.vice ? '<div class="badge vc">V</div>' : '';
+      return `
+        <div class="${cls}">
+          ${badge}
+          <div class="meta">${p.team} · ${p.pos}</div>
+          <div class="name">${p.name}</div>
+          <div class="price">£${p.price.toFixed(1)}m</div>
+          <div class="opp fdr-${p.fdr}">${p.opp}</div>
+        </div>`;
+    }
+
+    function row(players, isBench=false) {
+      return `<div class="row">${players.map(p => card(p, isBench)).join('')}</div>`;
+    }
+
+    const gks = xi.filter(p => p.pos === 'GK');
+    const defs = xi.filter(p => p.pos === 'DEF');
+    const mids = xi.filter(p => p.pos === 'MID');
+    const fwds = xi.filter(p => p.pos === 'FWD');
+
+    document.getElementById('pitch').innerHTML =
+      row(gks) + row(defs) + row(mids) + row(fwds) +
+      `<div class="bench-title">Bench</div>` + row(bench, true);
+
+    const tbody = document.getElementById('table');
+    const order = { GK: 1, DEF: 2, MID: 3, FWD: 4 };
+    [...DATA.players].sort((a,b) => order[a.pos]-order[b.pos] || b.price-a.price)
+      .forEach(p => {
+        const mark = p.captain ? ' (C)' : p.vice ? ' (VC)' : '';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><b>${p.name}${mark}</b><br/><span style="color:#9aab9d">${p.team} ${p.pos}</span></td>
+          <td>£${p.price.toFixed(1)}</td>
+          <td>${p.opp}</td>
+          <td>${p.ep.toFixed(1)}</td>
+          <td>${p.own.toFixed(1)}</td>`;
+        tbody.appendChild(tr);
+      });
+  </script>
+</body>
+</html>

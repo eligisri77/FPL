@@ -1,0 +1,62 @@
+# FPL manager profile — source of truth for the agent
+# Edit this file when preferences change.
+
+manager:
+  goal: overall_rank          # high OR
+  style: aggressive           # hits OK when edge is clear
+  weekly_time_minutes: 60
+  planning_horizon_gws: 6     # build for GW1–6 by default
+  language: he                # reply to user in Hebrew
+
+budget:
+  total: 100.0
+  target_itb: 0.2             # keep ~£0.2m in the bank
+
+squad_philosophy:
+  strong_xi: true             # prioritize 11 starters over bench quality
+  bench: cheap_and_valid      # 4.0/4.5 fillers OK; must be legal XI coverage
+  open_to_stronger_bench: true
+
+constraints:
+  banned_players:
+    - Salah                   # Mohamed Salah — never pick
+  max_per_club: 3
+  # Allowed: 3 from same club if different positions
+  # Forbidden: 2+ from same club in the same position
+  same_club_same_position: false
+
+locked_players: []
+avoid_players: []
+prefer_players:
+  - Haaland
+  - B.Fernandes
+  - Gabriel
+  - Semenyo
+  - Guéhi
+  - Rogers
+
+minutes_policy:
+  min_nailed_in_xi: 9
+  treat_as_nailed:
+    - Semenyo
+  avoid_in_xi_unless_necessary:
+    - bench_fodder
+    - sub_5_starts
+
+chips:
+  wildcard_early_window: [4, 8]
+  free_hit: blanks_only
+  triple_captain: doubles_or_elite_fixture
+  aggressive_hits: true
+  hit_rule: >
+    Take a -4 only if it improves at least 2 of: captain option,
+    tough fixture coverage, or asset (minutes/value/ownership trajectory).
+
+captaincy:
+  default: best_fixture_among_premiums
+  differential_captain: rare_extreme_fixture_only
+
+team_id: 737774              # Eli's Team — league "אחד שיודע" (4244)
+league_ids:
+  - 4244
+current_squad_file: squads/live.json

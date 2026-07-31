@@ -1,0 +1,47 @@
+{
+  "label": "ltfpl_value_gw1",
+  "gw_from": 1,
+  "horizon": 6,
+  "formation": "4-4-2",
+  "player_ids": [
+    109,
+    4,
+    388,
+    204,
+    423,
+    426,
+    397,
+    368,
+    237,
+    411,
+    223,
+    497,
+    175,
+    489,
+    272
+  ],
+  "xi_ids": [
+    109,
+    4,
+    388,
+    204,
+    423,
+    426,
+    397,
+    368,
+    237,
+    411,
+    223
+  ],
+  "bench_ids": [
+    497,
+    175,
+    489,
+    272
+  ],
+  "captain_id": 411,
+  "vice_id": 426,
+  "cost": 100.0,
+  "itb": 0.0,
+  "notes": "LTFPL value (Andy) + Eli prefers. C: Haaland · VC: Bruno. Value: Mateta, Ndiaye, Shaw, Mitchell, Szoboszlai. Prefer core: Haaland/Bruno/Gabriel/Semenyo/Guéhi. Rogers out for GW1 (Andy: wait GW4 after WC fitness) — FT Rogers ↔ Szoboszlai/Ndiaye around GW4. Canvot upgrade from Mitchell when 0.5 frees. No Salah."
+}
