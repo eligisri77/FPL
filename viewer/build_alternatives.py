@@ -11,13 +11,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # (title he, squad path, note override optional)
 ALTS: list[tuple[str, Path]] = [
-    ("0) Top 1K + Isak (ראשי)", ROOT / "squads" / "gw1_top1k.json"),
-    ("1) BB GW2 — תוכנית צד", ROOT / "squads" / "gw1_bb_gw2_plan.json"),
-    ("2) LTFPL Value", ROOT / "squads" / "gw1_ltfpl_value.json"),
-    ("3) FPL Mate מותאם", ROOT / "squads" / "alt_fplmate.json"),
-    ("4) עקביות", ROOT / "squads" / "alt_consistency.json"),
-    ("5) כוכבים מאוזנים", ROOT / "squads" / "alt_stars_balanced.json"),
-    ("6) ממוצע עולמי", ROOT / "squads" / "alt_global_template.json"),
+    ("0) הדאפט הנוכחי (ראשי)", ROOT / "squads" / "gw1_top1k.json"),
+    ("1) גמישות (פחות זולים)", ROOT / "squads" / "gw1_flex.json"),
+    ("2) שיא נקודות עונה שעברה", ROOT / "squads" / "last_season_points.json"),
+    ("3) BB GW2 — תוכנית צד", ROOT / "squads" / "gw1_bb_gw2_plan.json"),
+    ("4) LTFPL Value", ROOT / "squads" / "gw1_ltfpl_value.json"),
+    ("5) FPL Mate מותאם", ROOT / "squads" / "alt_fplmate.json"),
+    ("6) עקביות", ROOT / "squads" / "alt_consistency.json"),
+    ("7) כוכבים מאוזנים", ROOT / "squads" / "alt_stars_balanced.json"),
+    ("8) ממוצע עולמי", ROOT / "squads" / "alt_global_template.json"),
 ]
 
 

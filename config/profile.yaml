@@ -6,7 +6,8 @@ manager:
   style: aggressive           # hits OK when edge is clear
   weekly_time_minutes: 60
   planning_horizon_gws: 6     # build for GW1–6 by default
-  language: he                # reply to user in Hebrew
+  language: he                # reply to user in Hebrew only — no English/Hebrew mix
+  deadline_gw1: "2026-08-21"  # ~3 weeks — expect many draft changes before lock
 
 budget:
   total: 100.0
