@@ -63,6 +63,7 @@ python .cursor/skills/fpl-agent/scripts/fetch_data.py
 python .cursor/skills/fpl-agent/scripts/suggest_squad.py
 python .cursor/skills/fpl-agent/scripts/validate_squad.py squads/gw1_draft.json
 python .cursor/skills/fpl-agent/scripts/goals_watchlist.py   # top 20 scorers, next 5 GWs
+python .cursor/skills/fpl-agent/scripts/keepers_watchlist.py # top 20 GKs, next 5 GWs
 ```
 
 ## Weekly goals watchlist
@@ -74,6 +75,10 @@ Every week (or when user asks), refresh the projected top scorers:
 3. Open `viewer/goals_watchlist.html` or summarize `data/goals_watchlist.json` in Hebrew
 
 Default: **top 20**, horizon **next 5 GWs**, Salah excluded.
+
+## Weekly keepers watchlist
+
+Same loop with `keepers_watchlist.py` → `viewer/keepers_watchlist.html` (projected FPL pts: CS / saves / pens).
 
 ## Output template
 

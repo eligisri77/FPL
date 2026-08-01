@@ -52,6 +52,7 @@ python .cursor/skills/fpl-agent/scripts/validate_squad.py squads/gw1_draft.json
 | כל הסגלים | `https://eligisri77.github.io/FPL/viewer/alternatives.html` |
 | סגל ראשי | `https://eligisri77.github.io/FPL/viewer/squad.html` |
 | כובשים | `https://eligisri77.github.io/FPL/viewer/goals_watchlist.html` |
+| שוערים | `https://eligisri77.github.io/FPL/viewer/keepers_watchlist.html` |
 
 בטלפון: פתח את הקישור → אפשר גם «הוסף למסך הבית».
 

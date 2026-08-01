@@ -1,34 +1,34 @@
 {
-  "label": "top1k_harry_isak_sesko",
+  "label": "top1k_lammens_sesko",
   "gw_from": 1,
   "horizon": 6,
   "formation": "3-4-3",
   "player_ids": [
-    496,
+    412,
     273,
     11,
     204,
     329,
-    423,
+    88,
     173,
     426,
     40,
     368,
-    237,
+    261,
     489,
     411,
     379,
     439
   ],
   "xi_ids": [
-    496,
+    412,
     11,
     204,
-    423,
+    88,
     426,
     40,
     368,
-    237,
+    261,
     411,
     379,
     439
@@ -43,6 +43,5 @@
   "vice_id": 426,
   "cost": 100.0,
   "itb": 0.0,
-  "notes": "Henry differentials: Brobbey→Šeško, N.Williams→Rodon. 3-4-3 Haaland/Isak/Šeško. MUN triple OK (Shaw DEF + Bruno MID + Šeško FWD). Šeško yellow flag (shin 75%) — monitor preseason. C: Haaland · VC: Bruno. No Salah."
+  "notes": "Lammens in (MUN GK). Shaw out → Kayode (max 3/club with Bruno+Šeško). Ndiaye→Iwobi for £0.5. 3-4-3 Haaland/Isak/Šeško. C: Haaland · VC: Bruno. No Salah."
 }
-
