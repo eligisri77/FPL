@@ -1,0 +1,49 @@
+{
+  "label": "last_season_points_max",
+  "gw_from": 1,
+  "horizon": 6,
+  "formation": "4-4-2",
+  "player_ids": [
+    1,
+    426,
+    397,
+    13,
+    61,
+    542,
+    346,
+    165,
+    204,
+    388,
+    112,
+    82,
+    229,
+    371,
+    106
+  ],
+  "xi_ids": [
+    1,
+    388,
+    229,
+    61,
+    112,
+    426,
+    397,
+    13,
+    542,
+    106,
+    165
+  ],
+  "bench_ids": [
+    346,
+    204,
+    82,
+    371
+  ],
+  "captain_id": 426,
+  "vice_id": 397,
+  "cost": 99.5,
+  "itb": 0.5,
+  "last_season_points_total": 2514,
+  "last_season_points_xi": 1950,
+  "notes": "Max last-season total_points under ?100m + Eli rules (no Salah). original_no_haaland. Squad 2514 / XI 1950. Not fixture-optimized."
+}
