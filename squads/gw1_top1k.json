@@ -8,13 +8,13 @@
     273,
     11,
     204,
-    329,
+    539,
     88,
     173,
     426,
     40,
     368,
-    261,
+    237,
     489,
     411,
     379,
@@ -28,14 +28,14 @@
     426,
     40,
     368,
-    261,
+    237,
     411,
     379,
     439
   ],
   "bench_ids": [
     273,
-    329,
+    539,
     173,
     489
   ],
@@ -43,5 +43,5 @@
   "vice_id": 426,
   "cost": 100.0,
   "itb": 0.0,
-  "notes": "Lammens in (MUN GK). Shaw out → Kayode (max 3/club with Bruno+Šeško). Ndiaye→Iwobi for £0.5. 3-4-3 Haaland/Isak/Šeško. C: Haaland · VC: Bruno. No Salah."
+  "notes": "Ndiaye restored (Iwobi out). Rodon→O'Nien (−£0.5) to fund. Lammens + Kayode + Bruno/Šeško MUN triple. C: Haaland · VC: Bruno. No Salah."
 }
