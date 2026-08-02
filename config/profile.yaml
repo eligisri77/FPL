@@ -5,7 +5,7 @@ manager:
   goal: overall_rank          # high OR
   style: aggressive           # hits OK when edge is clear
   weekly_time_minutes: 60
-  planning_horizon_gws: 6     # build for GW1–6 by default
+  planning_horizon_gws: 2     # temporary: maximize GW1–2, then Wildcard
   language: he                # reply to user in Hebrew only — no English/Hebrew mix
   deadline_gw1: "2026-08-21"  # ~3 weeks — expect many draft changes before lock
 
@@ -14,9 +14,12 @@ budget:
   target_itb: 0.2             # keep ~£0.2m in the bank
 
 squad_philosophy:
-  strong_xi: true             # prioritize 11 starters over bench quality
-  bench: cheap_and_valid      # 4.0/4.5 fillers OK; must be legal XI coverage
+  strong_xi: true
+  bench: strong_for_horizon   # usable bench for GW1–2 (not 4.0 fodder)
   open_to_stronger_bench: true
+  note: >
+    Build 15 that can all contribute in GW1–2. Wildcard in GW3 to rebuild
+    for the season with more info (minutes, injuries, early form).
 
 constraints:
   banned_players:
@@ -45,13 +48,14 @@ minutes_policy:
     - sub_5_starts
 
 chips:
-  wildcard_early_window: [4, 8]
+  wildcard_gw: 3              # plan: WC after GW1–2
+  wildcard_early_window: [3, 3]
   free_hit: blanks_only
   triple_captain: doubles_or_elite_fixture
+  bench_boost: consider_gw2_if_bench_plays  # optional if 15 look good
   aggressive_hits: true
   hit_rule: >
-    Take a -4 only if it improves at least 2 of: captain option,
-    tough fixture coverage, or asset (minutes/value/ownership trajectory).
+    In GW1–2 avoid hits unless injury. Rebuild freely on WC GW3.
 
 captaincy:
   default: best_fixture_among_premiums

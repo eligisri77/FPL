@@ -22,17 +22,18 @@ description: >-
 | Goal | High overall rank |
 | Style | Aggressive |
 | Time | 60 min/week |
-| Horizon | GW window of 6 |
-| Bench | Cheap OK — optimize starting 11 |
+| Horizon | GW1–2 strong 15, then Wildcard GW3 |
+| Bench | Strong / usable for GW1–2 (not 4.0 fodder) |
 | ITB target | £0.2m |
 
 ### Hit rule
 Take **-4** only if improving ≥2 of: captain / tough fixture / asset trajectory.
+In GW1–2: avoid hits unless injury — rebuild on WC GW3.
 
 ### Chips
-- WC: roughly GW4–8 if squad breaks
+- **WC: GW3** (after early info: minutes, injuries, form)
 - FH: blanks only
-- TC/BB: doubles or elite fixture
+- TC/BB: doubles or elite fixture; BB optional GW2 if bench is live
 
 ## Weekly 60-minute loop
 
