@@ -11,15 +11,16 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # (title he, squad path, note override optional)
 ALTS: list[tuple[str, Path]] = [
-    ("0) GW1–2 חזק + ווילדקארד 3 (ראשי)", ROOT / "squads" / "gw1_2_strong_bench_wc3.json"),
-    ("1) גמישות (פחות זולים)", ROOT / "squads" / "gw1_flex.json"),
-    ("2) שיא נקודות עונה שעברה", ROOT / "squads" / "last_season_points.json"),
-    ("3) BB GW2 — תוכנית צד ישנה", ROOT / "squads" / "gw1_bb_gw2_plan.json"),
-    ("4) LTFPL Value", ROOT / "squads" / "gw1_ltfpl_value.json"),
-    ("5) FPL Mate מותאם", ROOT / "squads" / "alt_fplmate.json"),
-    ("6) עקביות", ROOT / "squads" / "alt_consistency.json"),
-    ("7) כוכבים מאוזנים", ROOT / "squads" / "alt_stars_balanced.json"),
-    ("8) ממוצע עולמי", ROOT / "squads" / "alt_global_template.json"),
+    ("0) GW1–2 בוסט חזק + ווילדקארד 3 (ראשי)", ROOT / "squads" / "gw1_2_strong_bench_wc3.json"),
+    ("1) חלופה עם איסאק", ROOT / "squads" / "gw1_2_bb_alt_isak.json"),
+    ("2) גמישות (פחות זולים)", ROOT / "squads" / "gw1_flex.json"),
+    ("3) שיא נקודות עונה שעברה", ROOT / "squads" / "last_season_points.json"),
+    ("4) BB GW2 — תוכנית צד ישנה", ROOT / "squads" / "gw1_bb_gw2_plan.json"),
+    ("5) LTFPL Value", ROOT / "squads" / "gw1_ltfpl_value.json"),
+    ("6) FPL Mate מותאם", ROOT / "squads" / "alt_fplmate.json"),
+    ("7) עקביות", ROOT / "squads" / "alt_consistency.json"),
+    ("8) כוכבים מאוזנים", ROOT / "squads" / "alt_stars_balanced.json"),
+    ("9) ממוצע עולמי", ROOT / "squads" / "alt_global_template.json"),
 ]
 
 
