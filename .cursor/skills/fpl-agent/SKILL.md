@@ -64,6 +64,7 @@ python .cursor/skills/fpl-agent/scripts/suggest_squad.py
 python .cursor/skills/fpl-agent/scripts/validate_squad.py squads/gw1_draft.json
 python .cursor/skills/fpl-agent/scripts/goals_watchlist.py   # top 20 scorers, next 5 GWs
 python .cursor/skills/fpl-agent/scripts/keepers_watchlist.py # top 20 GKs, next 5 GWs
+python .cursor/skills/fpl-agent/scripts/gw_goals_board.py     # GW1–2 high/low goal matches
 ```
 
 ## Weekly goals watchlist

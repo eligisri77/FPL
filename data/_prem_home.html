@@ -1,0 +1,1190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Premier League 2026-27 Projections</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta name="description" content="Live 2026-27 Premier League projections — title race, Champions League qualification, and relegation probabilities. Updated regularly.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://premprojections.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Prem Projections">
+<meta property="og:title" content="Premier League 2026-27 Projections">
+<meta property="og:description" content="Live 2026-27 Premier League projections — title race, Champions League qualification, and relegation probabilities. Updated regularly.">
+<meta property="og:url" content="https://premprojections.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Premier League 2026-27 Projections">
+<meta name="twitter:description" content="Live 2026-27 Premier League projections — title race, Champions League qualification, and relegation probabilities. Updated regularly.">
+<meta property="og:image" content="https://premprojections.com/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://premprojections.com/og-image.png"><link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="preload" href="/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin><meta name="theme-color" content="#3d195b" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#17131e" media="(prefers-color-scheme: dark)"><script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://premprojections.com/#publisher","name":"Prem Projections","url":"https://premprojections.com/","logo":{"@type":"ImageObject","url":"https://premprojections.com/logo.png","width":1024,"height":1024},"description":"Independent, data-driven Premier League projections: title, Champions League and relegation probabilities, plus transfers and daily news. Updated through the season.","sameAs":["https://x.com/PremProjections"]},{"@type":"WebSite","@id":"https://premprojections.com/#website","url":"https://premprojections.com/","name":"Prem Projections","description":"Your complete Premier League hub: data-backed projections, transfers, and analysis.","publisher":{"@id":"https://premprojections.com/#publisher"},"about":{"@type":"SportsOrganization","name":"Premier League"}}]}</script>
+<style>
+
+  :root {
+    --bg: #fafbfc; --card: #ffffff; --hover: #fbfbfc;
+    --line: #e5e7eb; --line2: #f0f1f3; --fill: #f4f5f7;
+    --chip: #f1f5f9; --chip-hover: #e2e8f0;
+    --text: #222; --ink: #1f2933; --muted: #556; --subtle: #667;
+    --faint: #889; --meta: #8890a0; --label: #4a5260;
+    --purple: #3d195b; --purple-bg: #f6f3fb; --purple-line: #e3dcf0;
+    --up: #1a7d3c; --up-bg: #e6f4ea; --down: #c0392b; --down-bg: #fbeae8;
+    --amber: #8a5a00; --amber-bg: #fdf1d8; --blue: #2a5aa0; --blue-bg: #e8f0ff;
+  }
+  /* Dark: purple-tinted near-black. The masthead, sticky bar and the active
+     nav pill pin the deep-purple literals so the brand field stays saturated;
+     --purple itself lightens so purple-as-text/border keeps contrast. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14111b; --card: #1d1926; --hover: #221c2e;
+      --line: #322b40; --line2: #2a2436; --fill: #251f31;
+      --chip: #2a2438; --chip-hover: #372f4a;
+      --text: #e6e2ee; --ink: #efeaf7; --muted: #b3aac2; --subtle: #a89fb8;
+      --faint: #8d8499; --meta: #948da6; --label: #b0a7c2;
+      --purple: #b18ae0; --purple-bg: #241d31; --purple-line: #3b3151;
+      --up: #4fc276; --up-bg: #17301f; --down: #ef8073; --down-bg: #3a1a18;
+      --amber: #e0b25c; --amber-bg: #33270e; --blue: #82a9dc; --blue-bg: #182640;
+    }
+    .nav-primary .site-nav-current { background: #3d195b; color: #fff; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; color-scheme: light dark; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  @view-transition { navigation: auto; }
+  /* Archivo (variable, latin, OFL) — display face for the wordmark, nav,
+     headings and stat numbers only; body copy stays on the system stack.
+     Same file villaverdict ships (family cohesion, Steve July 31 2026);
+     self-hosted at /fonts/, ~34KB, preloaded from schema.head_extras(). */
+  @font-face { font-family: 'Archivo'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(/fonts/archivo-var.woff2) format('woff2'); }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    margin: 0; padding: 0; background: var(--bg); color: var(--text); --display: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+  h1, h2, h3 { font-family: var(--display); }
+  h1 { font-weight: 800; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 48px; }
+  h1 { margin: 0 0 4px; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 18px; font-weight: 600; margin: 34px 0 12px; letter-spacing: -0.01em; }
+  .subtitle { color: var(--subtle); margin-bottom: 16px; font-size: 14px; }
+  .note { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.55; }
+  /* skip link: invisible until keyboard-focused */
+  .skip { position: absolute; left: -9999px; top: 0; z-index: 60; background: #3d195b; color: #fff; font-weight: 600; padding: 8px 14px; border-radius: 0 0 8px 0; }
+  .skip:focus { left: 0; }
+  /* masthead (was inline-styled; classes since July 31 2026 so the mobile
+     block below no longer needs !important) */
+  .pp-masthead { background: linear-gradient(120deg, #3d195b, #2a1044); border-radius: 14px; padding: 18px 28px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 22px; }
+  .pp-brand { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
+  .pp-rule { width: 6px; height: 44px; background: #00ff85; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+  .pp-wordmark { display: block; font-family: var(--display); font-size: 27px; font-weight: 800; color: #fff; letter-spacing: -0.01em; line-height: 1.2; }
+  .pp-tagline { display: block; color: #c9b8e0; font-size: 13px; line-height: 1.4; }
+  .pp-elsewhere { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .pp-vv { display: inline-flex; align-items: center; background: #670E36; border-radius: 8px; padding: 6px 14px; font-weight: 700; font-size: 12.5px; line-height: 1; text-decoration: none; white-space: nowrap; }
+  .pp-vv .vv-a { color: #fff; }
+  .pp-vv .vv-b { color: #95BFE5; }
+  .pp-wc { display: inline-flex; align-items: center; border: 1px solid #6b4a8a; border-radius: 8px; padding: 6px 14px; font-size: 12.5px; line-height: 1; white-space: nowrap; }
+  a.pp-wc { color: #c9b8e0; text-decoration: none; }
+  span.pp-wc { color: #fff; font-weight: 600; }
+  .site-nav { display:flex; align-items:center; gap:8px; margin-bottom:24px; padding:0 0 16px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .nav-primary { display:flex; gap:6px; flex-wrap:wrap; }
+  .nav-primary a, .nav-primary .site-nav-current { display:inline-block; font-family:var(--display); font-size:15px; font-weight:600; text-decoration:none; padding:9px 16px; border-radius:8px; transition:background-color .15s, color .15s; }
+  .nav-primary a { color:var(--label); background:var(--chip); }
+  .nav-primary a:hover { color:var(--ink); background:var(--chip-hover); }
+  .nav-primary .site-nav-current { color:white; background:#3d195b; }
+  /* sticky slim bar: appears on scroll-up (JS in _STICKYBAR_JS), carrying
+     the nav plus a clone of the page's .jumps row with scroll-spy */
+  .stickybar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: linear-gradient(120deg, #3d195b, #2a1044); box-shadow: 0 2px 10px rgba(0,0,0,.28); transform: translateY(-100%); visibility: hidden; transition: transform .22s ease, visibility .22s; }
+  @supports (backdrop-filter: blur(4px)) {
+    .stickybar { background: rgba(48, 20, 72, .72); backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5); }
+  }
+  .nav-primary { position: relative; }
+  .nav-primary a, .nav-primary .site-nav-current { position: relative; z-index: 1; }
+  .nav-glide { position: absolute; z-index: 0; border-radius: 8px; background: rgba(61,25,91,.10); opacity: 0; pointer-events: none; transition: transform .18s ease, width .18s ease, height .18s ease, opacity .15s; }
+  @media (prefers-color-scheme: dark) { .nav-glide { background: rgba(177,138,224,.14); } }
+  .stickybar.show { transform: none; visibility: visible; }
+  .sb-inner { max-width: 1080px; margin: 0 auto; padding: 8px 18px; display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; }
+  .sb-brand { font-family: var(--display); color: #fff; font-weight: 800; font-size: 15px; text-decoration: none; white-space: nowrap; }
+  .sb-brand span { color: #00ff85; }
+  .sb-nav { display: flex; gap: 4px; flex-wrap: wrap; }
+  .sb-nav a, .sb-nav .sb-current { font-family: var(--display); font-size: 12.5px; font-weight: 600; text-decoration: none; padding: 4px 10px; border-radius: 6px; }
+  .sb-nav a { color: #d9cfe8; background: rgba(255,255,255,.08); }
+  .sb-nav a:hover { color: #fff; background: rgba(255,255,255,.16); }
+  .sb-nav .sb-current { color: #17131e; background: #00ff85; }
+  .sb-jumps { max-width: 1080px; margin: 0 auto; padding: 0 18px 7px; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .sb-jumps:empty { display: none; }
+  .sb-jumps a { color: rgba(255,255,255,.72); font-size: 12px; text-decoration: none; border-bottom: 2px solid transparent; padding-bottom: 1px; }
+  .sb-jumps a:hover { color: #fff; }
+  .sb-jumps a.active { color: #fff; border-bottom-color: #00ff85; }
+  /* archived World Cup section: in-section pill row under the main nav */
+  .wc-subnav { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: -12px 0 22px; }
+  .wc-subnav .lbl { color: var(--meta); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-right: 6px; }
+  .wc-subnav a, .wc-subnav .on { font-family: var(--display); display: inline-block; font-size: 13px; font-weight: 600; text-decoration: none; padding: 6px 12px; border-radius: 6px; }
+  .wc-subnav a { color: var(--label); background: var(--chip); }
+  .wc-subnav a:hover { color: var(--ink); background: var(--chip-hover); }
+  .wc-subnav .on { color: #fff; background: #3d195b; }
+  /* matchday strip: live scores with model context, all pages */
+  .mdstrip { margin: 0 0 18px; }
+  .md-inner { display: flex; gap: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .md-card { flex: 0 0 auto; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 170px; }
+  .md-card.live { border-left: 4px solid #00c46a; }
+  .md-tag { font-family: var(--display); font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--meta); display: inline-flex; align-items: center; gap: 5px; }
+.md-comp { font-size:9.5px; font-weight:800; letter-spacing:.4px; color:var(--purple); border:1px solid var(--purple-line); border-radius:5px; padding:1px 4px; margin-right:6px; align-self:center; }
+  .md-dot { width: 7px; height: 7px; border-radius: 50%; background: #00c46a; display: inline-block; animation: mdpulse 1.6s infinite; }
+  .nav-live-dot { vertical-align: 2px; margin-left: 5px; }
+  @keyframes mdpulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  .md-line { font-size: 13.5px; color: var(--text); white-space: nowrap; }
+  .md-line b { font-family: var(--display); }
+  .md-ctx { font-size: 11px; color: var(--meta); white-space: nowrap; }
+  /* on-page jumps row (below the h1 on long pages) */
+  .jumps { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; margin: -14px 0 22px; }
+  .jumps .lbl { color: var(--meta); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; margin-right: 4px; }
+  .jumps a { color: var(--subtle); font-size: 12.5px; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
+  .jumps a:hover { color: var(--purple); }
+  .pp-search { width: 100%; max-width: 420px; padding: 9px 14px; font-size: 14px;
+    border: 1px solid var(--line); border-radius: 8px; background: var(--card);
+    color: var(--text); margin: 0 0 14px; display: block; }
+  .pp-search:focus { outline: none; border-color: #3d195b; }
+  .footer { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--faint); line-height: 1.7; }
+  .footer a { color: var(--subtle); }
+  .footer a:hover { color: var(--purple); }
+  /* Phones: shrink the chrome so content starts sooner. */
+  @media (max-width: 640px) {
+    .wrap { padding: 16px 14px 32px; }
+    .pp-masthead { padding: 12px 14px; border-radius: 10px; margin-bottom: 10px; gap: 6px 12px; }
+    .pp-wordmark { font-size: 20px; }
+    .pp-tagline { font-size: 11px; }
+    .pp-rule { height: 32px; width: 5px; }
+    .pp-elsewhere .pp-vv, .pp-elsewhere .pp-wc { font-size: 11px; padding: 4px 10px; }
+    .site-nav { gap: 5px; margin-bottom: 14px; padding-bottom: 10px; }
+    .nav-primary { gap: 5px; }
+    .nav-primary a, .nav-primary .site-nav-current { font-size: 13px; padding: 6px 11px; border-radius: 6px; }
+    h1 { font-size: 23px; }
+    .sb-inner { padding: 7px 12px; }
+    .sb-jumps { padding: 0 12px 6px; }
+  }
+td.team a { color:inherit; text-decoration:none; }
+td.team a:hover { color:var(--purple); text-decoration:underline; }
+.dg-list { list-style: none; margin: 0; padding: 0; }
+.dg-item { padding: 9px 0; border-bottom: 1px solid var(--line); }
+.dg-item:last-child { border-bottom: none; }
+.dg-title { display: block; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.dg-title a { color: var(--ink); text-decoration: none; }
+.dg-title a:hover { color: var(--purple); text-decoration: underline; }
+.dg-line { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+.dg-src { color: var(--faint); font-size: 12.5px; }
+
+  .subtitle { margin-bottom: 28px; }
+  /* Live Wire headlines (public page; populated by JS from
+     api.premprojections.com/headlines, hidden until items arrive). */
+  #livewire {
+    background: var(--card); border: 1px solid var(--line);
+    border-left: 4px solid var(--purple); border-radius: 8px;
+    padding: 12px 16px; margin: -8px 0 24px;
+  }
+  #livewire .lw-skel { height: 27px; display: flex; align-items: center; }
+  #livewire .lw-skel span { display: block; height: 12px; width: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--fill) 25%, var(--line2) 45%, var(--fill) 65%); background-size: 200% 100%; animation: lwshimmer 1.3s linear infinite; }
+  #livewire .lw-skel:nth-child(2n) span { max-width: 74%; }
+  #livewire .lw-skel:nth-child(3n) span { max-width: 86%; }
+  #livewire .lw-skel:nth-child(5n) span { max-width: 62%; }
+  @keyframes lwshimmer { to { background-position: -200% 0; } }
+  .hm-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.hm { table-layout: fixed; min-width: 720px; font-size: 11.5px; }
+  table.hm th { text-align: center; padding: 4px 2px; }
+  table.hm td { text-align: center; padding: 4px 2px; border-bottom: 1px solid var(--line2); color: var(--ink); font-variant-numeric: tabular-nums; }
+  table.hm td.hm-hi { color: #fff; font-weight: 600; }
+  table.hm th.hm-team { text-align: right; padding-right: 8px; width: 118px; font-size: 12px; text-transform: none; letter-spacing: 0; }
+  #livewire .lw-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  #livewire .lw-dot { width: 9px; height: 9px; border-radius: 50%; background: #c62828; animation: lwpulse 1.6s infinite; }
+  @keyframes lwpulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+  #livewire .lw-title { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--purple); }
+  #livewire ul { list-style: none; margin: 0; padding: 0; }
+  #livewire li { padding: 5px 0; font-size: 14px; border-bottom: 1px solid var(--line2); }
+  #livewire li:last-child { border-bottom: none; }
+  #livewire li a { color: var(--ink); text-decoration: none; }
+  #livewire li a:hover { text-decoration: underline; }
+  #livewire .lw-meta { color: var(--meta); font-size: 12px; white-space: nowrap; margin-left: 8px; }
+  h2 {
+    font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.015em;
+    line-height: 1.25; margin: 48px 0 14px; padding-left: 12px;
+    border-left: 4px solid var(--purple);
+  }
+  /* Season preview (preseason) */
+  .verdict {
+    background: var(--purple-bg); border: 1px solid var(--purple-line); border-left: 4px solid var(--purple);
+    border-radius: 8px; padding: 14px 16px; margin: -8px 0 24px;
+    font-size: 15px; line-height: 1.55; color: var(--ink);
+  }
+  .verdict-tag {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--purple); margin-right: 4px;
+  }
+  .sp-tiers { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+  .sp-tier { display: grid; grid-template-columns: 180px 1fr; gap: 12px; align-items: start; }
+  .sp-tier-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--label); padding-top: 6px;
+  }
+  .sp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sp-chip {
+    display: inline-flex; align-items: baseline; gap: 5px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+    padding: 5px 10px; font-size: 13.5px; font-weight: 500; color: var(--ink);
+  }
+  .sp-sub { font-size: 11px; color: var(--amber); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .sp-movers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 22px; }
+  .sp-col-head {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--label); margin-bottom: 8px;
+  }
+  .sp-mover {
+    display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 6px; margin-bottom: 6px;
+    font-size: 13.5px;
+  }
+  .sp-arrow { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 34px; }
+  .sp-up .sp-arrow { color: var(--up); }
+  .sp-down .sp-arrow { color: var(--down); }
+  .sp-mv-team { font-weight: 600; color: var(--ink); }
+  .sp-mv-detail { color: var(--meta); font-size: 12px; margin-left: auto; font-variant-numeric: tabular-nums; }
+  .sp-none { color: var(--faint); font-size: 13px; font-style: italic; padding: 6px 2px; }
+  .sp-sub-head { font-size: 13px; font-weight: 700; color: var(--ink); margin: 4px 0 10px; }
+  .sp-promos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 22px; }
+  .sp-promo {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; text-align: center;
+  }
+  .sp-promo-team { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .sp-promo-pct { font-size: 26px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .sp-promo-lbl { font-size: 11px; color: var(--meta); text-transform: uppercase; letter-spacing: .04em; }
+  .sp-promo-pos { font-size: 12px; color: var(--subtle); margin-top: 6px; }
+  .sp-stories { margin: 0 0 8px; padding-left: 20px; }
+  .sp-stories li { margin-bottom: 6px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+  /* Summer-business homepage block */
+  .transfer-brief { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; }
+  .tb-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--label); margin-bottom: 8px; }
+  .tb-row { display: flex; align-items: baseline; gap: 8px; padding: 5px 0; border-bottom: 1px solid var(--fill); font-size: 14px; }
+  .tb-row:last-child { border-bottom: none; }
+  .tb-player { font-weight: 600; color: var(--ink); }
+  .tb-to { color: var(--muted); }
+  .tb-fee { margin-left: auto; color: var(--purple); font-weight: 600; font-variant-numeric: tabular-nums; }
+  @media (max-width: 600px) {
+    .sp-tier { grid-template-columns: 1fr; gap: 4px; }
+    .sp-movers { grid-template-columns: 1fr; }
+  }
+  .heatmap {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px;
+  }
+  .heatmap img { width: 100%; height: auto; display: block; }
+  .race-tracker {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px;
+  }
+  .race-tracker img { width: 100%; height: auto; display: block; }
+
+  /* What-if scenarios */
+  .whatif { display: flex; flex-direction: column; gap: 20px; }
+  .wi-group { }
+  .wi-group-head {
+    font-size: 13px; font-weight: 700; color: var(--ink);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 10px;
+  }
+  .wi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .wi-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .wi-card-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 8px; margin-bottom: 6px;
+  }
+  .wi-team {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .wi-baseline {
+    display: inline-flex; gap: 6px; align-items: baseline;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .wi-baseline-label { font-size: 11px; color: var(--meta); }
+  .wi-baseline-val { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .wi-match {
+    font-size: 13px; color: var(--muted); margin-bottom: 10px;
+    padding-bottom: 10px; border-bottom: 1px dashed #eef0f3;
+  }
+  .wi-match strong { color: var(--ink); font-weight: 600; }
+  .wi-vh {
+    display: inline-block; width: 18px; height: 18px; border-radius: 3px;
+    background: #4a9b6b; color: white;
+    font-size: 10px; font-weight: 700; text-align: center; line-height: 18px;
+    margin-right: 4px; vertical-align: -3px;
+  }
+  .wi-vh-a { background: #7a8fb0; }
+  .wi-vs { color: var(--meta); font-size: 12px; }
+  .wi-date { color: var(--subtle); font-variant-numeric: tabular-nums; }
+  .wi-rows { display: flex; flex-direction: column; gap: 4px; }
+  .wi-row {
+    display: grid;
+    grid-template-columns: 44px 1fr auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px 4px 10px;
+    border-left: 3px solid #d4d9df;
+    background: var(--bg);
+    border-radius: 3px;
+    font-size: 13px;
+  }
+  .wi-outcome { font-weight: 600; color: var(--ink); }
+  .wi-matchprob { font-size: 11px; color: var(--meta); font-variant-numeric: tabular-nums; }
+  .wi-prob {
+    font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    min-width: 36px; text-align: right;
+  }
+  .wi-delta {
+    display: inline-block; padding: 2px 6px; border-radius: 3px;
+    font-size: 11px; font-weight: 600;
+    font-variant-numeric: tabular-nums; min-width: 52px; text-align: center;
+  }
+  .wi-delta-up { background: var(--up-bg); color: var(--up); }
+  .wi-delta-down { background: var(--down-bg); color: var(--down); }
+  .wi-delta-flat { background: var(--fill); color: var(--subtle); }
+  .wi-empty {
+    font-size: 13px; color: var(--faint); padding: 8px 12px;
+    background: var(--fill); border: 1px dashed var(--line); border-radius: 6px;
+  }
+
+  /* Clinch watch */
+  .clinch {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 6px 0;
+  }
+  .clinch-row {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 16px; align-items: center;
+    padding: 10px 14px; border-bottom: 1px solid var(--line2);
+  }
+  .clinch-row:last-child { border-bottom: none; }
+  .clinch-label {
+    font-size: 12px; font-weight: 600; color: var(--label);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .clinch-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .clinch-chip {
+    display: inline-block; padding: 3px 10px; border-radius: 4px;
+    font-size: 12px; font-weight: 600;
+    background: var(--fill); color: var(--ink);
+  }
+  .clinch-chip.chip-win { background: var(--up-bg); color: var(--up); }
+  .clinch-chip.chip-safe { background: var(--blue-bg); color: var(--blue); }
+  .clinch-chip.chip-lose { background: var(--down-bg); color: var(--down); }
+  .clinch-chip.chip-neutral { background: var(--fill); color: var(--label); }
+  .clinch-empty { color: var(--faint); font-size: 13px; font-style: italic; }
+
+  /* Key remaining matches */
+  .key-matches { width: 100%; margin-top: 4px; }
+  .key-matches col.km-c-rk { width: 36px; }
+  .key-matches col.km-c-date { width: 96px; }
+  .key-matches col.km-c-mw { width: 56px; }
+  .key-matches col.km-c-fix { width: 220px; }
+  .key-matches col.km-c-wdl { width: auto; }
+  .key-matches col.km-c-stakes { width: auto; }
+  .key-matches td.km-rk { color: var(--meta); text-align: right; font-variant-numeric: tabular-nums; }
+  .key-matches td.km-date { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .key-matches td.km-mw { color: var(--subtle); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .key-matches td.km-fix { font-size: 14px; color: var(--ink); }
+  .key-matches td.km-fix strong { font-weight: 600; }
+  .key-matches td.km-fix .muted { color: var(--faint); font-size: 12px; margin: 0 4px; }
+  .key-matches td.km-wdl { padding: 6px 10px; }
+  .key-matches td.km-stakes { padding: 6px 10px; font-size: 12px; }
+  .km-stake {
+    display: inline-block; padding: 2px 8px; border-radius: 3px;
+    font-weight: 600; margin: 1px 2px;
+    background: var(--fill); color: var(--label);
+  }
+  .km-stake.km-title { background: var(--amber-bg); color: var(--amber); }
+  .km-stake.km-ucl { background: var(--up-bg); color: var(--up); }
+  .km-stake.km-uel { background: var(--blue-bg); color: var(--blue); }
+  .km-stake.km-releg { background: var(--down-bg); color: var(--down); }
+  .key-matches td.km-stakes .muted { color: var(--faint); }
+  @media (max-width: 640px) {
+    table.upcoming { font-size: 12px; }
+    table.upcoming th, table.upcoming td { padding: 6px 4px; }
+  }
+  table {
+    width: 100%; border-collapse: collapse; background: var(--card);
+    border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    font-size: 14px; table-layout: fixed;
+  }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--line2); }
+  th {
+    background: var(--fill); font-weight: 600; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.04em; color: var(--label);
+    text-align: right;
+  }
+  th.left { text-align: left; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover { background: var(--hover); }
+  td.rk { color: var(--meta); font-variant-numeric: tabular-nums; text-align: right; }
+  td.team {
+    font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  td.num, td.band { font-variant-numeric: tabular-nums; text-align: right; }
+  td.band { color: var(--subtle); font-size: 13px; }
+
+  /* Projected table columns: rk, team, E[Pts], 5-95, 4 bars */
+  .projected col.c-rk { width: 36px; }
+  .projected col.c-team { width: 180px; }
+  .projected col.c-epts { width: 68px; }
+  .projected col.c-band { width: 78px; }
+  .projected col.c-bar { width: auto; }
+
+  /* Standings table: wider numeric cols so nothing looks squished */
+  .standings col.c-rk { width: 36px; }
+  .standings col.c-team { width: 180px; }
+  .standings col.c-num { width: auto; }
+
+  .bar-wrap {
+    position: relative; background: var(--line2); height: 20px; border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    border-radius: 3px;
+  }
+  .bar-label {
+    position: relative; z-index: 1; display: block; text-align: right;
+    padding: 0 6px; line-height: 20px; font-size: 12px;
+    font-variant-numeric: tabular-nums; color: #333;
+  }
+  .legend {
+    display: flex; gap: 16px; font-size: 12px; color: var(--subtle);
+    margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; }
+  .note {
+    font-size: 12px; color: var(--subtle); margin-bottom: 12px; line-height: 1.5;
+  }
+
+  /* Upcoming fixtures: stacked W/D/L bar + xG + likely score */
+  .upcoming col.c-date { width: 68px; }
+  .upcoming col.c-team { width: 140px; }
+  .upcoming col.c-vs { width: 28px; }
+  .upcoming col.c-wdl { width: auto; }
+  .upcoming col.c-xg { width: 78px; }
+  .upcoming col.c-score { width: 110px; }
+  .upcoming td.date-col {
+    white-space: nowrap; text-align: right; color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .upcoming td.vs { color: var(--faint); font-size: 12px; text-align: center; }
+  .upcoming td.wdl-cell { padding: 6px 10px; }
+  .upcoming .muted { color: var(--faint); font-weight: normal; font-size: 12px; }
+  .upcoming td.score-cell {
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+    text-align: right; padding-right: 12px;
+  }
+  .upcoming .score-val {
+    display: inline-block; width: 34px; text-align: right;
+  }
+  .upcoming .score-pct {
+    display: inline-block; width: 42px; text-align: right;
+    margin-left: 4px;
+  }
+  .wdl {
+    display: flex; width: 100%; height: 22px; border-radius: 3px;
+    overflow: hidden; font-size: 11px; font-variant-numeric: tabular-nums;
+  }
+  .wdl-seg {
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; padding: 0 2px; min-width: 0;
+  }
+  .wdl-seg span { white-space: nowrap; overflow: hidden; }
+  .wdl-h { background: #4a9b6b; }
+  .wdl-d { background: #c5ccb5; color: var(--muted); }
+  .wdl-a { background: #7a8fb0; }
+
+  /* Gameweek captions above each upcoming-fixtures table. */
+  .upcoming-block { margin-bottom: 20px; }
+  .upcoming-block + .upcoming-block { margin-top: 0; }
+  .upcoming { width: 100%; }
+  .gw-caption {
+    padding: 14px 0 8px; margin-top: 8px;
+    border-bottom: 1px solid #dde1e6;
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .gw-caption .gw-num {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  .gw-caption .gw-num .gw-note {
+    font-size: 12px; font-weight: 500; color: var(--faint);
+    letter-spacing: 0;
+  }
+  .gw-caption .gw-dates {
+    font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums;
+    margin-left: auto;
+  }
+  .gw-caption .gw-count {
+    font-size: 12px; color: var(--faint);
+  }
+
+  /* Run-in: per-team remaining-fixtures tracker */
+  .runin col.c-rk { width: 32px; }
+  .runin col.c-team { width: 160px; }
+  .runin col.c-n { width: 44px; }
+  .runin col.c-ha { width: 54px; }
+  .runin col.c-xp { width: 70px; }
+  .runin col.c-xpm { width: 60px; }
+  .runin col.c-tiles { width: auto; }
+  .runin td.runin-strip { padding: 5px 6px; }
+  .runin-tile {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 2px; min-width: 46px; height: 24px; padding: 0 6px;
+    margin: 2px 3px 2px 0; border-radius: 4px;
+    font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums;
+    white-space: nowrap; vertical-align: middle;
+  }
+  .runin-tile .venue {
+    font-size: 9px; font-weight: 400; opacity: 0.75;
+    padding: 0 1px 0 3px;
+  }
+  .runin-tile.tile-a { border: 1px dashed rgba(0, 0, 0, 0.25); }
+  .runin .muted { color: var(--faint); font-weight: normal; }
+
+  /* Defence: clean sheets + goals-against leaderboard */
+  .defence col.c-rk { width: 32px; }
+  .defence col.c-team { width: 180px; }
+  .defence col.c-gp { width: 42px; }
+  .defence col.c-n { width: 56px; }
+  .defence col.c-proj { width: 72px; }
+  .defence .muted { color: var(--faint); font-weight: normal; }
+  .defence .def-chip {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-variant-numeric: tabular-nums; min-width: 42px; text-align: right;
+  }
+
+  /* Golden Boot: per-player projected goals */
+  .golden-boot col.c-rk { width: 32px; }
+  .golden-boot col.c-player { width: 200px; }
+  .golden-boot col.c-team { width: 150px; }
+  .golden-boot col.c-n { width: 56px; }
+  .golden-boot col.c-bar { width: auto; }
+  .golden-boot col.c-share { width: 60px; }
+  .golden-boot .muted { color: var(--faint); font-weight: normal; }
+  .gb-bar {
+    position: relative; background: #eef2f5; border-radius: 4px;
+    height: 20px; width: 100%;
+  }
+  .gb-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: #4a9b6b; border-radius: 4px; opacity: 0.85;
+  }
+  .gb-label {
+    position: relative; z-index: 1; display: block;
+    text-align: right; padding-right: 8px; line-height: 20px;
+    font-size: 12px; font-weight: 600;
+    font-variant-numeric: tabular-nums; color: var(--ink);
+  }
+
+  /* Head-to-head: featured matchup card */
+  .featured-inline {
+    margin: 8px 0 22px;
+  }
+  .featured-inline-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--meta);
+    margin: 4px 0 10px;
+  }
+  .h2h-preview {
+    font-size: 15px; line-height: 1.55; color: var(--ink);
+    margin: 6px 0 14px;
+  }
+  .h2h-preview strong { color: var(--ink); font-weight: 600; }
+  .h2h-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 18px 20px; margin-bottom: 16px;
+  }
+  .h2h-caption {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--meta); margin-bottom: 12px;
+  }
+  .h2h-teams {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 16px; margin-bottom: 16px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--line2);
+  }
+  .h2h-team { min-width: 0; }
+  .h2h-team-away { text-align: right; }
+  .h2h-team-name {
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .h2h-team-meta {
+    display: flex; gap: 10px; align-items: baseline; margin-top: 6px;
+    font-size: 13px; color: var(--muted); flex-wrap: wrap;
+  }
+  .h2h-team-away .h2h-team-meta { justify-content: flex-end; }
+  .h2h-pos {
+    font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums;
+  }
+  .h2h-pts { font-variant-numeric: tabular-nums; }
+  .h2h-team .muted { color: var(--faint); }
+  .h2h-form { display: flex; gap: 4px; margin-top: 8px; }
+  .h2h-team-away .h2h-form { justify-content: flex-end; }
+  .form-pill {
+    display: inline-block; width: 22px; height: 22px; border-radius: 4px;
+    color: white; font-size: 11px; font-weight: 700;
+    text-align: center; line-height: 22px;
+  }
+  .h2h-vs {
+    font-size: 13px; color: var(--meta);
+    text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
+  }
+
+  .h2h-split {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    align-items: start;
+  }
+  .h2h-section-label {
+    font-size: 11px; color: var(--meta); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 8px;
+  }
+
+  /* Scoreline grid */
+  .h2h-grid {
+    border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
+    table-layout: fixed; width: 100%; font-size: 11px;
+  }
+  .h2h-grid th, .h2h-grid td {
+    padding: 4px 2px; border-bottom: 1px solid var(--line2);
+    border-right: 1px solid var(--line2);
+    text-align: center; font-variant-numeric: tabular-nums;
+  }
+  .h2h-grid th.h2h-grid-h {
+    background: var(--fill); color: var(--label); font-size: 10px; font-weight: 600;
+    text-transform: none; letter-spacing: 0;
+  }
+  .h2h-grid td.h2h-grid-cell {
+    color: var(--ink); font-size: 10px; line-height: 1.15;
+  }
+  .h2h-grid td.h2h-grid-cell .pct {
+    color: var(--meta); font-size: 9px; margin-left: 1px;
+  }
+  .h2h-grid td.h2h-grid-cell.gc-hi { color: #fff; }
+  .h2h-grid td.h2h-grid-cell.gc-hi .pct { color: rgba(255,255,255,.75); }
+  .h2h-grid td.h2h-grid-cell.gc-zero { color: var(--faint); }
+  .h2h-grid td.modal {
+    outline: 2px solid var(--text); outline-offset: -2px;
+    font-weight: 700;
+  }
+  .h2h-grid td.modal .pct { color: inherit; }
+  /* 2nd/3rd likeliest: same family as the top cell, quieter, so the eye
+     reads a cluster rather than a single "answer". */
+  .h2h-grid td.modal-2 {
+    outline: 1px dashed #67a97f; outline-offset: -2px; font-weight: 600;
+  }
+  .h2h-modal {
+    margin-top: 10px; font-size: 13px; color: var(--label);
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .h2h-top-label { color: var(--meta); font-size: 12px; }
+  .h2h-top-score {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: var(--chip); border-radius: 6px; padding: 2px 8px;
+  }
+  .h2h-top-lead { background: var(--up-bg); color: var(--up); }
+  .h2h-top-pct { font-size: 11.5px; color: var(--meta); font-variant-numeric: tabular-nums; }
+  .h2h-top-lead .h2h-top-pct { color: var(--up); }
+
+  /* W/D/L bars */
+  .h2h-wdl-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 2fr 52px;
+    align-items: center; gap: 10px; margin-bottom: 6px;
+    font-size: 13px;
+  }
+  .h2h-wdl-label {
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color: var(--ink);
+  }
+  .h2h-wdl-track {
+    background: #eef2f5; border-radius: 4px; height: 18px;
+    position: relative; overflow: hidden;
+  }
+  .h2h-wdl-fill {
+    position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px;
+    opacity: 0.9;
+  }
+  .h2h-wdl-pct {
+    font-variant-numeric: tabular-nums; text-align: right;
+    color: var(--label); font-size: 12px;
+  }
+
+  /* Season H2H list */
+  .h2h-season { margin-top: 18px; }
+  .h2h-season-label {
+    font-size: 11px; color: var(--meta); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+  .h2h-prior {
+    display: flex; gap: 12px; padding: 6px 0;
+    border-top: 1px solid var(--line2); font-size: 13px; color: var(--ink);
+  }
+  .h2h-prior-date {
+    color: var(--meta); font-variant-numeric: tabular-nums; min-width: 88px;
+  }
+
+  /* Prediction tracker: metric tiles + scored-match table */
+  .tiles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px; margin-bottom: 12px;
+  }
+  .tile {
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .tile .t-label {
+    font-size: 11px; color: var(--meta); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 4px;
+  }
+  .tile .t-value {
+    font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums;
+    color: var(--text);
+  }
+  .tracker-empty {
+    background: var(--card); border: 1px dashed #c5cbd3; border-radius: 8px;
+    padding: 20px; color: var(--subtle); font-size: 14px; line-height: 1.5;
+  }
+  .tracker-note {
+    font-size: 12px; color: var(--subtle); margin-bottom: 12px; line-height: 1.5;
+  }
+  .tracker-note code {
+    background: var(--line2); padding: 1px 5px; border-radius: 3px;
+    font-size: 11px;
+  }
+  .tracker col.c-date { width: 90px; }
+  .tracker col.c-team { width: 150px; }
+  .tracker col.c-prob { width: 52px; }
+  .tracker col.c-score { width: 52px; }
+  .tracker col.c-outcome { width: 56px; }
+  .tracker col.c-ok { width: 28px; }
+  .tracker .ok { color: var(--up); font-weight: 600; }
+  .tracker .miss { color: var(--down); font-weight: 600; }
+
+  .footer {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--meta); font-size: 12px;
+  }
+  /* Responsive: tablet-ish viewports (iPad portrait, small laptops) */
+  @media (max-width: 900px) {
+    .wrap { padding: 24px 18px 36px; max-width: 100%; }
+    h2 { margin: 32px 0 12px; }
+    /* H2H card: stack scoreline grid above W/D/L bars rather than
+       side-by-side — the side-by-side version gets cramped below ~900px. */
+    .h2h-split { grid-template-columns: 1fr; gap: 18px; }
+    .h2h-card { padding: 16px; }
+    .h2h-wdl-row { grid-template-columns: minmax(110px, 1fr) 2fr 48px; }
+  }
+  /* Responsive: phone viewports */
+  @media (max-width: 640px) {
+    body { font-size: 14px; }
+    .wrap { padding: 14px 10px 24px; max-width: 100%; }
+    h1 { font-size: 22px; letter-spacing: -0.01em; }
+    h2 { font-size: 16px; margin: 28px 0 10px; }
+    .subtitle { font-size: 12.5px; margin-bottom: 18px; }
+    .note { font-size: 11.5px; }
+    /* Wide tables: convert to horizontally-scrollable blocks rather
+       than letting table-layout:fixed squash columns to illegibility.
+       Promoting thead/tbody to display:table with a min-width keeps
+       column alignment inside the scroll viewport. */
+    table.projected, table.standings, table.upcoming, table.runin,
+    table.defence, table.golden-boot, table.tracker {
+      display: block; overflow-x: auto; -webkit-overflow-scrolling: touch;
+      max-width: 100%; border-radius: 8px;
+    }
+    table.projected > thead, table.projected > tbody,
+    table.standings > thead, table.standings > tbody,
+    table.upcoming > thead, table.upcoming > tbody,
+    table.runin > thead, table.runin > tbody,
+    table.defence > thead, table.defence > tbody,
+    table.golden-boot > thead, table.golden-boot > tbody,
+    table.tracker > thead, table.tracker > tbody {
+      display: table; width: 100%; min-width: 560px;
+      table-layout: fixed;
+    }
+    /* Run-in table has extra columns — give it more elbow room. */
+    table.runin > thead, table.runin > tbody { min-width: 640px; }
+    table.golden-boot > thead, table.golden-boot > tbody { min-width: 600px; }
+    th, td { padding: 6px 8px; font-size: 12.5px; }
+    /* Upcoming fixtures: collapse "vs" col and tighten team widths. */
+    .upcoming col.c-team { width: 110px; }
+    .upcoming col.c-score { width: 90px; }
+    /* H2H card: single-column stack with left-aligned away team. */
+    .h2h-teams {
+      grid-template-columns: 1fr; gap: 6px;
+      padding-bottom: 12px; margin-bottom: 12px;
+    }
+    .h2h-team-away { text-align: left; }
+    .h2h-team-away .h2h-team-meta { justify-content: flex-start; }
+    .h2h-team-away .h2h-form { justify-content: flex-start; }
+    .h2h-team-name { font-size: 16px; }
+    .h2h-vs {
+      padding: 2px 0; font-size: 11px; text-align: left;
+    }
+    .h2h-preview { font-size: 13.5px; line-height: 1.5; margin: 4px 0 12px; }
+    .h2h-wdl-row {
+      grid-template-columns: minmax(80px, 1fr) 2fr 44px;
+      font-size: 12px; gap: 8px;
+    }
+    /* Scoreline grid: super tight on phones — drop the trailing "%" */
+    .h2h-grid th, .h2h-grid td { padding: 2px 0; font-size: 9px; }
+    .h2h-grid td.h2h-grid-cell .pct { display: none; }
+    .h2h-modal { font-size: 12px; }
+    .h2h-prior-date { min-width: 70px; font-size: 12px; }
+    /* Legend, tiles, run-in tiles: compact */
+    .legend { gap: 10px; font-size: 11px; }
+    .tiles {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 8px;
+    }
+    .tile { padding: 10px 12px; }
+    .tile .t-value { font-size: 17px; }
+    .runin-tile { min-width: 40px; font-size: 10px; padding: 0 4px; }
+    .gw-caption .gw-num { font-size: 14px; }
+    .gw-caption .gw-dates { font-size: 12px; }
+    .gw-caption .gw-count { font-size: 11px; }
+    .featured-inline-label { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="skip" href="#content">Skip to content</a><div class="pp-masthead"><a class="pp-brand" href="/"><span class="pp-rule"></span><span><span class="pp-wordmark">Prem Projections</span><span class="pp-tagline">Your complete Premier League hub</span></span></a><span class="pp-elsewhere"><a class="pp-vv" href="https://villaverdict.com" target="_blank" rel="noopener"><span class="vv-a">Villa</span><span class="vv-b">Verdict</span></a><a class="pp-wc" href="/world-cup-2026/">World Cup 2026</a></span></div><nav class="site-nav"><div class="nav-primary"><span class="nav-glide"></span><span class="site-nav-current">Projections</span><a href="/news/">News</a><a href="/rumors/">Rumors</a><a href="/transfers/">Transfers</a><a href="/fixtures/">Fixtures</a><a href="/table/">Table</a><a href="/teams/">Teams</a><a href="/stats/">Stats</a><a href="/fpl/">FPL</a></div></nav><div id="content"></div><div id="mdstrip" class="mdstrip" hidden></div><script>var MD={"fix": {"Arsenal|Coventry": {"ph": 0.816, "pd": 0.131, "pa": 0.052, "ls": "2-0"}, "Brentford|Tottenham": {"ph": 0.374, "pd": 0.27, "pa": 0.356, "ls": "2-1"}, "Everton|Palace": {"ph": 0.421, "pd": 0.275, "pa": 0.303, "ls": "2-1"}, "Hull|Man United": {"ph": 0.177, "pd": 0.227, "pa": 0.596, "ls": "1-2"}, "Ipswich|Sunderland": {"ph": 0.387, "pd": 0.287, "pa": 0.326, "ls": "1-0"}, "Forest|Leeds": {"ph": 0.427, "pd": 0.282, "pa": 0.291, "ls": "1-0"}, "Brighton|Aston Villa": {"ph": 0.418, "pd": 0.272, "pa": 0.309, "ls": "1-0"}, "Man City|Bournemouth": {"ph": 0.674, "pd": 0.187, "pa": 0.14, "ls": "2-0"}, "Newcastle|Liverpool": {"ph": 0.349, "pd": 0.24, "pa": 0.411, "ls": "1-2"}, "Fulham|Chelsea": {"ph": 0.307, "pd": 0.262, "pa": 0.431, "ls": "1-2"}, "Palace|Man City": {"ph": 0.196, "pd": 0.263, "pa": 0.541, "ls": "0-1"}, "Tottenham|Newcastle": {"ph": 0.376, "pd": 0.295, "pa": 0.329, "ls": "1-0"}, "Liverpool|Forest": {"ph": 0.551, "pd": 0.24, "pa": 0.209, "ls": "2-1"}, "Bournemouth|Everton": {"ph": 0.415, "pd": 0.295, "pa": 0.29, "ls": "1-0"}, "Coventry|Hull": {"ph": 0.498, "pd": 0.262, "pa": 0.239, "ls": "1-0"}, "Chelsea|Brighton": {"ph": 0.426, "pd": 0.281, "pa": 0.293, "ls": "1-0"}, "Leeds|Brentford": {"ph": 0.473, "pd": 0.269, "pa": 0.259, "ls": "1-0"}, "Man United|Ipswich": {"ph": 0.706, "pd": 0.181, "pa": 0.114, "ls": "2-0"}, "Sunderland|Fulham": {"ph": 0.477, "pd": 0.286, "pa": 0.237, "ls": "1-0"}, "Aston Villa|Arsenal": {"ph": 0.261, "pd": 0.276, "pa": 0.464, "ls": "0-1"}, "Ipswich|Liverpool": {"ph": 0.25, "pd": 0.244, "pa": 0.506, "ls": "1-2"}, "Newcastle|Bournemouth": {"ph": 0.477, "pd": 0.228, "pa": 0.295, "ls": "2-1"}, "Forest|Tottenham": {"ph": 0.256, "pd": 0.282, "pa": 0.462, "ls": "0-1"}, "Man City|Coventry": {"ph": 0.809, "pd": 0.134, "pa": 0.058, "ls": "2-0"}, "Brentford|Sunderland": {"ph": 0.545, "pd": 0.259, "pa": 0.196, "ls": "1-0"}, "Fulham|Palace": {"ph": 0.443, "pd": 0.279, "pa": 0.278, "ls": "1-0"}, "Brighton|Leeds": {"ph": 0.557, "pd": 0.247, "pa": 0.196, "ls": "1-0"}, "Hull|Aston Villa": {"ph": 0.263, "pd": 0.267, "pa": 0.469, "ls": "1-2"}, "Arsenal|Chelsea": {"ph": 0.586, "pd": 0.235, "pa": 0.179, "ls": "2-0"}, "Everton|Man United": {"ph": 0.279, "pd": 0.258, "pa": 0.463, "ls": "1-2"}, "Tottenham|Everton": {"ph": 0.354, "pd": 0.29, "pa": 0.357, "ls": "0-1"}, "Sunderland|Arsenal": {"ph": 0.188, "pd": 0.269, "pa": 0.544, "ls": "0-1"}, "Palace|Ipswich": {"ph": 0.473, "pd": 0.285, "pa": 0.242, "ls": "1-0"}, "Liverpool|Fulham": {"ph": 0.669, "pd": 0.209, "pa": 0.122, "ls": "2-0"}, "Bournemouth|Brentford": {"ph": 0.495, "pd": 0.266, "pa": 0.239, "ls": "1-0"}, "Aston Villa|Forest": {"ph": 0.466, "pd": 0.258, "pa": 0.277, "ls": "2-1"}, "Chelsea|Hull": {"ph": 0.63, "pd": 0.223, "pa": 0.147, "ls": "2-0"}, "Coventry|Brighton": {"ph": 0.303, "pd": 0.28, "pa": 0.417, "ls": "0-1"}, "Man United|Man City": {"ph": 0.367, "pd": 0.258, "pa": 0.376, "ls": "1-2"}, "Leeds|Newcastle": {"ph": 0.415, "pd": 0.298, "pa": 0.286, "ls": "1-0"}, "Brentford|Chelsea": {"ph": 0.34, "pd": 0.261, "pa": 0.399, "ls": "1-2"}, "Newcastle|Hull": {"ph": 0.669, "pd": 0.192, "pa": 0.139, "ls": "2-1"}, "Forest|Coventry": {"ph": 0.502, "pd": 0.276, "pa": 0.222, "ls": "1-0"}, "Man City|Sunderland": {"ph": 0.735, "pd": 0.179, "pa": 0.086, "ls": "2-0"}, "Tottenham|Aston Villa": {"ph": 0.345, "pd": 0.275, "pa": 0.38, "ls": "1-2"}, "Everton|Ipswich": {"ph": 0.54, "pd": 0.25, "pa": 0.21, "ls": "2-1"}, "Brighton|Arsenal": {"ph": 0.248, "pd": 0.281, "pa": 0.471, "ls": "0-1"}, "Leeds|Palace": {"ph": 0.45, "pd": 0.277, "pa": 0.273, "ls": "1-0"}, "Bournemouth|Liverpool": {"ph": 0.371, "pd": 0.265, "pa": 0.364, "ls": "2-1"}, "Fulham|Man United": {"ph": 0.315, "pd": 0.271, "pa": 0.414, "ls": "1-2"}, "Sunderland|Brighton": {"ph": 0.362, "pd": 0.298, "pa": 0.34, "ls": "1-0"}, "Man United|Tottenham": {"ph": 0.438, "pd": 0.255, "pa": 0.307, "ls": "2-1"}, "Liverpool|Man City": {"ph": 0.395, "pd": 0.272, "pa": 0.333, "ls": "2-1"}, "Ipswich|Fulham": {"ph": 0.431, "pd": 0.281, "pa": 0.287, "ls": "1-0"}, "Hull|Everton": {"ph": 0.274, "pd": 0.284, "pa": 0.442, "ls": "0-1"}, "Palace|Forest": {"ph": 0.311, "pd": 0.285, "pa": 0.404, "ls": "0-1"}, "Coventry|Newcastle": {"ph": 0.311, "pd": 0.296, "pa": 0.393, "ls": "0-1"}, "Chelsea|Bournemouth": {"ph": 0.45, "pd": 0.253, "pa": 0.296, "ls": "2-1"}, "Aston Villa|Brentford": {"ph": 0.534, "pd": 0.249, "pa": 0.217, "ls": "2-1"}, "Arsenal|Leeds": {"ph": 0.77, "pd": 0.159, "pa": 0.072, "ls": "2-0"}, "Forest|Arsenal": {"ph": 0.166, "pd": 0.261, "pa": 0.573, "ls": "0-1"}, "Newcastle|Aston Villa": {"ph": 0.424, "pd": 0.252, "pa": 0.324, "ls": "2-1"}, "Man City|Ipswich": {"ph": 0.798, "pd": 0.14, "pa": 0.062, "ls": "2-0"}, "Leeds|Man United": {"ph": 0.321, "pd": 0.271, "pa": 0.408, "ls": "1-2"}, "Tottenham|Coventry": {"ph": 0.555, "pd": 0.246, "pa": 0.199, "ls": "2-1"}, "Everton|Chelsea": {"ph": 0.27, "pd": 0.251, "pa": 0.48, "ls": "1-2"}, "Brighton|Palace": {"ph": 0.488, "pd": 0.27, "pa": 0.242, "ls": "1-0"}, "Brentford|Liverpool": {"ph": 0.378, "pd": 0.257, "pa": 0.365, "ls": "2-1"}, "Bournemouth|Sunderland": {"ph": 0.532, "pd": 0.27, "pa": 0.198, "ls": "1-0"}, "Fulham|Hull": {"ph": 0.606, "pd": 0.234, "pa": 0.16, "ls": "2-0"}, "Man United|Bournemouth": {"ph": 0.562, "pd": 0.217, "pa": 0.221, "ls": "2-1"}, "Liverpool|Brighton": {"ph": 0.55, "pd": 0.252, "pa": 0.198, "ls": "1-0"}, "Ipswich|Forest": {"ph": 0.306, "pd": 0.264, "pa": 0.43, "ls": "1-2"}, "Hull|Brentford": {"ph": 0.339, "pd": 0.274, "pa": 0.386, "ls": "1-2"}, "Sunderland|Leeds": {"ph": 0.464, "pd": 0.277, "pa": 0.259, "ls": "1-0"}, "Coventry|Fulham": {"ph": 0.418, "pd": 0.283, "pa": 0.299, "ls": "1-0"}, "Chelsea|Tottenham": {"ph": 0.341, "pd": 0.277, "pa": 0.382, "ls": "1-2"}, "Aston Villa|Man City": {"ph": 0.317, "pd": 0.27, "pa": 0.414, "ls": "1-2"}, "Arsenal|Everton": {"ph": 0.647, "pd": 0.229, "pa": 0.123, "ls": "1-0"}, "Palace|Newcastle": {"ph": 0.324, "pd": 0.318, "pa": 0.357, "ls": "0-1"}, "Tottenham|Palace": {"ph": 0.408, "pd": 0.276, "pa": 0.316, "ls": "2-1"}, "Newcastle|Everton": {"ph": 0.432, "pd": 0.264, "pa": 0.304, "ls": "2-1"}, "Man City|Brighton": {"ph": 0.646, "pd": 0.217, "pa": 0.137, "ls": "2-0"}, "Liverpool|Arsenal": {"ph": 0.33, "pd": 0.287, "pa": 0.383, "ls": "0-1"}, "Hull|Ipswich": {"ph": 0.446, "pd": 0.272, "pa": 0.281, "ls": "1-0"}, "Coventry|Sunderland": {"ph": 0.4, "pd": 0.29, "pa": 0.31, "ls": "1-0"}, "Brentford|Forest": {"ph": 0.438, "pd": 0.262, "pa": 0.3, "ls": "2-1"}, "Bournemouth|Leeds": {"ph": 0.542, "pd": 0.253, "pa": 0.206, "ls": "1-0"}, "Aston Villa|Fulham": {"ph": 0.592, "pd": 0.239, "pa": 0.169, "ls": "2-0"}, "Chelsea|Man United": {"ph": 0.335, "pd": 0.269, "pa": 0.397, "ls": "1-2"}, "Leeds|Tottenham": {"ph": 0.328, "pd": 0.279, "pa": 0.392, "ls": "0-1"}, "Sunderland|Chelsea": {"ph": 0.269, "pd": 0.268, "pa": 0.463, "ls": "1-2"}, "Forest|Man City": {"ph": 0.205, "pd": 0.264, "pa": 0.531, "ls": "0-1"}, "Man United|Aston Villa": {"ph": 0.504, "pd": 0.246, "pa": 0.249, "ls": "2-1"}, "Ipswich|Bournemouth": {"ph": 0.329, "pd": 0.255, "pa": 0.416, "ls": "1-2"}, "Brighton|Brentford": {"ph": 0.511, "pd": 0.261, "pa": 0.228, "ls": "1-0"}, "Everton|Coventry": {"ph": 0.554, "pd": 0.246, "pa": 0.199, "ls": "2-1"}, "Palace|Liverpool": {"ph": 0.258, "pd": 0.266, "pa": 0.475, "ls": "1-2"}, "Fulham|Newcastle": {"ph": 0.409, "pd": 0.3, "pa": 0.291, "ls": "1-0"}, "Arsenal|Hull": {"ph": 0.835, "pd": 0.121, "pa": 0.043, "ls": "2-0"}, "Tottenham|Ipswich": {"ph": 0.541, "pd": 0.25, "pa": 0.209, "ls": "2-1"}, "Newcastle|Arsenal": {"ph": 0.236, "pd": 0.246, "pa": 0.518, "ls": "1-2"}, "Man City|Fulham": {"ph": 0.755, "pd": 0.167, "pa": 0.079, "ls": "2-0"}, "Liverpool|Man United": {"ph": 0.459, "pd": 0.26, "pa": 0.282, "ls": "2-1"}, "Hull|Brighton": {"ph": 0.287, "pd": 0.278, "pa": 0.435, "ls": "0-1"}, "Chelsea|Leeds": {"ph": 0.536, "pd": 0.25, "pa": 0.214, "ls": "2-1"}, "Brentford|Everton": {"ph": 0.424, "pd": 0.286, "pa": 0.291, "ls": "1-0"}, "Bournemouth|Forest": {"ph": 0.429, "pd": 0.271, "pa": 0.3, "ls": "2-1"}, "Aston Villa|Sunderland": {"ph": 0.571, "pd": 0.25, "pa": 0.179, "ls": "1-0"}, "Coventry|Palace": {"ph": 0.338, "pd": 0.279, "pa": 0.383, "ls": "0-1"}, "Leeds|Coventry": {"ph": 0.595, "pd": 0.238, "pa": 0.167, "ls": "2-0"}, "Sunderland|Tottenham": {"ph": 0.285, "pd": 0.284, "pa": 0.431, "ls": "0-1"}, "Forest|Chelsea": {"ph": 0.24, "pd": 0.264, "pa": 0.496, "ls": "0-1"}, "Man United|Brentford": {"ph": 0.598, "pd": 0.22, "pa": 0.183, "ls": "2-1"}, "Ipswich|Aston Villa": {"ph": 0.291, "pd": 0.272, "pa": 0.436, "ls": "1-2"}, "Fulham|Bournemouth": {"ph": 0.427, "pd": 0.259, "pa": 0.314, "ls": "2-1"}, "Everton|Liverpool": {"ph": 0.303, "pd": 0.252, "pa": 0.445, "ls": "1-2"}, "Palace|Hull": {"ph": 0.505, "pd": 0.277, "pa": 0.218, "ls": "1-0"}, "Brighton|Newcastle": {"ph": 0.45, "pd": 0.293, "pa": 0.256, "ls": "1-0"}, "Arsenal|Man City": {"ph": 0.527, "pd": 0.262, "pa": 0.212, "ls": "1-0"}, "Tottenham|Fulham": {"ph": 0.491, "pd": 0.269, "pa": 0.24, "ls": "1-0"}, "Newcastle|Man United": {"ph": 0.351, "pd": 0.245, "pa": 0.405, "ls": "1-2"}, "Man City|Leeds": {"ph": 0.751, "pd": 0.163, "pa": 0.086, "ls": "2-0"}, "Liverpool|Sunderland": {"ph": 0.648, "pd": 0.221, "pa": 0.131, "ls": "2-0"}, "Hull|Forest": {"ph": 0.277, "pd": 0.26, "pa": 0.464, "ls": "1-2"}, "Coventry|Ipswich": {"ph": 0.465, "pd": 0.269, "pa": 0.266, "ls": "1-0"}, "Chelsea|Palace": {"ph": 0.466, "pd": 0.272, "pa": 0.263, "ls": "1-0"}, "Brentford|Arsenal": {"ph": 0.24, "pd": 0.271, "pa": 0.489, "ls": "0-1"}, "Bournemouth|Brighton": {"ph": 0.433, "pd": 0.285, "pa": 0.282, "ls": "1-0"}, "Aston Villa|Everton": {"ph": 0.449, "pd": 0.281, "pa": 0.27, "ls": "1-0"}, "Forest|Brighton": {"ph": 0.33, "pd": 0.301, "pa": 0.368, "ls": "0-1"}, "Newcastle|Sunderland": {"ph": 0.561, "pd": 0.237, "pa": 0.201, "ls": "2-1"}, "Man United|Coventry": {"ph": 0.719, "pd": 0.175, "pa": 0.107, "ls": "2-0"}, "Leeds|Ipswich": {"ph": 0.581, "pd": 0.243, "pa": 0.176, "ls": "1-0"}, "Tottenham|Arsenal": {"ph": 0.186, "pd": 0.25, "pa": 0.564, "ls": "0-1"}, "Chelsea|Liverpool": {"ph": 0.362, "pd": 0.26, "pa": 0.378, "ls": "1-2"}, "Brentford|Man City": {"ph": 0.293, "pd": 0.267, "pa": 0.439, "ls": "1-2"}, "Bournemouth|Hull": {"ph": 0.634, "pd": 0.224, "pa": 0.142, "ls": "2-0"}, "Aston Villa|Palace": {"ph": 0.51, "pd": 0.259, "pa": 0.231, "ls": "1-0"}, "Everton|Fulham": {"ph": 0.49, "pd": 0.269, "pa": 0.241, "ls": "1-0"}, "Sunderland|Forest": {"ph": 0.356, "pd": 0.282, "pa": 0.362, "ls": "0-1"}, "Man City|Chelsea": {"ph": 0.554, "pd": 0.235, "pa": 0.211, "ls": "2-1"}, "Liverpool|Leeds": {"ph": 0.662, "pd": 0.205, "pa": 0.133, "ls": "2-0"}, "Ipswich|Newcastle": {"ph": 0.323, "pd": 0.297, "pa": 0.381, "ls": "0-1"}, "Hull|Tottenham": {"ph": 0.213, "pd": 0.25, "pa": 0.537, "ls": "1-2"}, "Fulham|Brentford": {"ph": 0.466, "pd": 0.271, "pa": 0.264, "ls": "1-0"}, "Palace|Man United": {"ph": 0.239, "pd": 0.271, "pa": 0.49, "ls": "0-1"}, "Coventry|Aston Villa": {"ph": 0.279, "pd": 0.27, "pa": 0.45, "ls": "1-2"}, "Brighton|Everton": {"ph": 0.429, "pd": 0.292, "pa": 0.28, "ls": "1-0"}, "Arsenal|Bournemouth": {"ph": 0.711, "pd": 0.182, "pa": 0.107, "ls": "2-0"}, "Forest|Everton": {"ph": 0.316, "pd": 0.309, "pa": 0.375, "ls": "0-1"}, "Man City|Hull": {"ph": 0.822, "pd": 0.126, "pa": 0.052, "ls": "2-0"}, "Liverpool|Tottenham": {"ph": 0.463, "pd": 0.266, "pa": 0.271, "ls": "2-1"}, "Leeds|Fulham": {"ph": 0.531, "pd": 0.264, "pa": 0.204, "ls": "1-0"}, "Sunderland|Palace": {"ph": 0.399, "pd": 0.293, "pa": 0.309, "ls": "1-0"}, "Brighton|Ipswich": {"ph": 0.618, "pd": 0.23, "pa": 0.152, "ls": "2-0"}, "Brentford|Newcastle": {"ph": 0.446, "pd": 0.288, "pa": 0.266, "ls": "1-0"}, "Bournemouth|Coventry": {"ph": 0.616, "pd": 0.231, "pa": 0.152, "ls": "2-0"}, "Arsenal|Man United": {"ph": 0.592, "pd": 0.237, "pa": 0.171, "ls": "2-0"}, "Chelsea|Aston Villa": {"ph": 0.401, "pd": 0.278, "pa": 0.321, "ls": "1-0"}, "Newcastle|Man City": {"ph": 0.291, "pd": 0.244, "pa": 0.465, "ls": "1-2"}, "Man United|Forest": {"ph": 0.528, "pd": 0.234, "pa": 0.238, "ls": "2-1"}, "Ipswich|Brentford": {"ph": 0.371, "pd": 0.275, "pa": 0.355, "ls": "2-1"}, "Hull|Liverpool": {"ph": 0.223, "pd": 0.236, "pa": 0.541, "ls": "1-2"}, "Tottenham|Bournemouth": {"ph": 0.389, "pd": 0.255, "pa": 0.357, "ls": "2-1"}, "Everton|Sunderland": {"ph": 0.471, "pd": 0.278, "pa": 0.252, "ls": "1-0"}, "Palace|Arsenal": {"ph": 0.159, "pd": 0.259, "pa": 0.582, "ls": "0-1"}, "Coventry|Chelsea": {"ph": 0.21, "pd": 0.236, "pa": 0.554, "ls": "1-2"}, "Aston Villa|Leeds": {"ph": 0.581, "pd": 0.234, "pa": 0.185, "ls": "2-1"}, "Fulham|Brighton": {"ph": 0.404, "pd": 0.287, "pa": 0.309, "ls": "1-0"}, "Tottenham|Brighton": {"ph": 0.37, "pd": 0.281, "pa": 0.349, "ls": "1-0"}, "Newcastle|Forest": {"ph": 0.446, "pd": 0.242, "pa": 0.313, "ls": "2-1"}, "Man United|Sunderland": {"ph": 0.634, "pd": 0.218, "pa": 0.149, "ls": "2-0"}, "Ipswich|Chelsea": {"ph": 0.221, "pd": 0.24, "pa": 0.539, "ls": "1-2"}, "Hull|Leeds": {"ph": 0.383, "pd": 0.273, "pa": 0.345, "ls": "2-1"}, "Fulham|Arsenal": {"ph": 0.215, "pd": 0.271, "pa": 0.515, "ls": "0-1"}, "Palace|Bournemouth": {"ph": 0.333, "pd": 0.275, "pa": 0.392, "ls": "1-2"}, "Coventry|Brentford": {"ph": 0.357, "pd": 0.275, "pa": 0.368, "ls": "1-2"}, "Aston Villa|Liverpool": {"ph": 0.405, "pd": 0.255, "pa": 0.34, "ls": "2-1"}, "Everton|Man City": {"ph": 0.23, "pd": 0.252, "pa": 0.518, "ls": "1-2"}, "Liverpool|Coventry": {"ph": 0.73, "pd": 0.176, "pa": 0.094, "ls": "2-0"}, "Forest|Fulham": {"ph": 0.442, "pd": 0.296, "pa": 0.262, "ls": "1-0"}, "Man City|Tottenham": {"ph": 0.564, "pd": 0.242, "pa": 0.195, "ls": "2-1"}, "Leeds|Everton": {"ph": 0.393, "pd": 0.295, "pa": 0.311, "ls": "1-0"}, "Sunderland|Hull": {"ph": 0.557, "pd": 0.258, "pa": 0.186, "ls": "1-0"}, "Brighton|Man United": {"ph": 0.357, "pd": 0.273, "pa": 0.369, "ls": "1-2"}, "Brentford|Palace": {"ph": 0.483, "pd": 0.265, "pa": 0.251, "ls": "1-0"}, "Bournemouth|Aston Villa": {"ph": 0.409, "pd": 0.282, "pa": 0.309, "ls": "1-0"}, "Arsenal|Ipswich": {"ph": 0.813, "pd": 0.135, "pa": 0.052, "ls": "2-0"}, "Chelsea|Newcastle": {"ph": 0.43, "pd": 0.293, "pa": 0.277, "ls": "1-0"}, "Sunderland|Liverpool": {"ph": 0.301, "pd": 0.268, "pa": 0.431, "ls": "1-2"}, "Forest|Hull": {"ph": 0.52, "pd": 0.271, "pa": 0.209, "ls": "1-0"}, "Man United|Newcastle": {"ph": 0.531, "pd": 0.255, "pa": 0.213, "ls": "1-0"}, "Leeds|Man City": {"ph": 0.269, "pd": 0.27, "pa": 0.462, "ls": "0-1"}, "Ipswich|Coventry": {"ph": 0.493, "pd": 0.264, "pa": 0.243, "ls": "1-0"}, "Fulham|Tottenham": {"ph": 0.322, "pd": 0.279, "pa": 0.398, "ls": "0-1"}, "Everton|Aston Villa": {"ph": 0.344, "pd": 0.275, "pa": 0.381, "ls": "1-2"}, "Palace|Chelsea": {"ph": 0.23, "pd": 0.263, "pa": 0.507, "ls": "0-1"}, "Brighton|Bournemouth": {"ph": 0.475, "pd": 0.253, "pa": 0.272, "ls": "2-1"}, "Arsenal|Brentford": {"ph": 0.731, "pd": 0.18, "pa": 0.089, "ls": "2-0"}, "Newcastle|Fulham": {"ph": 0.583, "pd": 0.227, "pa": 0.19, "ls": "2-1"}, "Man City|Forest": {"ph": 0.651, "pd": 0.206, "pa": 0.143, "ls": "2-0"}, "Liverpool|Palace": {"ph": 0.592, "pd": 0.236, "pa": 0.172, "ls": "2-0"}, "Hull|Arsenal": {"ph": 0.131, "pd": 0.219, "pa": 0.65, "ls": "0-2"}, "Tottenham|Leeds": {"ph": 0.476, "pd": 0.261, "pa": 0.263, "ls": "2-1"}, "Chelsea|Sunderland": {"ph": 0.527, "pd": 0.267, "pa": 0.206, "ls": "1-0"}, "Brentford|Brighton": {"ph": 0.443, "pd": 0.276, "pa": 0.282, "ls": "1-0"}, "Bournemouth|Ipswich": {"ph": 0.603, "pd": 0.237, "pa": 0.161, "ls": "2-0"}, "Aston Villa|Man United": {"ph": 0.375, "pd": 0.266, "pa": 0.359, "ls": "2-1"}, "Coventry|Everton": {"ph": 0.289, "pd": 0.287, "pa": 0.424, "ls": "0-1"}, "Forest|Bournemouth": {"ph": 0.346, "pd": 0.274, "pa": 0.38, "ls": "1-2"}, "Man United|Liverpool": {"ph": 0.464, "pd": 0.237, "pa": 0.299, "ls": "2-1"}, "Leeds|Chelsea": {"ph": 0.312, "pd": 0.265, "pa": 0.423, "ls": "1-2"}, "Ipswich|Hull": {"ph": 0.513, "pd": 0.259, "pa": 0.228, "ls": "1-0"}, "Sunderland|Coventry": {"ph": 0.539, "pd": 0.263, "pa": 0.198, "ls": "1-0"}, "Everton|Brentford": {"ph": 0.429, "pd": 0.269, "pa": 0.302, "ls": "2-1"}, "Palace|Tottenham": {"ph": 0.246, "pd": 0.282, "pa": 0.473, "ls": "0-1"}, "Brighton|Man City": {"ph": 0.301, "pd": 0.276, "pa": 0.423, "ls": "0-1"}, "Arsenal|Newcastle": {"ph": 0.664, "pd": 0.224, "pa": 0.111, "ls": "2-0"}, "Fulham|Aston Villa": {"ph": 0.38, "pd": 0.283, "pa": 0.337, "ls": "1-0"}, "Tottenham|Sunderland": {"ph": 0.471, "pd": 0.278, "pa": 0.251, "ls": "1-0"}, "Newcastle|Brighton": {"ph": 0.452, "pd": 0.254, "pa": 0.294, "ls": "2-1"}, "Man City|Arsenal": {"ph": 0.421, "pd": 0.283, "pa": 0.296, "ls": "1-0"}, "Liverpool|Everton": {"ph": 0.529, "pd": 0.264, "pa": 0.207, "ls": "1-0"}, "Hull|Palace": {"ph": 0.321, "pd": 0.278, "pa": 0.401, "ls": "0-1"}, "Coventry|Leeds": {"ph": 0.401, "pd": 0.272, "pa": 0.327, "ls": "2-1"}, "Brentford|Man United": {"ph": 0.35, "pd": 0.266, "pa": 0.384, "ls": "1-2"}, "Bournemouth|Fulham": {"ph": 0.553, "pd": 0.259, "pa": 0.188, "ls": "1-0"}, "Aston Villa|Ipswich": {"ph": 0.642, "pd": 0.215, "pa": 0.142, "ls": "2-0"}, "Chelsea|Forest": {"ph": 0.421, "pd": 0.267, "pa": 0.312, "ls": "2-1"}, "Leeds|Bournemouth": {"ph": 0.434, "pd": 0.258, "pa": 0.307, "ls": "2-1"}, "Sunderland|Aston Villa": {"ph": 0.339, "pd": 0.292, "pa": 0.369, "ls": "0-1"}, "Forest|Brentford": {"ph": 0.385, "pd": 0.292, "pa": 0.324, "ls": "1-0"}, "Man United|Chelsea": {"ph": 0.422, "pd": 0.245, "pa": 0.333, "ls": "2-1"}, "Ipswich|Tottenham": {"ph": 0.238, "pd": 0.258, "pa": 0.503, "ls": "1-2"}, "Fulham|Man City": {"ph": 0.263, "pd": 0.269, "pa": 0.468, "ls": "0-1"}, "Everton|Newcastle": {"ph": 0.375, "pd": 0.295, "pa": 0.33, "ls": "1-0"}, "Palace|Coventry": {"ph": 0.487, "pd": 0.282, "pa": 0.231, "ls": "1-0"}, "Brighton|Hull": {"ph": 0.65, "pd": 0.217, "pa": 0.134, "ls": "2-0"}, "Arsenal|Liverpool": {"ph": 0.627, "pd": 0.218, "pa": 0.155, "ls": "2-0"}, "Tottenham|Man City": {"ph": 0.23, "pd": 0.252, "pa": 0.517, "ls": "1-2"}, "Newcastle|Chelsea": {"ph": 0.34, "pd": 0.239, "pa": 0.421, "ls": "1-2"}, "Man United|Brighton": {"ph": 0.53, "pd": 0.245, "pa": 0.225, "ls": "2-1"}, "Ipswich|Arsenal": {"ph": 0.15, "pd": 0.231, "pa": 0.619, "ls": "0-2"}, "Hull|Sunderland": {"ph": 0.382, "pd": 0.291, "pa": 0.327, "ls": "1-0"}, "Everton|Leeds": {"ph": 0.476, "pd": 0.261, "pa": 0.264, "ls": "2-1"}, "Palace|Brentford": {"ph": 0.371, "pd": 0.295, "pa": 0.334, "ls": "1-0"}, "Coventry|Liverpool": {"ph": 0.239, "pd": 0.24, "pa": 0.521, "ls": "1-2"}, "Aston Villa|Bournemouth": {"ph": 0.497, "pd": 0.243, "pa": 0.261, "ls": "2-1"}, "Fulham|Forest": {"ph": 0.399, "pd": 0.272, "pa": 0.328, "ls": "2-1"}, "Liverpool|Hull": {"ph": 0.746, "pd": 0.168, "pa": 0.086, "ls": "2-0"}, "Sunderland|Everton": {"ph": 0.346, "pd": 0.307, "pa": 0.347, "ls": "0-1"}, "Forest|Man United": {"ph": 0.249, "pd": 0.272, "pa": 0.479, "ls": "0-1"}, "Man City|Newcastle": {"ph": 0.642, "pd": 0.227, "pa": 0.131, "ls": "2-0"}, "Leeds|Aston Villa": {"ph": 0.387, "pd": 0.282, "pa": 0.331, "ls": "1-0"}, "Arsenal|Fulham": {"ph": 0.771, "pd": 0.162, "pa": 0.066, "ls": "2-0"}, "Brighton|Tottenham": {"ph": 0.364, "pd": 0.281, "pa": 0.356, "ls": "1-0"}, "Brentford|Coventry": {"ph": 0.63, "pd": 0.221, "pa": 0.15, "ls": "2-0"}, "Bournemouth|Palace": {"ph": 0.473, "pd": 0.275, "pa": 0.252, "ls": "1-0"}, "Chelsea|Ipswich": {"ph": 0.598, "pd": 0.235, "pa": 0.167, "ls": "2-0"}, "Ipswich|Brighton": {"ph": 0.315, "pd": 0.282, "pa": 0.403, "ls": "0-1"}, "Tottenham|Liverpool": {"ph": 0.304, "pd": 0.252, "pa": 0.444, "ls": "1-2"}, "Newcastle|Brentford": {"ph": 0.519, "pd": 0.236, "pa": 0.245, "ls": "2-1"}, "Man United|Arsenal": {"ph": 0.303, "pd": 0.268, "pa": 0.429, "ls": "1-2"}, "Hull|Man City": {"ph": 0.165, "pd": 0.226, "pa": 0.609, "ls": "0-2"}, "Aston Villa|Chelsea": {"ph": 0.366, "pd": 0.261, "pa": 0.373, "ls": "1-2"}, "Everton|Forest": {"ph": 0.362, "pd": 0.266, "pa": 0.372, "ls": "1-2"}, "Palace|Sunderland": {"ph": 0.41, "pd": 0.308, "pa": 0.282, "ls": "1-0"}, "Coventry|Bournemouth": {"ph": 0.315, "pd": 0.254, "pa": 0.431, "ls": "1-2"}, "Fulham|Leeds": {"ph": 0.512, "pd": 0.259, "pa": 0.229, "ls": "1-0"}, "Sunderland|Man United": {"ph": 0.278, "pd": 0.275, "pa": 0.447, "ls": "0-1"}, "Forest|Newcastle": {"ph": 0.336, "pd": 0.316, "pa": 0.348, "ls": "0-1"}, "Man City|Everton": {"ph": 0.623, "pd": 0.231, "pa": 0.145, "ls": "2-0"}, "Liverpool|Aston Villa": {"ph": 0.527, "pd": 0.254, "pa": 0.219, "ls": "2-1"}, "Leeds|Hull": {"ph": 0.613, "pd": 0.231, "pa": 0.156, "ls": "2-0"}, "Brighton|Fulham": {"ph": 0.568, "pd": 0.253, "pa": 0.179, "ls": "1-0"}, "Brentford|Ipswich": {"ph": 0.616, "pd": 0.226, "pa": 0.158, "ls": "2-0"}, "Bournemouth|Tottenham": {"ph": 0.35, "pd": 0.283, "pa": 0.368, "ls": "0-1"}, "Arsenal|Palace": {"ph": 0.708, "pd": 0.194, "pa": 0.098, "ls": "2-0"}, "Chelsea|Coventry": {"ph": 0.612, "pd": 0.23, "pa": 0.159, "ls": "2-0"}, "Liverpool|Ipswich": {"ph": 0.717, "pd": 0.183, "pa": 0.1, "ls": "2-0"}, "Sunderland|Brentford": {"ph": 0.419, "pd": 0.286, "pa": 0.295, "ls": "1-0"}, "Man United|Everton": {"ph": 0.508, "pd": 0.257, "pa": 0.235, "ls": "2-1"}, "Tottenham|Forest": {"ph": 0.362, "pd": 0.266, "pa": 0.372, "ls": "1-2"}, "Leeds|Brighton": {"ph": 0.411, "pd": 0.286, "pa": 0.303, "ls": "1-0"}, "Chelsea|Arsenal": {"ph": 0.229, "pd": 0.271, "pa": 0.5, "ls": "0-1"}, "Coventry|Man City": {"ph": 0.177, "pd": 0.233, "pa": 0.59, "ls": "0-2"}, "Bournemouth|Newcastle": {"ph": 0.436, "pd": 0.297, "pa": 0.266, "ls": "1-0"}, "Aston Villa|Hull": {"ph": 0.674, "pd": 0.202, "pa": 0.124, "ls": "2-0"}, "Palace|Fulham": {"ph": 0.428, "pd": 0.301, "pa": 0.272, "ls": "1-0"}, "Forest|Aston Villa": {"ph": 0.308, "pd": 0.293, "pa": 0.399, "ls": "0-1"}, "Newcastle|Leeds": {"ph": 0.569, "pd": 0.222, "pa": 0.209, "ls": "2-1"}, "Man City|Man United": {"ph": 0.561, "pd": 0.237, "pa": 0.202, "ls": "2-1"}, "Ipswich|Palace": {"ph": 0.351, "pd": 0.28, "pa": 0.369, "ls": "0-1"}, "Hull|Chelsea": {"ph": 0.196, "pd": 0.23, "pa": 0.574, "ls": "1-2"}, "Everton|Tottenham": {"ph": 0.287, "pd": 0.267, "pa": 0.446, "ls": "1-2"}, "Brighton|Coventry": {"ph": 0.632, "pd": 0.224, "pa": 0.144, "ls": "2-0"}, "Brentford|Bournemouth": {"ph": 0.468, "pd": 0.248, "pa": 0.284, "ls": "2-1"}, "Arsenal|Sunderland": {"ph": 0.752, "pd": 0.175, "pa": 0.072, "ls": "2-0"}, "Fulham|Liverpool": {"ph": 0.341, "pd": 0.263, "pa": 0.396, "ls": "1-2"}, "Liverpool|Newcastle": {"ph": 0.55, "pd": 0.262, "pa": 0.188, "ls": "1-0"}, "Tottenham|Brentford": {"ph": 0.43, "pd": 0.269, "pa": 0.301, "ls": "2-1"}, "Sunderland|Ipswich": {"ph": 0.525, "pd": 0.267, "pa": 0.208, "ls": "1-0"}, "Man United|Hull": {"ph": 0.736, "pd": 0.167, "pa": 0.098, "ls": "2-0"}, "Leeds|Forest": {"ph": 0.406, "pd": 0.271, "pa": 0.323, "ls": "2-1"}, "Aston Villa|Brighton": {"ph": 0.469, "pd": 0.271, "pa": 0.261, "ls": "1-0"}, "Coventry|Arsenal": {"ph": 0.142, "pd": 0.226, "pa": 0.632, "ls": "0-2"}, "Chelsea|Fulham": {"ph": 0.548, "pd": 0.257, "pa": 0.196, "ls": "1-0"}, "Bournemouth|Man City": {"ph": 0.289, "pd": 0.276, "pa": 0.435, "ls": "0-1"}, "Palace|Everton": {"ph": 0.304, "pd": 0.311, "pa": 0.385, "ls": "0-1"}, "Ipswich|Man United": {"ph": 0.23, "pd": 0.248, "pa": 0.522, "ls": "1-2"}, "Forest|Liverpool": {"ph": 0.27, "pd": 0.266, "pa": 0.464, "ls": "1-2"}, "Newcastle|Tottenham": {"ph": 0.359, "pd": 0.252, "pa": 0.389, "ls": "1-2"}, "Man City|Palace": {"ph": 0.686, "pd": 0.198, "pa": 0.116, "ls": "2-0"}, "Hull|Coventry": {"ph": 0.46, "pd": 0.27, "pa": 0.27, "ls": "1-0"}, "Arsenal|Aston Villa": {"ph": 0.651, "pd": 0.22, "pa": 0.129, "ls": "2-0"}, "Everton|Bournemouth": {"ph": 0.388, "pd": 0.255, "pa": 0.358, "ls": "2-1"}, "Brighton|Chelsea": {"ph": 0.348, "pd": 0.268, "pa": 0.384, "ls": "1-2"}, "Brentford|Leeds": {"ph": 0.554, "pd": 0.243, "pa": 0.204, "ls": "2-1"}, "Fulham|Sunderland": {"ph": 0.504, "pd": 0.276, "pa": 0.22, "ls": "1-0"}, "Tottenham|Hull": {"ph": 0.574, "pd": 0.24, "pa": 0.186, "ls": "2-0"}, "Forest|Sunderland": {"ph": 0.423, "pd": 0.304, "pa": 0.273, "ls": "1-0"}, "Newcastle|Ipswich": {"ph": 0.636, "pd": 0.205, "pa": 0.16, "ls": "2-1"}, "Man United|Palace": {"ph": 0.573, "pd": 0.231, "pa": 0.196, "ls": "2-1"}, "Leeds|Liverpool": {"ph": 0.347, "pd": 0.263, "pa": 0.39, "ls": "1-2"}, "Chelsea|Man City": {"ph": 0.28, "pd": 0.269, "pa": 0.451, "ls": "1-2"}, "Brentford|Fulham": {"ph": 0.565, "pd": 0.249, "pa": 0.186, "ls": "1-0"}, "Bournemouth|Arsenal": {"ph": 0.237, "pd": 0.28, "pa": 0.483, "ls": "0-1"}, "Aston Villa|Coventry": {"ph": 0.656, "pd": 0.21, "pa": 0.134, "ls": "2-0"}, "Everton|Brighton": {"ph": 0.369, "pd": 0.281, "pa": 0.35, "ls": "1-0"}, "Ipswich|Leeds": {"ph": 0.415, "pd": 0.271, "pa": 0.314, "ls": "2-1"}, "Man City|Brentford": {"ph": 0.71, "pd": 0.184, "pa": 0.106, "ls": "2-0"}, "Liverpool|Chelsea": {"ph": 0.45, "pd": 0.256, "pa": 0.293, "ls": "2-1"}, "Sunderland|Newcastle": {"ph": 0.367, "pd": 0.312, "pa": 0.32, "ls": "1-0"}, "Hull|Bournemouth": {"ph": 0.297, "pd": 0.252, "pa": 0.451, "ls": "1-2"}, "Coventry|Man United": {"ph": 0.219, "pd": 0.244, "pa": 0.536, "ls": "1-2"}, "Palace|Aston Villa": {"ph": 0.296, "pd": 0.294, "pa": 0.41, "ls": "0-1"}, "Brighton|Forest": {"ph": 0.444, "pd": 0.268, "pa": 0.288, "ls": "2-1"}, "Arsenal|Tottenham": {"ph": 0.593, "pd": 0.241, "pa": 0.165, "ls": "1-0"}, "Fulham|Everton": {"ph": 0.387, "pd": 0.296, "pa": 0.317, "ls": "1-0"}, "Tottenham|Chelsea": {"ph": 0.27, "pd": 0.251, "pa": 0.478, "ls": "1-2"}, "Forest|Palace": {"ph": 0.365, "pd": 0.298, "pa": 0.337, "ls": "1-0"}, "Newcastle|Coventry": {"ph": 0.65, "pd": 0.2, "pa": 0.15, "ls": "2-1"}, "Man City|Liverpool": {"ph": 0.597, "pd": 0.219, "pa": 0.184, "ls": "2-1"}, "Leeds|Arsenal": {"ph": 0.219, "pd": 0.272, "pa": 0.509, "ls": "0-1"}, "Fulham|Ipswich": {"ph": 0.574, "pd": 0.246, "pa": 0.18, "ls": "1-0"}, "Everton|Hull": {"ph": 0.574, "pd": 0.24, "pa": 0.186, "ls": "2-0"}, "Brighton|Sunderland": {"ph": 0.548, "pd": 0.264, "pa": 0.189, "ls": "1-0"}, "Brentford|Aston Villa": {"ph": 0.418, "pd": 0.273, "pa": 0.309, "ls": "2-1"}, "Bournemouth|Man United": {"ph": 0.343, "pd": 0.275, "pa": 0.382, "ls": "1-2"}, "Man United|Leeds": {"ph": 0.646, "pd": 0.202, "pa": 0.152, "ls": "2-1"}, "Sunderland|Bournemouth": {"ph": 0.381, "pd": 0.27, "pa": 0.348, "ls": "2-1"}, "Ipswich|Man City": {"ph": 0.187, "pd": 0.237, "pa": 0.576, "ls": "1-2"}, "Hull|Fulham": {"ph": 0.4, "pd": 0.285, "pa": 0.315, "ls": "1-0"}, "Liverpool|Brentford": {"ph": 0.616, "pd": 0.224, "pa": 0.16, "ls": "2-0"}, "Coventry|Tottenham": {"ph": 0.227, "pd": 0.255, "pa": 0.518, "ls": "1-2"}, "Chelsea|Everton": {"ph": 0.408, "pd": 0.291, "pa": 0.302, "ls": "1-0"}, "Aston Villa|Newcastle": {"ph": 0.471, "pd": 0.282, "pa": 0.247, "ls": "1-0"}, "Arsenal|Forest": {"ph": 0.677, "pd": 0.203, "pa": 0.12, "ls": "2-0"}, "Palace|Brighton": {"ph": 0.318, "pd": 0.303, "pa": 0.379, "ls": "0-1"}, "Tottenham|Man United": {"ph": 0.28, "pd": 0.258, "pa": 0.462, "ls": "1-2"}, "Forest|Ipswich": {"ph": 0.488, "pd": 0.28, "pa": 0.232, "ls": "1-0"}, "Man City|Aston Villa": {"ph": 0.625, "pd": 0.222, "pa": 0.153, "ls": "2-0"}, "Leeds|Sunderland": {"ph": 0.511, "pd": 0.274, "pa": 0.215, "ls": "1-0"}, "Newcastle|Palace": {"ph": 0.495, "pd": 0.244, "pa": 0.261, "ls": "2-1"}, "Everton|Arsenal": {"ph": 0.186, "pd": 0.25, "pa": 0.565, "ls": "0-1"}, "Brighton|Liverpool": {"ph": 0.385, "pd": 0.263, "pa": 0.351, "ls": "2-1"}, "Brentford|Hull": {"ph": 0.648, "pd": 0.213, "pa": 0.139, "ls": "2-0"}, "Bournemouth|Chelsea": {"ph": 0.334, "pd": 0.269, "pa": 0.397, "ls": "1-2"}, "Fulham|Coventry": {"ph": 0.588, "pd": 0.241, "pa": 0.171, "ls": "1-0"}, "Man United|Fulham": {"ph": 0.655, "pd": 0.206, "pa": 0.139, "ls": "2-0"}, "Arsenal|Brighton": {"ph": 0.67, "pd": 0.214, "pa": 0.116, "ls": "2-0"}, "Aston Villa|Tottenham": {"ph": 0.382, "pd": 0.273, "pa": 0.345, "ls": "2-1"}, "Chelsea|Brentford": {"ph": 0.489, "pd": 0.263, "pa": 0.249, "ls": "2-1"}, "Coventry|Forest": {"ph": 0.293, "pd": 0.263, "pa": 0.444, "ls": "1-2"}, "Palace|Leeds": {"ph": 0.413, "pd": 0.29, "pa": 0.297, "ls": "1-0"}, "Hull|Newcastle": {"ph": 0.295, "pd": 0.294, "pa": 0.411, "ls": "0-1"}, "Ipswich|Everton": {"ph": 0.301, "pd": 0.288, "pa": 0.41, "ls": "0-1"}, "Liverpool|Bournemouth": {"ph": 0.585, "pd": 0.222, "pa": 0.193, "ls": "2-1"}, "Sunderland|Man City": {"ph": 0.23, "pd": 0.27, "pa": 0.5, "ls": "0-1"}}, "map": {"Arsenal FC": "Arsenal", "Aston Villa FC": "Aston Villa", "AFC Bournemouth": "Bournemouth", "Brentford FC": "Brentford", "Brighton & Hove Albion FC": "Brighton", "Chelsea FC": "Chelsea", "Crystal Palace FC": "Palace", "Everton FC": "Everton", "Fulham FC": "Fulham", "Leeds United FC": "Leeds", "Liverpool FC": "Liverpool", "Manchester City FC": "Man City", "Manchester United FC": "Man United", "Newcastle United FC": "Newcastle", "Nottingham Forest FC": "Forest", "Sunderland AFC": "Sunderland", "Tottenham Hotspur FC": "Tottenham", "Coventry City FC": "Coventry", "Hull City AFC": "Hull", "Ipswich Town FC": "Ipswich", "West Ham United FC": "West Ham", "Wolverhampton Wanderers FC": "Wolverhampton Wanderers", "Burnley FC": "Burnley", "Leicester City FC": "Leicester City", "Southampton FC": "Southampton", "Luton Town FC": "Luton Town", "Sheffield United FC": "Sheffield United"}};</script><script>
+(function() {
+  var box = document.getElementById("mdstrip");
+  if (!box || typeof MD === "undefined" || !MD) return;
+  function short(fd) { return (MD.map && MD.map[fd]) || fd.replace(/ FC$/, ""); }
+  function approxMin(kick) {
+    var m = Math.floor((Date.now() - Date.parse(kick)) / 60000);
+    if (m < 0) return "";
+    if (m <= 45) return "~" + m + "′";
+    if (m <= 62) return "HT~";
+    return "~" + Math.min(m - 15, 90) + "′";
+  }
+  function context(h, a, hs, as) {
+    var f = MD.fix && MD.fix[h + "|" + a];
+    if (!f) return "";
+    var lead = hs === as ? null : (hs > as ? h : a);
+    var p = lead === h ? f.ph : (lead === a ? f.pa : null);
+    if (lead === null) {
+      return "model: " + Math.round(f.ph * 100) + "% " + h;
+    }
+    var pc = Math.round(p * 100);
+    if (p < 0.30) return "upset watch — model had " + lead + " at " + pc + "%";
+    if (p < 0.55) return "coin flip going " + lead + "’s way (" + pc + "%)";
+    return "as expected — " + lead + " were " + pc + "%";
+  }
+  function interest(m) {
+    var live = m.status === "IN_PLAY" || m.status === "PAUSED";
+    if (!live) return m.status === "FINISHED" ? 3 : 2;
+    var h = short(m.h), a = short(m.a);
+    var f = MD.fix && MD.fix[h + "|" + a];
+    if (!f || m.hs === m.as) return 1;
+    var lead = m.hs > m.as ? "h" : "a";
+    return (lead === "h" ? f.ph : f.pa);   // lower prob = bigger upset = first
+  }
+  function card(m) {
+    var h = short(m.h), a = short(m.a);
+    var live = m.status === "IN_PLAY" || m.status === "PAUSED";
+    var tag = m.status === "PAUSED" ? "HT"
+            : m.status === "FINISHED" ? "FT"
+            : live ? approxMin(m.kick)
+            : new Date(m.kick).toLocaleTimeString([], {hour: "numeric", minute: "2-digit"});
+    var sc = (m.hs == null || m.status === "TIMED" || m.status === "SCHEDULED")
+             ? "v" : m.hs + "–" + m.as;
+    var ctx = live || m.status === "FINISHED"
+              ? context(h, a, m.hs, m.as)
+              : (MD.fix && MD.fix[h + "|" + a]
+                 ? "model: " + MD.fix[h + "|" + a].ls : "");
+    var compTag = (m.comp && m.comp !== "PL")
+                  ? '<span class="md-comp">' + (m.comp === "CL" ? "UCL" : m.comp) + "</span>" : "";
+    return '<div class="md-card' + (live ? " live" : "") + '">'
+      + '<span class="md-tag">' + (live ? '<span class="md-dot"></span>' : "") + tag + '</span>'
+      + compTag
+      + '<span class="md-line">' + h + ' <b>' + sc + '</b> ' + a + '</span>'
+      + (ctx ? '<span class="md-ctx">' + ctx + '</span>' : "")
+      + '</div>';
+  }
+  function liveRows(matches) {
+    // fixtures page: swap the probability bar for the live score in-place
+    var rows = document.querySelectorAll("tr[data-t]");
+    if (!rows.length) return;
+    var byKey = {};
+    matches.forEach(function(m) {
+      if (m.comp && m.comp !== "PL") return;
+      byKey[short(m.h) + "|" + short(m.a)] = m; });
+    rows.forEach(function(r) {
+      var m = byKey[r.getAttribute("data-t")];
+      if (!m || (m.status !== "IN_PLAY" && m.status !== "PAUSED")) return;
+      var last = r.lastElementChild;
+      if (last) last.innerHTML = '<span class="md-dot"></span> <strong>'
+        + m.hs + "–" + m.as + "</strong> "
+        + (m.status === "PAUSED" ? "HT" : approxMin(m.kick));
+    });
+  }
+  function asItStands(matches) {
+    var box2 = document.getElementById("asitstands");
+    if (!box2 || typeof MD_TABLE === "undefined" || !MD_TABLE) return;
+    var liveM = matches.filter(function(m) {
+      return (!m.comp || m.comp === "PL")
+        && (m.status === "IN_PLAY" || m.status === "PAUSED"); });
+    if (!liveM.length) { box2.hidden = true; return; }
+    var t = MD_TABLE.map(function(r) { return {t: r.t, pts: r.pts, gd: r.gd, gf: r.gf, was: r.rank}; });
+    var by = {}; t.forEach(function(r) { by[r.t] = r; });
+    liveM.forEach(function(m) {
+      var h = by[short(m.h)], a = by[short(m.a)];
+      if (!h || !a || m.hs == null) return;
+      var d = m.hs - m.as;
+      h.pts += d > 0 ? 3 : (d === 0 ? 1 : 0);
+      a.pts += d < 0 ? 3 : (d === 0 ? 1 : 0);
+      h.gd += d; a.gd -= d; h.gf += m.hs; a.gf += m.as;
+    });
+    t.sort(function(x, y) { return y.pts - x.pts || y.gd - x.gd || y.gf - x.gf; });
+    box2.hidden = false;
+    box2.innerHTML = '<h2>As it stands</h2>'
+      + '<p class="note">Provisional table with the matches in play applied.</p>'
+      + '<div class="t-scroll"><table class="fx"><tbody>'
+      + t.map(function(r, i) {
+          var mv = r.was - (i + 1);
+          var arrow = mv > 0 ? '<span class="mc-up">▲' + mv + "</span>"
+                    : mv < 0 ? '<span class="mc-down">▼' + (-mv) + "</span>" : "";
+          return "<tr><td>" + (i + 1) + "</td><td>" + r.t + " " + arrow
+            + "</td><td>" + r.pts + " pts</td><td>" + (r.gd > 0 ? "+" : "") + r.gd + "</td></tr>";
+        }).join("")
+      + "</tbody></table></div>";
+  }
+  function navLive(on) {
+    // pulsing dot on the Table links while matches are in play — the cue
+    // that "as it stands" is running (Steve, Aug 1 2026)
+    document.querySelectorAll(
+      '.nav-primary a[href="/table/"], .sb-nav a[href="/table/"], ' +
+      '.nav-primary .site-nav-current, .sb-nav .sb-current'
+    ).forEach(function(el) {
+      var isTable = el.getAttribute("href") === "/table/"
+                    || el.textContent.replace(/\s|●/g, "") === "Table";
+      if (!isTable) return;
+      var dot = el.querySelector(".nav-live-dot");
+      if (on && !dot) {
+        el.insertAdjacentHTML("beforeend",
+          ' <span class="nav-live-dot md-dot" title="matches in play — live table"></span>');
+      } else if (!on && dot) {
+        dot.remove();
+      }
+    });
+  }
+  var timer = null;
+  function load() {
+    fetch("https://api.premprojections.com/live", { cache: "no-store" })
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        var ms = (d.matches || []).filter(function(m) {
+          if (!m.comp || m.comp === "PL") return true;
+          return !!(MD.map && (MD.map[m.h] || MD.map[m.a]));
+        });
+        if (!ms.length) { box.hidden = true; return; }
+        ms.sort(function(x, y) { return interest(x) - interest(y); });
+        box.hidden = false;
+        box.innerHTML = '<div class="md-inner">' + ms.map(card).join("") + "</div>";
+        liveRows(ms);
+        asItStands(ms);
+        navLive(ms.some(function(m) {
+          return (!m.comp || m.comp === "PL")
+            && (m.status === "IN_PLAY" || m.status === "PAUSED"); }));
+        clearTimeout(timer);
+        timer = setTimeout(load, d.anyLive ? 60000 : 300000);
+      }).catch(function() { box.hidden = true; });
+  }
+  load();
+  document.addEventListener("visibilitychange", function() {
+    if (!document.hidden) load();
+  });
+})();
+</script><div class="stickybar" id="stickybar"><div class="sb-inner"><a class="sb-brand" href="/">Prem <span>Projections</span></a><div class="sb-nav"><span class="sb-current">Projections</span><a href="/news/">News</a><a href="/rumors/">Rumors</a><a href="/transfers/">Transfers</a><a href="/fixtures/">Fixtures</a><a href="/table/">Table</a><a href="/teams/">Teams</a><a href="/stats/">Stats</a><a href="/fpl/">FPL</a></div></div><div class="sb-jumps" id="sb-jumps"></div></div><script>
+document.addEventListener("DOMContentLoaded", function() {
+  var bar = document.getElementById("stickybar");
+  if (!bar) return;
+  var sj = document.getElementById("sb-jumps");
+  var links = [];
+  var jumps = document.querySelector(".jumps");
+  if (jumps && sj) {
+    jumps.querySelectorAll('a[href^="#"]').forEach(function(a) {
+      var c = a.cloneNode(true);
+      sj.appendChild(c);
+      links.push(c);
+    });
+  }
+  var lastY = window.scrollY, shown = false;
+  function set(s) {
+    if (s === shown) return;
+    shown = s;
+    bar.classList.toggle("show", s);
+  }
+  window.addEventListener("scroll", function() {
+    var y = window.scrollY;
+    if (y < 260) set(false);
+    else if (y < lastY - 4) set(true);
+    else if (y > lastY + 4) set(false);
+    lastY = y;
+  }, { passive: true });
+  if (links.length && "IntersectionObserver" in window) {
+    var map = {}, current = null;
+    links.forEach(function(a) { map[a.getAttribute("href").slice(1)] = a; });
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting) current = en.target.id;
+      });
+      links.forEach(function(a) { a.classList.toggle("active", a === map[current]); });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(map).forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  }
+  // liquid-glass glide: a soft pill that follows the hovered nav item
+  var np = document.querySelector(".nav-primary");
+  var glide = np ? np.querySelector(".nav-glide") : null;
+  if (np && glide) {
+    np.querySelectorAll("a, .site-nav-current").forEach(function(el) {
+      el.addEventListener("mouseenter", function() {
+        glide.style.width = el.offsetWidth + "px";
+        glide.style.height = el.offsetHeight + "px";
+        glide.style.transform = "translate(" + el.offsetLeft + "px," + el.offsetTop + "px)";
+        glide.style.opacity = "1";
+      });
+    });
+    np.addEventListener("mouseleave", function() { glide.style.opacity = "0"; });
+  }
+});
+</script>
+  <h1>Premier League 2026-27</h1>
+  <div class="subtitle">
+    0 matches played, 380 remaining · updated August 2, 2026
+  </div>
+
+  <div class="jumps"><span class="lbl">On this page</span><a href="#digest">Digest</a><a href="#transfers">Summer business</a><a href="#fixtures">Fixtures</a><a href="#projected">Projected table</a><a href="#heatmap">Heatmap</a></div>
+
+  
+
+  <section id="livewire"><div class="lw-head"><span class="lw-dot"></span><span class="lw-title">Live Wire &mdash; latest Premier League headlines</span><a href="/news/wire/" style="margin-left:auto;font-size:12.5px;font-weight:600;color:var(--meta);text-decoration:none;white-space:nowrap">Full archive &rarr;</a></div><ul id="lw-list"><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li><li class="lw-skel"><span></span></li></ul></section>
+
+  <div id="digest"><section class="dg-day"><h2>Today’s digest</h2><p class="note">The day’s Premier League news, verified and curated — <a href="/news/">the news hub</a> keeps every past digest.</p><ul class="dg-list"><li class="dg-item"><span class="dg-title"><a href="https://www.caughtoffside.com/2026/08/01/matthias-jaissle-signs-newcastle-united-contract/" target="_blank" rel="noopener">Jaissle signs on at Newcastle as Howe's successor</a></span><span class="dg-line">The 38-year-old German has put pen to paper on a four-year deal after Newcastle agreed roughly £9.5m in compensation with Al-Ahli, and he used his first press conference to promise intense, aggressive football built on offensive transitions - a genuine break from Howe's structure that our projection will only reflect once we see a settled side. <span class="dg-src">&mdash; CaughtOffside</span></span></li><li class="dg-item"><span class="dg-title"><a href="https://www.espn.com/soccer/story/_/id/49505676/brentford-sign-mamadou-sangare-lens-club-record-fee" target="_blank" rel="noopener">Brentford break their transfer record for Mamadou Sangaré</a></span><span class="dg-line">Around £39m takes the 24-year-old Mali midfielder from Lens on a five-year deal with an option for a sixth - comfortably the largest fee Brentford have ever paid, and a sign they intend to replace last season's midfield churn with one settled first-choice rather than another rotation. <span class="dg-src">&mdash; ESPN</span></span></li><li class="dg-item"><span class="dg-title"><a href="https://www.bbc.co.uk/sport/football/articles/c62eney6347o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">Alonso says Mudryk's return will take time</a></span><span class="dg-line">Cleared to play after the doping case was resolved, Mudryk is still months away from match condition by his manager's own account - so the squad option Chelsea unexpectedly got back is not one that changes their opening weeks. <span class="dg-src">&mdash; BBC Sport</span></span></li><li class="dg-item"><span class="dg-title"><a href="https://www.independent.co.uk/sport/football/arsenal-pre-season-friendly-girona-website-crash-b3025866.html" target="_blank" rel="noopener">Arsenal apologise after their paid stream cut out mid-match</a></span><span class="dg-line">Supporters who had bought access on Arsenal.com and the club app lost the Girona friendly shortly after Kai Havertz's opener, and the club moved the second half onto YouTube for free - a small embarrassment, but one that lands on the champions in the week their season ticket and streaming pricing is under scrutiny. <span class="dg-src">&mdash; The Independent</span></span></li><li class="dg-item"><span class="dg-title"><a href="https://www.bbc.co.uk/sport/football/articles/c36djl924y4o?at_medium=RSS&amp;at_campaign=rss" target="_blank" rel="noopener">De Zerbi concedes Richarlison sometimes wants to leave Spurs</a></span><span class="dg-line">The Tottenham manager was unusually candid about a forward who has been in and out of favour for two seasons, and with Spurs already reshaping their attack it is the clearest signal yet that Richarlison's minutes are not guaranteed. <span class="dg-src">&mdash; BBC Sport</span></span></li></ul></section></div>
+
+  <h2 id="transfers">Summer business</h2><div class="note">Confirmed deals from the 2026-27 summer window (99 signings across the league so far). <a href="/transfers/">See every club’s ins &amp; outs &rarr;</a></div><div class="transfer-brief"><div class="tb-head">Biggest signings</div><div class="tb-row"><span class="tb-player">Morgan Rogers</span><span class="tb-to">&rarr; Chelsea</span><span class="tb-fee">£117m</span></div><div class="tb-row"><span class="tb-player">Elliot Anderson</span><span class="tb-to">&rarr; Man City</span><span class="tb-fee">£116m</span></div><div class="tb-row"><span class="tb-player">Sandro Tonali</span><span class="tb-to">&rarr; Tottenham</span><span class="tb-fee">£100m</span></div><div class="tb-row"><span class="tb-player">Mateus Fernandes</span><span class="tb-to">&rarr; Tottenham</span><span class="tb-fee">£85m</span></div><div class="tb-row"><span class="tb-player">Johan Manzambi</span><span class="tb-to">&rarr; Aston Villa</span><span class="tb-fee">£59.5m</span></div><div class="tb-row"><span class="tb-player">Jérémy Jacquet</span><span class="tb-to">&rarr; Liverpool</span><span class="tb-fee">£55m</span></div><div class="tb-row"><span class="tb-player">Jan-Paul van Hecke</span><span class="tb-to">&rarr; Tottenham</span><span class="tb-fee">£52m</span></div><div class="tb-row"><span class="tb-player">Maxence Lacroix</span><span class="tb-to">&rarr; Chelsea</span><span class="tb-fee">£51m</span></div><div class="tb-row"><span class="tb-player">Andrey Santos</span><span class="tb-to">&rarr; Man United</span><span class="tb-fee">£48m</span></div><div class="tb-row"><span class="tb-player">Marco Palestra</span><span class="tb-to">&rarr; Chelsea</span><span class="tb-fee">£47m</span></div></div>
+
+  <h2>Season preview</h2><div class="note">A model-eye view of 2026-27 before a ball is kicked: projected tiers, the biggest movers from last season, how the promoted clubs are seen, and the storylines the numbers flag.</div><div class="sp-tiers"><div class="sp-tier"><div class="sp-tier-label">Title &amp; Champions League race</div><div class="sp-chips"><span class="sp-chip">Arsenal<span class="sp-sub">56%</span></span><span class="sp-chip">Man City<span class="sp-sub">29%</span></span><span class="sp-chip">Liverpool<span class="sp-sub">5%</span></span><span class="sp-chip">Man United<span class="sp-sub">5%</span></span><span class="sp-chip">Chelsea</span></div></div><div class="sp-tier"><div class="sp-tier-label">European places</div><div class="sp-chips"><span class="sp-chip">Aston Villa</span><span class="sp-chip">Tottenham</span></div></div><div class="sp-tier"><div class="sp-tier-label">Mid-table</div><div class="sp-chips"><span class="sp-chip">Brighton</span><span class="sp-chip">Newcastle</span><span class="sp-chip">Bournemouth</span><span class="sp-chip">Brentford</span><span class="sp-chip">Everton</span><span class="sp-chip">Forest</span><span class="sp-chip">Leeds</span><span class="sp-chip">Fulham</span><span class="sp-chip">Palace</span><span class="sp-chip">Sunderland</span></div></div><div class="sp-tier"><div class="sp-tier-label">Relegation scrap</div><div class="sp-chips"><span class="sp-chip">Ipswich</span><span class="sp-chip">Coventry</span><span class="sp-chip">Hull</span></div></div></div><div class="sp-movers"><div class="sp-mv-col"><div class="sp-col-head">Projected risers</div><div class="sp-mover sp-up"><span class="sp-arrow">&#9650; 10</span><span class="sp-mv-team">Tottenham</span><span class="sp-mv-detail">17th &rarr; 7th</span></div><div class="sp-mover sp-up"><span class="sp-arrow">&#9650; 5</span><span class="sp-mv-team">Chelsea</span><span class="sp-mv-detail">10th &rarr; 5th</span></div><div class="sp-mover sp-up"><span class="sp-arrow">&#9650; 3</span><span class="sp-mv-team">Newcastle</span><span class="sp-mv-detail">12th &rarr; 9th</span></div></div><div class="sp-mv-col"><div class="sp-col-head">Projected fallers</div><div class="sp-mover sp-down"><span class="sp-arrow">&#9660; 10</span><span class="sp-mv-team">Sunderland</span><span class="sp-mv-detail">7th &rarr; 17th</span></div><div class="sp-mover sp-down"><span class="sp-arrow">&#9660; 4</span><span class="sp-mv-team">Bournemouth</span><span class="sp-mv-detail">6th &rarr; 10th</span></div><div class="sp-mover sp-down"><span class="sp-arrow">&#9660; 4</span><span class="sp-mv-team">Fulham</span><span class="sp-mv-detail">11th &rarr; 15th</span></div></div></div><div class="sp-sub-head">Promoted-side watch</div><div class="sp-promos"><div class="sp-promo"><div class="sp-promo-team">Ipswich</div><div class="sp-promo-pct">46%</div><div class="sp-promo-lbl">survival odds</div><div class="sp-promo-pos">projected 18th</div></div><div class="sp-promo"><div class="sp-promo-team">Coventry</div><div class="sp-promo-pct">41%</div><div class="sp-promo-lbl">survival odds</div><div class="sp-promo-pos">projected 19th</div></div><div class="sp-promo"><div class="sp-promo-team">Hull</div><div class="sp-promo-pct">33%</div><div class="sp-promo-lbl">survival odds</div><div class="sp-promo-pos">projected 20th</div></div></div><div class="sp-sub-head">Storylines to watch</div><ul class="sp-stories"><li>Arsenal are the model's preseason title favorites at 56%.</li><li>The relegation fight looks wide open — Hull, Coventry, Ipswich, Sunderland all carry real risk.</li><li>Biggest projected riser: Tottenham, up from 17th to a projected 7th.</li><li>Of the promoted trio, Ipswich have the best survival odds at 46%.</li></ul>
+
+  <h2 id="fixtures">Upcoming fixtures</h2><div class="note">10 matches across the next gameweek. Bar shows home&nbsp;win / draw / away&nbsp;win probabilities; xG columns are the expected goals per side; likely score is the most probable scoreline within the most likely outcome bucket (percentage in parens is that scoreline's joint probability). Each gameweek’s biggest fixture — picked by combined race stakes — is featured beneath its schedule.</div><div class="upcoming-block"><div class="gw-caption"><span class="gw-num">Gameweek 1</span><span class="gw-dates">Aug 21 – Aug 24</span><span class="gw-count">10 matches</span></div><table class="upcoming"><colgroup><col class="c-date"><col class="c-team"><col class="c-vs"><col class="c-team"><col class="c-wdl"><col class="c-xg"><col class="c-score"></colgroup><thead><tr><th>Date</th><th class="left">Home</th><th></th><th class="left">Away</th><th>Home win · Draw · Away win</th><th>xG</th><th>Likely score</th></tr></thead><tbody><tr><td class="date-col">Aug 21</td><td class="team">Arsenal</td><td class="vs">vs</td><td class="team">Coventry City</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:81.6%"><span>82%</span></div><div class="wdl-seg wdl-d" style="width:13.1%"><span>13%</span></div><div class="wdl-seg wdl-a" style="width:5.2%"><span>5%</span></div></div></td><td class="num">2.73 – 0.56</td><td class="score-cell"><span class="score-val"><strong>2–0</strong></span><span class="score-pct muted">(14%)</span></td></tr><tr><td class="date-col">Aug 22</td><td class="team">Brentford</td><td class="vs">vs</td><td class="team">Tottenham</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:37.4%"><span>37%</span></div><div class="wdl-seg wdl-d" style="width:27.0%"><span>27%</span></div><div class="wdl-seg wdl-a" style="width:35.6%"><span>36%</span></div></div></td><td class="num">1.37 – 1.40</td><td class="score-cell"><span class="score-val"><strong>2–1</strong></span><span class="score-pct muted">(9%)</span></td></tr><tr><td class="date-col">Aug 22</td><td class="team">Everton</td><td class="vs">vs</td><td class="team">Crystal Palace</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:42.1%"><span>42%</span></div><div class="wdl-seg wdl-d" style="width:27.5%"><span>28%</span></div><div class="wdl-seg wdl-a" style="width:30.3%"><span>30%</span></div></div></td><td class="num">1.45 – 1.25</td><td class="score-cell"><span class="score-val"><strong>2–1</strong></span><span class="score-pct muted">(9%)</span></td></tr><tr><td class="date-col">Aug 22</td><td class="team">Hull City</td><td class="vs">vs</td><td class="team">Manchester United</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:17.7%"><span>18%</span></div><div class="wdl-seg wdl-d" style="width:22.7%"><span>23%</span></div><div class="wdl-seg wdl-a" style="width:59.6%"><span>60%</span></div></div></td><td class="num">1.08 – 1.90</td><td class="score-cell"><span class="score-val"><strong>1–2</strong></span><span class="score-pct muted">(11%)</span></td></tr><tr><td class="date-col">Aug 22</td><td class="team">Ipswich Town</td><td class="vs">vs</td><td class="team">Sunderland</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:38.7%"><span>39%</span></div><div class="wdl-seg wdl-d" style="width:28.7%"><span>29%</span></div><div class="wdl-seg wdl-a" style="width:32.6%"><span>33%</span></div></div></td><td class="num">1.37 – 1.13</td><td class="score-cell"><span class="score-val"><strong>1–0</strong></span><span class="score-pct muted">(10%)</span></td></tr><tr><td class="date-col">Aug 22</td><td class="team">Nottingham Forest</td><td class="vs">vs</td><td class="team">Leeds United</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:42.7%"><span>43%</span></div><div class="wdl-seg wdl-d" style="width:28.2%"><span>28%</span></div><div class="wdl-seg wdl-a" style="width:29.1%"><span>29%</span></div></div></td><td class="num">1.40 – 1.11</td><td class="score-cell"><span class="score-val"><strong>1–0</strong></span><span class="score-pct muted">(10%)</span></td></tr><tr><td class="date-col">Aug 23</td><td class="team">Brighton</td><td class="vs">vs</td><td class="team">Aston Villa</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:41.8%"><span>42%</span></div><div class="wdl-seg wdl-d" style="width:27.2%"><span>27%</span></div><div class="wdl-seg wdl-a" style="width:30.9%"><span>31%</span></div></div></td><td class="num">1.45 – 1.18</td><td class="score-cell"><span class="score-val"><strong>1–0</strong></span><span class="score-pct muted">(9%)</span></td></tr><tr><td class="date-col">Aug 23</td><td class="team">Manchester City</td><td class="vs">vs</td><td class="team">Bournemouth</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:67.4%"><span>67%</span></div><div class="wdl-seg wdl-d" style="width:18.7%"><span>19%</span></div><div class="wdl-seg wdl-a" style="width:14.0%"><span>14%</span></div></div></td><td class="num">2.43 – 0.99</td><td class="score-cell"><span class="score-val"><strong>2–0</strong></span><span class="score-pct muted">(10%)</span></td></tr><tr><td class="date-col">Aug 23</td><td class="team">Newcastle United</td><td class="vs">vs</td><td class="team">Liverpool</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:34.9%"><span>35%</span></div><div class="wdl-seg wdl-d" style="width:24.0%"><span>24%</span></div><div class="wdl-seg wdl-a" style="width:41.1%"><span>41%</span></div></div></td><td class="num">1.76 – 1.77</td><td class="score-cell"><span class="score-val"><strong>1–2</strong></span><span class="score-pct muted">(9%)</span></td></tr><tr><td class="date-col">Aug 24</td><td class="team">Fulham</td><td class="vs">vs</td><td class="team">Chelsea</td><td class="wdl-cell"><div class="wdl"><div class="wdl-seg wdl-h" style="width:30.7%"><span>31%</span></div><div class="wdl-seg wdl-d" style="width:26.2%"><span>26%</span></div><div class="wdl-seg wdl-a" style="width:43.1%"><span>43%</span></div></div></td><td class="num">1.30 – 1.58</td><td class="score-cell"><span class="score-val"><strong>1–2</strong></span><span class="score-pct muted">(9%)</span></td></tr></tbody></table></div><div class="featured-inline"><div class="featured-inline-label">Featured match</div><div class="h2h-preview"><strong>Arsenal</strong> host <strong>Coventry</strong> in a fixture with stakes on both sides — the Gunners chasing the title at a 56% shot, the Sky Blues scrapping to stay up at a 59% relegation risk. The model leans toward the Gunners (82% home win, 13% draw, 5% away), with <strong>2&ndash;0</strong> the likeliest scoreline at 14%.</div><div class="h2h-card"><div class="h2h-caption">Gameweek 1 · 2026-08-21</div><div class="h2h-teams"><div class="h2h-team h2h-team-home"><div class="h2h-team-name">Arsenal</div><div class="h2h-team-meta"><span class="h2h-pos">1st</span><span class="h2h-pts">0 pts</span><span class="muted">xG 2.73</span></div><div class="h2h-form"><span class="muted">no played matches yet</span></div></div><div class="h2h-vs">vs</div><div class="h2h-team h2h-team-away"><div class="h2h-team-name">Coventry</div><div class="h2h-team-meta"><span class="h2h-pos">7th</span><span class="h2h-pts">0 pts</span><span class="muted">xG 0.56</span></div><div class="h2h-form"><span class="muted">no played matches yet</span></div></div></div><div class="h2h-split"><div class="h2h-split-left"><div class="h2h-section-label">Scoreline probabilities</div><table class="h2h-grid"><thead><tr><th></th><th class="h2h-grid-h">0</th><th class="h2h-grid-h">1</th><th class="h2h-grid-h">2</th><th class="h2h-grid-h">3</th><th class="h2h-grid-h">4</th><th class="h2h-grid-h">5</th><th class="h2h-grid-h">6+</th></tr></thead><tbody><tr><th class="h2h-grid-h">0</th><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.327)">4.2<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.166)">1.8<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.092)">0.6<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.058)">0.1<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.051)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">1</th><td class="h2h-grid-cell win-home modal-2 gc-hi" style="background:rgba(26,125,60,0.679)">9.6<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.459)">6.3<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.164)">1.7<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.071)">0.3<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.053)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">2</th><td class="h2h-grid-cell win-home modal gc-hi" style="background:rgba(26,125,60,0.950)">13.8<span class="pct">%</span></td><td class="h2h-grid-cell win-home gc-hi" style="background:rgba(26,125,60,0.554)">7.7<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.195)">2.2<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.079)">0.4<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.054)">0.1<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">3</th><td class="h2h-grid-cell win-home modal-2 gc-hi" style="background:rgba(26,125,60,0.870)">12.6<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.509)">7.0<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.179)">2.0<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.075)">0.4<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.054)">0.1<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">4</th><td class="h2h-grid-cell win-home gc-hi" style="background:rgba(26,125,60,0.610)">8.6<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.364)">4.8<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.138)">1.3<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.066)">0.3<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.052)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">5</th><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.356)">4.7<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.221)">2.6<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.098)">0.7<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.059)">0.1<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.051)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-away" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr><tr><th class="h2h-grid-h">6+</th><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.263)">3.3<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.169)">1.8<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.083)">0.5<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.056)">0.1<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.051)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-home" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td><td class="h2h-grid-cell win-draw" style="background:rgba(26,125,60,0.050)">0.0<span class="pct">%</span></td></tr></tbody></table><div class="h2h-modal"><span class="h2h-top-label">Likeliest scorelines (Arsenal&ndash;Coventry)</span><span class="h2h-top-score h2h-top-lead"><strong>2&ndash;0</strong><span class="h2h-top-pct">13.8%</span></span> <span class="h2h-top-score"><strong>3&ndash;0</strong><span class="h2h-top-pct">12.6%</span></span> <span class="h2h-top-score"><strong>1&ndash;0</strong><span class="h2h-top-pct">9.6%</span></span></div></div><div class="h2h-split-right"><div class="h2h-section-label">Match outcome</div><div class="h2h-wdl-row">  <span class="h2h-wdl-label">Arsenal win</span>  <div class="h2h-wdl-track">    <div class="h2h-wdl-fill" style="width:81.6%;background:var(--up)"></div>  </div>  <span class="h2h-wdl-pct">81.6%</span></div><div class="h2h-wdl-row">  <span class="h2h-wdl-label">Draw</span>  <div class="h2h-wdl-track">    <div class="h2h-wdl-fill" style="width:13.1%;background:#b38b2a"></div>  </div>  <span class="h2h-wdl-pct">13.1%</span></div><div class="h2h-wdl-row">  <span class="h2h-wdl-label">Coventry win</span>  <div class="h2h-wdl-track">    <div class="h2h-wdl-fill" style="width:5.2%;background:#1f558c"></div>  </div>  <span class="h2h-wdl-pct">5.2%</span></div><div class="h2h-season"><div class="h2h-season-label">First meeting this season</div></div></div></div></div></div>
+
+  
+
+  <h2 id="projected">Projected final table</h2>
+  <div class="legend">
+    <span><i style="background:var(--up)"></i>Title (1st)</span>
+    <span><i style="background:#4a9b6b"></i>Champions League (top 5)</span>
+    <span><i style="background:#7fba94"></i>Europa League (6th)</span>
+    <span><i style="background:#b5dcc2"></i>Conference League (7th)</span>
+    <span><i style="background:var(--down)"></i>Relegation</span>
+  </div>
+  <div class="note">
+    England confirmed a 5th Champions League slot for 2026-27 via UEFA's European
+    Performance coefficient. Europa and Conference League slots shown reflect the
+    standard league route; FA Cup and EFL Cup winners can cascade the 6th / 7th
+    slots down one place.
+  </div>
+  <table class="projected">
+    <colgroup>
+      <col class="c-rk"><col class="c-team"><col class="c-epts"><col class="c-band">
+      <col class="c-bar"><col class="c-bar"><col class="c-bar"><col class="c-bar"><col class="c-bar">
+    </colgroup>
+    <thead>
+      <tr>
+        <th></th><th class="left">Team</th>
+        <th>E[Pts]</th><th>5–95%</th>
+        <th>Title</th><th>Champions</th><th>Europa</th><th>Conf.</th><th>Releg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="rk">1</td><td class="team"><a href="/teams/arsenal/">Arsenal</a></td><td class="num">77.5</td><td class="band">65–89</td><td><div class="bar-wrap"><div class="bar" style="width:55.6%;background:var(--up)"></div><span class="bar-label">55.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:98.5%;background:#4a9b6b"></div><span class="bar-label">98.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.9%;background:#7fba94"></div><span class="bar-label">0.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.3%;background:#b5dcc2"></div><span class="bar-label">0.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--down)"></div><span class="bar-label">0.0%</span></div></td></tr><tr><td class="rk">2</td><td class="team"><a href="/teams/manchester-city/">Manchester City</a></td><td class="num">73.1</td><td class="band">60–86</td><td><div class="bar-wrap"><div class="bar" style="width:29.2%;background:var(--up)"></div><span class="bar-label">29.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:93.6%;background:#4a9b6b"></div><span class="bar-label">93.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:2.7%;background:#7fba94"></div><span class="bar-label">2.7%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.5%;background:#b5dcc2"></div><span class="bar-label">1.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--down)"></div><span class="bar-label">0.0%</span></div></td></tr><tr><td class="rk">3</td><td class="team"><a href="/teams/liverpool/">Liverpool</a></td><td class="num">63.9</td><td class="band">50–78</td><td><div class="bar-wrap"><div class="bar" style="width:5.3%;background:var(--up)"></div><span class="bar-label">5.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:65.0%;background:#4a9b6b"></div><span class="bar-label">65.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:9.4%;background:#7fba94"></div><span class="bar-label">9.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:7.0%;background:#b5dcc2"></div><span class="bar-label">7.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.2%;background:var(--down)"></div><span class="bar-label">0.2%</span></div></td></tr><tr><td class="rk">4</td><td class="team"><a href="/teams/manchester-united/">Manchester United</a></td><td class="num">63.7</td><td class="band">50–77</td><td><div class="bar-wrap"><div class="bar" style="width:4.8%;background:var(--up)"></div><span class="bar-label">4.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:64.1%;background:#4a9b6b"></div><span class="bar-label">64.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:10.0%;background:#7fba94"></div><span class="bar-label">10.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:7.0%;background:#b5dcc2"></div><span class="bar-label">7.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.2%;background:var(--down)"></div><span class="bar-label">0.2%</span></div></td></tr><tr><td class="rk">5</td><td class="team"><a href="/teams/chelsea/">Chelsea</a></td><td class="num">59.1</td><td class="band">44–74</td><td><div class="bar-wrap"><div class="bar" style="width:2.6%;background:var(--up)"></div><span class="bar-label">2.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:42.5%;background:#4a9b6b"></div><span class="bar-label">42.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:9.8%;background:#7fba94"></div><span class="bar-label">9.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.6%;background:#b5dcc2"></div><span class="bar-label">8.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.6%;background:var(--down)"></div><span class="bar-label">1.6%</span></div></td></tr><tr><td class="rk">6</td><td class="team"><a href="/teams/aston-villa/">Aston Villa</a></td><td class="num">56.3</td><td class="band">42–70</td><td><div class="bar-wrap"><div class="bar" style="width:0.7%;background:var(--up)"></div><span class="bar-label">0.7%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:29.1%;background:#4a9b6b"></div><span class="bar-label">29.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:10.2%;background:#7fba94"></div><span class="bar-label">10.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:10.0%;background:#b5dcc2"></div><span class="bar-label">10.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.8%;background:var(--down)"></div><span class="bar-label">1.8%</span></div></td></tr><tr><td class="rk">7</td><td class="team"><a href="/teams/tottenham/">Tottenham Hotspur</a></td><td class="num">54.2</td><td class="band">40–69</td><td><div class="bar-wrap"><div class="bar" style="width:0.4%;background:var(--up)"></div><span class="bar-label">0.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:21.5%;background:#4a9b6b"></div><span class="bar-label">21.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.5%;background:#7fba94"></div><span class="bar-label">8.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:9.2%;background:#b5dcc2"></div><span class="bar-label">9.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:3.6%;background:var(--down)"></div><span class="bar-label">3.6%</span></div></td></tr><tr><td class="rk">8</td><td class="team"><a href="/teams/brighton/">Brighton and Hove Albion</a></td><td class="num">53.7</td><td class="band">40–68</td><td><div class="bar-wrap"><div class="bar" style="width:0.5%;background:var(--up)"></div><span class="bar-label">0.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:19.6%;background:#4a9b6b"></div><span class="bar-label">19.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.2%;background:#7fba94"></div><span class="bar-label">8.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.8%;background:#b5dcc2"></div><span class="bar-label">8.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:3.8%;background:var(--down)"></div><span class="bar-label">3.8%</span></div></td></tr><tr><td class="rk">9</td><td class="team"><a href="/teams/newcastle-united/">Newcastle United</a></td><td class="num">52.7</td><td class="band">39–66</td><td><div class="bar-wrap"><div class="bar" style="width:0.3%;background:var(--up)"></div><span class="bar-label">0.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:15.4%;background:#4a9b6b"></div><span class="bar-label">15.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.1%;background:#7fba94"></div><span class="bar-label">8.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:7.9%;background:#b5dcc2"></div><span class="bar-label">7.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:4.1%;background:var(--down)"></div><span class="bar-label">4.1%</span></div></td></tr><tr><td class="rk">10</td><td class="team"><a href="/teams/bournemouth/">AFC Bournemouth</a></td><td class="num">52.6</td><td class="band">39–66</td><td><div class="bar-wrap"><div class="bar" style="width:0.2%;background:var(--up)"></div><span class="bar-label">0.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:15.3%;background:#4a9b6b"></div><span class="bar-label">15.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:7.4%;background:#7fba94"></div><span class="bar-label">7.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.4%;background:#b5dcc2"></div><span class="bar-label">8.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:4.3%;background:var(--down)"></div><span class="bar-label">4.3%</span></div></td></tr><tr><td class="rk">11</td><td class="team"><a href="/teams/brentford/">Brentford</a></td><td class="num">50.4</td><td class="band">37–63</td><td><div class="bar-wrap"><div class="bar" style="width:0.1%;background:var(--up)"></div><span class="bar-label">0.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:9.1%;background:#4a9b6b"></div><span class="bar-label">9.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:5.9%;background:#7fba94"></div><span class="bar-label">5.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:6.9%;background:#b5dcc2"></div><span class="bar-label">6.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:6.5%;background:var(--down)"></div><span class="bar-label">6.5%</span></div></td></tr><tr><td class="rk">12</td><td class="team"><a href="/teams/everton/">Everton</a></td><td class="num">49.9</td><td class="band">37–63</td><td><div class="bar-wrap"><div class="bar" style="width:0.1%;background:var(--up)"></div><span class="bar-label">0.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:8.2%;background:#4a9b6b"></div><span class="bar-label">8.2%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:5.3%;background:#7fba94"></div><span class="bar-label">5.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:6.0%;background:#b5dcc2"></div><span class="bar-label">6.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:6.6%;background:var(--down)"></div><span class="bar-label">6.6%</span></div></td></tr><tr><td class="rk">13</td><td class="team"><a href="/teams/nottingham-forest/">Nottingham Forest</a></td><td class="num">48.0</td><td class="band">35–62</td><td><div class="bar-wrap"><div class="bar" style="width:0.1%;background:var(--up)"></div><span class="bar-label">0.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:6.1%;background:#4a9b6b"></div><span class="bar-label">6.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:3.5%;background:#7fba94"></div><span class="bar-label">3.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:4.8%;background:#b5dcc2"></div><span class="bar-label">4.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:11.2%;background:var(--down)"></div><span class="bar-label">11.2%</span></div></td></tr><tr><td class="rk">14</td><td class="team"><a href="/teams/leeds-united/">Leeds United</a></td><td class="num">46.4</td><td class="band">34–59</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:3.5%;background:#4a9b6b"></div><span class="bar-label">3.5%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:2.7%;background:#7fba94"></div><span class="bar-label">2.7%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:3.6%;background:#b5dcc2"></div><span class="bar-label">3.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:14.4%;background:var(--down)"></div><span class="bar-label">14.4%</span></div></td></tr><tr><td class="rk">15</td><td class="team"><a href="/teams/fulham/">Fulham</a></td><td class="num">45.1</td><td class="band">33–58</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.8%;background:#4a9b6b"></div><span class="bar-label">1.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.9%;background:#7fba94"></div><span class="bar-label">1.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:2.9%;background:#b5dcc2"></div><span class="bar-label">2.9%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:17.8%;background:var(--down)"></div><span class="bar-label">17.8%</span></div></td></tr><tr><td class="rk">16</td><td class="team"><a href="/teams/crystal-palace/">Crystal Palace</a></td><td class="num">44.5</td><td class="band">32–57</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:2.0%;background:#4a9b6b"></div><span class="bar-label">2.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.6%;background:#7fba94"></div><span class="bar-label">1.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:2.3%;background:#b5dcc2"></div><span class="bar-label">2.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:20.2%;background:var(--down)"></div><span class="bar-label">20.2%</span></div></td></tr><tr><td class="rk">17</td><td class="team"><a href="/teams/sunderland/">Sunderland</a></td><td class="num">43.7</td><td class="band">32–56</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.6%;background:#4a9b6b"></div><span class="bar-label">1.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.6%;background:#7fba94"></div><span class="bar-label">1.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.8%;background:#b5dcc2"></div><span class="bar-label">1.8%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:23.7%;background:var(--down)"></div><span class="bar-label">23.7%</span></div></td></tr><tr><td class="rk">18</td><td class="team"><a href="/teams/ipswich-town/">Ipswich Town</a></td><td class="num">37.8</td><td class="band">22–55</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.4%;background:#4a9b6b"></div><span class="bar-label">1.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.1%;background:#7fba94"></div><span class="bar-label">1.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.3%;background:#b5dcc2"></div><span class="bar-label">1.3%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:53.8%;background:var(--down)"></div><span class="bar-label">53.8%</span></div></td></tr><tr><td class="rk">19</td><td class="team"><a href="/teams/coventry-city/">Coventry City</a></td><td class="num">36.5</td><td class="band">21–53</td><td><div class="bar-wrap"><div class="bar" style="width:0.1%;background:var(--up)"></div><span class="bar-label">0.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.1%;background:#4a9b6b"></div><span class="bar-label">1.1%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.7%;background:#7fba94"></div><span class="bar-label">0.7%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:1.0%;background:#b5dcc2"></div><span class="bar-label">1.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:59.3%;background:var(--down)"></div><span class="bar-label">59.3%</span></div></td></tr><tr><td class="rk">20</td><td class="team"><a href="/teams/hull-city/">Hull City</a></td><td class="num">34.6</td><td class="band">20–51</td><td><div class="bar-wrap"><div class="bar" style="width:0.0%;background:var(--up)"></div><span class="bar-label">0.0%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.6%;background:#4a9b6b"></div><span class="bar-label">0.6%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.4%;background:#7fba94"></div><span class="bar-label">0.4%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:0.7%;background:#b5dcc2"></div><span class="bar-label">0.7%</span></div></td><td><div class="bar-wrap"><div class="bar" style="width:67.1%;background:var(--down)"></div><span class="bar-label">67.1%</span></div></td></tr>
+    </tbody>
+  </table>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <h2 id="heatmap">Position probability heatmap</h2><p class="note">Chance of each final position, teams sorted by expected points. Cells are percentages; blanks are under 0.5%.</p><div class="hm-scroll"><table class="hm"><thead><tr><th class="hm-team"></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th></tr></thead><tbody><tr><th class="hm-team">Arsenal</th><td class="hm-hi" style="background:rgba(26,125,60,1.0)" title="Arsenal: 55.6% chance of finishing 1">56</td><td style="background:rgba(26,125,60,0.523)" title="Arsenal: 26.8% chance of finishing 2">27</td><td style="background:rgba(26,125,60,0.245)" title="Arsenal: 10.0% chance of finishing 3">10</td><td style="background:rgba(26,125,60,0.152)" title="Arsenal: 4.3% chance of finishing 4">4</td><td style="background:rgba(26,125,60,0.109)" title="Arsenal: 1.8% chance of finishing 5">2</td><td style="background:rgba(26,125,60,0.095)" title="Arsenal: 0.9% chance of finishing 6">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th class="hm-team">Man City</th><td style="background:rgba(26,125,60,0.563)" title="Man City: 29.2% chance of finishing 1">29</td><td class="hm-hi" style="background:rgba(26,125,60,0.635)" title="Man City: 33.6% chance of finishing 2">34</td><td style="background:rgba(26,125,60,0.363)" title="Man City: 17.1% chance of finishing 3">17</td><td style="background:rgba(26,125,60,0.227)" title="Man City: 8.9% chance of finishing 4">9</td><td style="background:rgba(26,125,60,0.158)" title="Man City: 4.7% chance of finishing 5">5</td><td style="background:rgba(26,125,60,0.125)" title="Man City: 2.7% chance of finishing 6">3</td><td style="background:rgba(26,125,60,0.105)" title="Man City: 1.5% chance of finishing 7">1</td><td style="background:rgba(26,125,60,0.096)" title="Man City: 0.9% chance of finishing 8">1</td><td style="background:rgba(26,125,60,0.089)" title="Man City: 0.6% chance of finishing 9">1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th class="hm-team">Liverpool</th><td style="background:rgba(26,125,60,0.167)" title="Liverpool: 5.3% chance of finishing 1">5</td><td style="background:rgba(26,125,60,0.276)" title="Liverpool: 11.9% chance of finishing 2">12</td><td style="background:rgba(26,125,60,0.39)" title="Liverpool: 18.8% chance of finishing 3">19</td><td style="background:rgba(26,125,60,0.355)" title="Liverpool: 16.6% chance of finishing 4">17</td><td style="background:rgba(26,125,60,0.287)" title="Liverpool: 12.5% chance of finishing 5">13</td><td style="background:rgba(26,125,60,0.235)" title="Liverpool: 9.4% chance of finishing 6">9</td><td style="background:rgba(26,125,60,0.195)" title="Liverpool: 7.0% chance of finishing 7">7</td><td style="background:rgba(26,125,60,0.16)" title="Liverpool: 4.8% chance of finishing 8">5</td><td style="background:rgba(26,125,60,0.147)" title="Liverpool: 4.0% chance of finishing 9">4</td><td style="background:rgba(26,125,60,0.129)" title="Liverpool: 3.0% chance of finishing 10">3</td><td style="background:rgba(26,125,60,0.111)" title="Liverpool: 1.9% chance of finishing 11">2</td><td style="background:rgba(26,125,60,0.107)" title="Liverpool: 1.6% chance of finishing 12">2</td><td style="background:rgba(26,125,60,0.099)" title="Liverpool: 1.2% chance of finishing 13">1</td><td style="background:rgba(26,125,60,0.092)" title="Liverpool: 0.7% chance of finishing 14">1</td><td style="background:rgba(26,125,60,0.089)" title="Liverpool: 0.5% chance of finishing 15">1</td><td></td><td></td><td></td><td></td><td></td></tr><tr><th class="hm-team">Man United</th><td style="background:rgba(26,125,60,0.159)" title="Man United: 4.8% chance of finishing 1">5</td><td style="background:rgba(26,125,60,0.269)" title="Man United: 11.4% chance of finishing 2">11</td><td style="background:rgba(26,125,60,0.378)" title="Man United: 18.0% chance of finishing 3">18</td><td style="background:rgba(26,125,60,0.354)" title="Man United: 16.6% chance of finishing 4">17</td><td style="background:rgba(26,125,60,0.301)" title="Man United: 13.3% chance of finishing 5">13</td><td style="background:rgba(26,125,60,0.245)" title="Man United: 10.0% chance of finishing 6">10</td><td style="background:rgba(26,125,60,0.196)" title="Man United: 7.0% chance of finishing 7">7</td><td style="background:rgba(26,125,60,0.166)" title="Man United: 5.2% chance of finishing 8">5</td><td style="background:rgba(26,125,60,0.146)" title="Man United: 4.0% chance of finishing 9">4</td><td style="background:rgba(26,125,60,0.125)" title="Man United: 2.7% chance of finishing 10">3</td><td style="background:rgba(26,125,60,0.118)" title="Man United: 2.3% chance of finishing 11">2</td><td style="background:rgba(26,125,60,0.107)" title="Man United: 1.7% chance of finishing 12">2</td><td style="background:rgba(26,125,60,0.098)" title="Man United: 1.1% chance of finishing 13">1</td><td style="background:rgba(26,125,60,0.093)" title="Man United: 0.8% chance of finishing 14">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th class="hm-team">Chelsea</th><td style="background:rgba(26,125,60,0.123)" title="Chelsea: 2.6% chance of finishing 1">3</td><td style="background:rgba(26,125,60,0.179)" title="Chelsea: 6.0% chance of finishing 2">6</td><td style="background:rgba(26,125,60,0.253)" title="Chelsea: 10.5% chance of finishing 3">10</td><td style="background:rgba(26,125,60,0.275)" title="Chelsea: 11.8% chance of finishing 4">12</td><td style="background:rgba(26,125,60,0.273)" title="Chelsea: 11.7% chance of finishing 5">12</td><td style="background:rgba(26,125,60,0.242)" title="Chelsea: 9.8% chance of finishing 6">10</td><td style="background:rgba(26,125,60,0.222)" title="Chelsea: 8.6% chance of finishing 7">9</td><td style="background:rgba(26,125,60,0.199)" title="Chelsea: 7.2% chance of finishing 8">7</td><td style="background:rgba(26,125,60,0.186)" title="Chelsea: 6.4% chance of finishing 9">6</td><td style="background:rgba(26,125,60,0.167)" title="Chelsea: 5.3% chance of finishing 10">5</td><td style="background:rgba(26,125,60,0.154)" title="Chelsea: 4.5% chance of finishing 11">4</td><td style="background:rgba(26,125,60,0.136)" title="Chelsea: 3.4% chance of finishing 12">3</td><td style="background:rgba(26,125,60,0.138)" title="Chelsea: 3.5% chance of finishing 13">4</td><td style="background:rgba(26,125,60,0.124)" title="Chelsea: 2.7% chance of finishing 14">3</td><td style="background:rgba(26,125,60,0.112)" title="Chelsea: 1.9% chance of finishing 15">2</td><td style="background:rgba(26,125,60,0.106)" title="Chelsea: 1.6% chance of finishing 16">2</td><td style="background:rgba(26,125,60,0.098)" title="Chelsea: 1.1% chance of finishing 17">1</td><td style="background:rgba(26,125,60,0.096)" title="Chelsea: 0.9% chance of finishing 18">1</td><td></td><td></td></tr><tr><th class="hm-team">Aston Villa</th><td style="background:rgba(26,125,60,0.091)" title="Aston Villa: 0.7% chance of finishing 1">1</td><td style="background:rgba(26,125,60,0.132)" title="Aston Villa: 3.1% chance of finishing 2">3</td><td style="background:rgba(26,125,60,0.181)" title="Aston Villa: 6.1% chance of finishing 3">6</td><td style="background:rgba(26,125,60,0.227)" title="Aston Villa: 8.9% chance of finishing 4">9</td><td style="background:rgba(26,125,60,0.249)" title="Aston Villa: 10.2% chance of finishing 5">10</td><td style="background:rgba(26,125,60,0.249)" title="Aston Villa: 10.2% chance of finishing 6">10</td><td style="background:rgba(26,125,60,0.246)" title="Aston Villa: 10.0% chance of finishing 7">10</td><td style="background:rgba(26,125,60,0.214)" title="Aston Villa: 8.1% chance of finishing 8">8</td><td style="background:rgba(26,125,60,0.213)" title="Aston Villa: 8.1% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.2)" title="Aston Villa: 7.2% chance of finishing 10">7</td><td style="background:rgba(26,125,60,0.182)" title="Aston Villa: 6.2% chance of finishing 11">6</td><td style="background:rgba(26,125,60,0.162)" title="Aston Villa: 5.0% chance of finishing 12">5</td><td style="background:rgba(26,125,60,0.147)" title="Aston Villa: 4.0% chance of finishing 13">4</td><td style="background:rgba(26,125,60,0.141)" title="Aston Villa: 3.7% chance of finishing 14">4</td><td style="background:rgba(26,125,60,0.131)" title="Aston Villa: 3.1% chance of finishing 15">3</td><td style="background:rgba(26,125,60,0.114)" title="Aston Villa: 2.1% chance of finishing 16">2</td><td style="background:rgba(26,125,60,0.105)" title="Aston Villa: 1.5% chance of finishing 17">2</td><td style="background:rgba(26,125,60,0.098)" title="Aston Villa: 1.1% chance of finishing 18">1</td><td></td><td></td></tr><tr><th class="hm-team">Tottenham</th><td></td><td style="background:rgba(26,125,60,0.113)" title="Tottenham: 2.0% chance of finishing 2">2</td><td style="background:rgba(26,125,60,0.159)" title="Tottenham: 4.8% chance of finishing 3">5</td><td style="background:rgba(26,125,60,0.185)" title="Tottenham: 6.4% chance of finishing 4">6</td><td style="background:rgba(26,125,60,0.211)" title="Tottenham: 7.9% chance of finishing 5">8</td><td style="background:rgba(26,125,60,0.221)" title="Tottenham: 8.5% chance of finishing 6">8</td><td style="background:rgba(26,125,60,0.233)" title="Tottenham: 9.2% chance of finishing 7">9</td><td style="background:rgba(26,125,60,0.223)" title="Tottenham: 8.7% chance of finishing 8">9</td><td style="background:rgba(26,125,60,0.213)" title="Tottenham: 8.1% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.198)" title="Tottenham: 7.2% chance of finishing 10">7</td><td style="background:rgba(26,125,60,0.189)" title="Tottenham: 6.6% chance of finishing 11">7</td><td style="background:rgba(26,125,60,0.184)" title="Tottenham: 6.3% chance of finishing 12">6</td><td style="background:rgba(26,125,60,0.164)" title="Tottenham: 5.1% chance of finishing 13">5</td><td style="background:rgba(26,125,60,0.162)" title="Tottenham: 4.9% chance of finishing 14">5</td><td style="background:rgba(26,125,60,0.147)" title="Tottenham: 4.0% chance of finishing 15">4</td><td style="background:rgba(26,125,60,0.137)" title="Tottenham: 3.4% chance of finishing 16">3</td><td style="background:rgba(26,125,60,0.128)" title="Tottenham: 2.9% chance of finishing 17">3</td><td style="background:rgba(26,125,60,0.111)" title="Tottenham: 1.9% chance of finishing 18">2</td><td style="background:rgba(26,125,60,0.1)" title="Tottenham: 1.2% chance of finishing 19">1</td><td></td></tr><tr><th class="hm-team">Brighton</th><td></td><td style="background:rgba(26,125,60,0.109)" title="Brighton: 1.8% chance of finishing 2">2</td><td style="background:rgba(26,125,60,0.146)" title="Brighton: 4.0% chance of finishing 3">4</td><td style="background:rgba(26,125,60,0.181)" title="Brighton: 6.1% chance of finishing 4">6</td><td style="background:rgba(26,125,60,0.2)" title="Brighton: 7.2% chance of finishing 5">7</td><td style="background:rgba(26,125,60,0.216)" title="Brighton: 8.2% chance of finishing 6">8</td><td style="background:rgba(26,125,60,0.225)" title="Brighton: 8.8% chance of finishing 7">9</td><td style="background:rgba(26,125,60,0.228)" title="Brighton: 8.9% chance of finishing 8">9</td><td style="background:rgba(26,125,60,0.209)" title="Brighton: 7.8% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.207)" title="Brighton: 7.7% chance of finishing 10">8</td><td style="background:rgba(26,125,60,0.195)" title="Brighton: 6.9% chance of finishing 11">7</td><td style="background:rgba(26,125,60,0.184)" title="Brighton: 6.3% chance of finishing 12">6</td><td style="background:rgba(26,125,60,0.175)" title="Brighton: 5.8% chance of finishing 13">6</td><td style="background:rgba(26,125,60,0.158)" title="Brighton: 4.7% chance of finishing 14">5</td><td style="background:rgba(26,125,60,0.159)" title="Brighton: 4.8% chance of finishing 15">5</td><td style="background:rgba(26,125,60,0.143)" title="Brighton: 3.8% chance of finishing 16">4</td><td style="background:rgba(26,125,60,0.127)" title="Brighton: 2.8% chance of finishing 17">3</td><td style="background:rgba(26,125,60,0.117)" title="Brighton: 2.2% chance of finishing 18">2</td><td style="background:rgba(26,125,60,0.098)" title="Brighton: 1.1% chance of finishing 19">1</td><td style="background:rgba(26,125,60,0.089)" title="Brighton: 0.5% chance of finishing 20">1</td></tr><tr><th class="hm-team">Newcastle</th><td></td><td style="background:rgba(26,125,60,0.097)" title="Newcastle: 1.0% chance of finishing 2">1</td><td style="background:rgba(26,125,60,0.128)" title="Newcastle: 2.9% chance of finishing 3">3</td><td style="background:rgba(26,125,60,0.16)" title="Newcastle: 4.8% chance of finishing 4">5</td><td style="background:rgba(26,125,60,0.185)" title="Newcastle: 6.3% chance of finishing 5">6</td><td style="background:rgba(26,125,60,0.215)" title="Newcastle: 8.1% chance of finishing 6">8</td><td style="background:rgba(26,125,60,0.211)" title="Newcastle: 7.9% chance of finishing 7">8</td><td style="background:rgba(26,125,60,0.223)" title="Newcastle: 8.7% chance of finishing 8">9</td><td style="background:rgba(26,125,60,0.223)" title="Newcastle: 8.6% chance of finishing 9">9</td><td style="background:rgba(26,125,60,0.218)" title="Newcastle: 8.3% chance of finishing 10">8</td><td style="background:rgba(26,125,60,0.209)" title="Newcastle: 7.8% chance of finishing 11">8</td><td style="background:rgba(26,125,60,0.193)" title="Newcastle: 6.8% chance of finishing 12">7</td><td style="background:rgba(26,125,60,0.188)" title="Newcastle: 6.6% chance of finishing 13">7</td><td style="background:rgba(26,125,60,0.173)" title="Newcastle: 5.6% chance of finishing 14">6</td><td style="background:rgba(26,125,60,0.164)" title="Newcastle: 5.1% chance of finishing 15">5</td><td style="background:rgba(26,125,60,0.143)" title="Newcastle: 3.8% chance of finishing 16">4</td><td style="background:rgba(26,125,60,0.132)" title="Newcastle: 3.1% chance of finishing 17">3</td><td style="background:rgba(26,125,60,0.118)" title="Newcastle: 2.3% chance of finishing 18">2</td><td style="background:rgba(26,125,60,0.102)" title="Newcastle: 1.3% chance of finishing 19">1</td><td></td></tr><tr><th class="hm-team">Bournemouth</th><td></td><td style="background:rgba(26,125,60,0.098)" title="Bournemouth: 1.1% chance of finishing 2">1</td><td style="background:rgba(26,125,60,0.126)" title="Bournemouth: 2.8% chance of finishing 3">3</td><td style="background:rgba(26,125,60,0.159)" title="Bournemouth: 4.8% chance of finishing 4">5</td><td style="background:rgba(26,125,60,0.187)" title="Bournemouth: 6.5% chance of finishing 5">6</td><td style="background:rgba(26,125,60,0.203)" title="Bournemouth: 7.4% chance of finishing 6">7</td><td style="background:rgba(26,125,60,0.219)" title="Bournemouth: 8.4% chance of finishing 7">8</td><td style="background:rgba(26,125,60,0.22)" title="Bournemouth: 8.5% chance of finishing 8">8</td><td style="background:rgba(26,125,60,0.219)" title="Bournemouth: 8.4% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.214)" title="Bournemouth: 8.1% chance of finishing 10">8</td><td style="background:rgba(26,125,60,0.213)" title="Bournemouth: 8.0% chance of finishing 11">8</td><td style="background:rgba(26,125,60,0.202)" title="Bournemouth: 7.4% chance of finishing 12">7</td><td style="background:rgba(26,125,60,0.192)" title="Bournemouth: 6.8% chance of finishing 13">7</td><td style="background:rgba(26,125,60,0.169)" title="Bournemouth: 5.4% chance of finishing 14">5</td><td style="background:rgba(26,125,60,0.161)" title="Bournemouth: 4.9% chance of finishing 15">5</td><td style="background:rgba(26,125,60,0.148)" title="Bournemouth: 4.1% chance of finishing 16">4</td><td style="background:rgba(26,125,60,0.132)" title="Bournemouth: 3.1% chance of finishing 17">3</td><td style="background:rgba(26,125,60,0.12)" title="Bournemouth: 2.4% chance of finishing 18">2</td><td style="background:rgba(26,125,60,0.103)" title="Bournemouth: 1.4% chance of finishing 19">1</td><td></td></tr><tr><th class="hm-team">Brentford</th><td></td><td></td><td style="background:rgba(26,125,60,0.099)" title="Brentford: 1.1% chance of finishing 3">1</td><td style="background:rgba(26,125,60,0.125)" title="Brentford: 2.7% chance of finishing 4">3</td><td style="background:rgba(26,125,60,0.158)" title="Brentford: 4.7% chance of finishing 5">5</td><td style="background:rgba(26,125,60,0.178)" title="Brentford: 5.9% chance of finishing 6">6</td><td style="background:rgba(26,125,60,0.194)" title="Brentford: 6.9% chance of finishing 7">7</td><td style="background:rgba(26,125,60,0.205)" title="Brentford: 7.6% chance of finishing 8">8</td><td style="background:rgba(26,125,60,0.216)" title="Brentford: 8.2% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.218)" title="Brentford: 8.4% chance of finishing 10">8</td><td style="background:rgba(26,125,60,0.208)" title="Brentford: 7.7% chance of finishing 11">8</td><td style="background:rgba(26,125,60,0.207)" title="Brentford: 7.7% chance of finishing 12">8</td><td style="background:rgba(26,125,60,0.203)" title="Brentford: 7.4% chance of finishing 13">7</td><td style="background:rgba(26,125,60,0.204)" title="Brentford: 7.5% chance of finishing 14">8</td><td style="background:rgba(26,125,60,0.185)" title="Brentford: 6.4% chance of finishing 15">6</td><td style="background:rgba(26,125,60,0.179)" title="Brentford: 6.0% chance of finishing 16">6</td><td style="background:rgba(26,125,60,0.159)" title="Brentford: 4.8% chance of finishing 17">5</td><td style="background:rgba(26,125,60,0.138)" title="Brentford: 3.5% chance of finishing 18">4</td><td style="background:rgba(26,125,60,0.115)" title="Brentford: 2.1% chance of finishing 19">2</td><td style="background:rgba(26,125,60,0.094)" title="Brentford: 0.9% chance of finishing 20">1</td></tr><tr><th class="hm-team">Everton</th><td></td><td></td><td style="background:rgba(26,125,60,0.101)" title="Everton: 1.3% chance of finishing 3">1</td><td style="background:rgba(26,125,60,0.119)" title="Everton: 2.4% chance of finishing 4">2</td><td style="background:rgba(26,125,60,0.147)" title="Everton: 4.0% chance of finishing 5">4</td><td style="background:rgba(26,125,60,0.167)" title="Everton: 5.3% chance of finishing 6">5</td><td style="background:rgba(26,125,60,0.179)" title="Everton: 6.0% chance of finishing 7">6</td><td style="background:rgba(26,125,60,0.197)" title="Everton: 7.1% chance of finishing 8">7</td><td style="background:rgba(26,125,60,0.205)" title="Everton: 7.5% chance of finishing 9">8</td><td style="background:rgba(26,125,60,0.211)" title="Everton: 8.0% chance of finishing 10">8</td><td style="background:rgba(26,125,60,0.214)" title="Everton: 8.1% chance of finishing 11">8</td><td style="background:rgba(26,125,60,0.229)" title="Everton: 9.0% chance of finishing 12">9</td><td style="background:rgba(26,125,60,0.218)" title="Everton: 8.4% chance of finishing 13">8</td><td style="background:rgba(26,125,60,0.199)" title="Everton: 7.2% chance of finishing 14">7</td><td style="background:rgba(26,125,60,0.198)" title="Everton: 7.1% chance of finishing 15">7</td><td style="background:rgba(26,125,60,0.184)" title="Everton: 6.3% chance of finishing 16">6</td><td style="background:rgba(26,125,60,0.167)" title="Everton: 5.2% chance of finishing 17">5</td><td style="background:rgba(26,125,60,0.14)" title="Everton: 3.6% chance of finishing 18">4</td><td style="background:rgba(26,125,60,0.116)" title="Everton: 2.2% chance of finishing 19">2</td><td style="background:rgba(26,125,60,0.094)" title="Everton: 0.9% chance of finishing 20">1</td></tr><tr><th class="hm-team">Forest</th><td></td><td></td><td style="background:rgba(26,125,60,0.097)" title="Forest: 1.1% chance of finishing 3">1</td><td style="background:rgba(26,125,60,0.113)" title="Forest: 2.0% chance of finishing 4">2</td><td style="background:rgba(26,125,60,0.126)" title="Forest: 2.8% chance of finishing 5">3</td><td style="background:rgba(26,125,60,0.138)" title="Forest: 3.5% chance of finishing 6">4</td><td style="background:rgba(26,125,60,0.16)" title="Forest: 4.8% chance of finishing 7">5</td><td style="background:rgba(26,125,60,0.178)" title="Forest: 5.9% chance of finishing 8">6</td><td style="background:rgba(26,125,60,0.183)" title="Forest: 6.2% chance of finishing 9">6</td><td style="background:rgba(26,125,60,0.197)" title="Forest: 7.1% chance of finishing 10">7</td><td style="background:rgba(26,125,60,0.21)" title="Forest: 7.8% chance of finishing 11">8</td><td style="background:rgba(26,125,60,0.211)" title="Forest: 7.9% chance of finishing 12">8</td><td style="background:rgba(26,125,60,0.214)" title="Forest: 8.1% chance of finishing 13">8</td><td style="background:rgba(26,125,60,0.217)" title="Forest: 8.3% chance of finishing 14">8</td><td style="background:rgba(26,125,60,0.219)" title="Forest: 8.4% chance of finishing 15">8</td><td style="background:rgba(26,125,60,0.203)" title="Forest: 7.4% chance of finishing 16">7</td><td style="background:rgba(26,125,60,0.199)" title="Forest: 7.2% chance of finishing 17">7</td><td style="background:rgba(26,125,60,0.173)" title="Forest: 5.6% chance of finishing 18">6</td><td style="background:rgba(26,125,60,0.145)" title="Forest: 3.9% chance of finishing 19">4</td><td style="background:rgba(26,125,60,0.106)" title="Forest: 1.6% chance of finishing 20">2</td></tr><tr><th class="hm-team">Leeds</th><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.098)" title="Leeds: 1.1% chance of finishing 4">1</td><td style="background:rgba(26,125,60,0.109)" title="Leeds: 1.8% chance of finishing 5">2</td><td style="background:rgba(26,125,60,0.125)" title="Leeds: 2.7% chance of finishing 6">3</td><td style="background:rgba(26,125,60,0.14)" title="Leeds: 3.6% chance of finishing 7">4</td><td style="background:rgba(26,125,60,0.159)" title="Leeds: 4.8% chance of finishing 8">5</td><td style="background:rgba(26,125,60,0.168)" title="Leeds: 5.3% chance of finishing 9">5</td><td style="background:rgba(26,125,60,0.187)" title="Leeds: 6.5% chance of finishing 10">6</td><td style="background:rgba(26,125,60,0.194)" title="Leeds: 6.9% chance of finishing 11">7</td><td style="background:rgba(26,125,60,0.203)" title="Leeds: 7.4% chance of finishing 12">7</td><td style="background:rgba(26,125,60,0.223)" title="Leeds: 8.7% chance of finishing 13">9</td><td style="background:rgba(26,125,60,0.234)" title="Leeds: 9.3% chance of finishing 14">9</td><td style="background:rgba(26,125,60,0.233)" title="Leeds: 9.2% chance of finishing 15">9</td><td style="background:rgba(26,125,60,0.237)" title="Leeds: 9.5% chance of finishing 16">10</td><td style="background:rgba(26,125,60,0.214)" title="Leeds: 8.1% chance of finishing 17">8</td><td style="background:rgba(26,125,60,0.2)" title="Leeds: 7.2% chance of finishing 18">7</td><td style="background:rgba(26,125,60,0.16)" title="Leeds: 4.8% chance of finishing 19">5</td><td style="background:rgba(26,125,60,0.119)" title="Leeds: 2.4% chance of finishing 20">2</td></tr><tr><th class="hm-team">Fulham</th><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.089)" title="Fulham: 0.5% chance of finishing 4">1</td><td style="background:rgba(26,125,60,0.096)" title="Fulham: 1.0% chance of finishing 5">1</td><td style="background:rgba(26,125,60,0.112)" title="Fulham: 1.9% chance of finishing 6">2</td><td style="background:rgba(26,125,60,0.128)" title="Fulham: 2.9% chance of finishing 7">3</td><td style="background:rgba(26,125,60,0.137)" title="Fulham: 3.5% chance of finishing 8">3</td><td style="background:rgba(26,125,60,0.153)" title="Fulham: 4.4% chance of finishing 9">4</td><td style="background:rgba(26,125,60,0.17)" title="Fulham: 5.4% chance of finishing 10">5</td><td style="background:rgba(26,125,60,0.192)" title="Fulham: 6.8% chance of finishing 11">7</td><td style="background:rgba(26,125,60,0.204)" title="Fulham: 7.5% chance of finishing 12">7</td><td style="background:rgba(26,125,60,0.218)" title="Fulham: 8.3% chance of finishing 13">8</td><td style="background:rgba(26,125,60,0.236)" title="Fulham: 9.5% chance of finishing 14">9</td><td style="background:rgba(26,125,60,0.249)" title="Fulham: 10.2% chance of finishing 15">10</td><td style="background:rgba(26,125,60,0.242)" title="Fulham: 9.8% chance of finishing 16">10</td><td style="background:rgba(26,125,60,0.249)" title="Fulham: 10.2% chance of finishing 17">10</td><td style="background:rgba(26,125,60,0.224)" title="Fulham: 8.7% chance of finishing 18">9</td><td style="background:rgba(26,125,60,0.182)" title="Fulham: 6.2% chance of finishing 19">6</td><td style="background:rgba(26,125,60,0.127)" title="Fulham: 2.9% chance of finishing 20">3</td></tr><tr><th class="hm-team">Palace</th><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.09)" title="Palace: 0.6% chance of finishing 4">1</td><td style="background:rgba(26,125,60,0.099)" title="Palace: 1.1% chance of finishing 5">1</td><td style="background:rgba(26,125,60,0.107)" title="Palace: 1.6% chance of finishing 6">2</td><td style="background:rgba(26,125,60,0.118)" title="Palace: 2.3% chance of finishing 7">2</td><td style="background:rgba(26,125,60,0.137)" title="Palace: 3.5% chance of finishing 8">3</td><td style="background:rgba(26,125,60,0.157)" title="Palace: 4.7% chance of finishing 9">5</td><td style="background:rgba(26,125,60,0.157)" title="Palace: 4.7% chance of finishing 10">5</td><td style="background:rgba(26,125,60,0.182)" title="Palace: 6.2% chance of finishing 11">6</td><td style="background:rgba(26,125,60,0.199)" title="Palace: 7.2% chance of finishing 12">7</td><td style="background:rgba(26,125,60,0.214)" title="Palace: 8.1% chance of finishing 13">8</td><td style="background:rgba(26,125,60,0.22)" title="Palace: 8.5% chance of finishing 14">8</td><td style="background:rgba(26,125,60,0.241)" title="Palace: 9.7% chance of finishing 15">10</td><td style="background:rgba(26,125,60,0.259)" title="Palace: 10.8% chance of finishing 16">11</td><td style="background:rgba(26,125,60,0.255)" title="Palace: 10.6% chance of finishing 17">11</td><td style="background:rgba(26,125,60,0.239)" title="Palace: 9.6% chance of finishing 18">10</td><td style="background:rgba(26,125,60,0.198)" title="Palace: 7.2% chance of finishing 19">7</td><td style="background:rgba(26,125,60,0.137)" title="Palace: 3.4% chance of finishing 20">3</td></tr><tr><th class="hm-team">Sunderland</th><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.089)" title="Sunderland: 0.5% chance of finishing 4">1</td><td style="background:rgba(26,125,60,0.094)" title="Sunderland: 0.8% chance of finishing 5">1</td><td style="background:rgba(26,125,60,0.106)" title="Sunderland: 1.6% chance of finishing 6">2</td><td style="background:rgba(26,125,60,0.109)" title="Sunderland: 1.8% chance of finishing 7">2</td><td style="background:rgba(26,125,60,0.128)" title="Sunderland: 2.9% chance of finishing 8">3</td><td style="background:rgba(26,125,60,0.138)" title="Sunderland: 3.5% chance of finishing 9">3</td><td style="background:rgba(26,125,60,0.159)" title="Sunderland: 4.8% chance of finishing 10">5</td><td style="background:rgba(26,125,60,0.171)" title="Sunderland: 5.5% chance of finishing 11">5</td><td style="background:rgba(26,125,60,0.185)" title="Sunderland: 6.4% chance of finishing 12">6</td><td style="background:rgba(26,125,60,0.207)" title="Sunderland: 7.7% chance of finishing 13">8</td><td style="background:rgba(26,125,60,0.224)" title="Sunderland: 8.7% chance of finishing 14">9</td><td style="background:rgba(26,125,60,0.236)" title="Sunderland: 9.4% chance of finishing 15">9</td><td style="background:rgba(26,125,60,0.263)" title="Sunderland: 11.1% chance of finishing 16">11</td><td style="background:rgba(26,125,60,0.27)" title="Sunderland: 11.5% chance of finishing 17">11</td><td style="background:rgba(26,125,60,0.268)" title="Sunderland: 11.3% chance of finishing 18">11</td><td style="background:rgba(26,125,60,0.215)" title="Sunderland: 8.2% chance of finishing 19">8</td><td style="background:rgba(26,125,60,0.149)" title="Sunderland: 4.2% chance of finishing 20">4</td></tr><tr><th class="hm-team">Ipswich</th><td></td><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.092)" title="Ipswich: 0.7% chance of finishing 5">1</td><td style="background:rgba(26,125,60,0.098)" title="Ipswich: 1.1% chance of finishing 6">1</td><td style="background:rgba(26,125,60,0.101)" title="Ipswich: 1.3% chance of finishing 7">1</td><td style="background:rgba(26,125,60,0.106)" title="Ipswich: 1.6% chance of finishing 8">2</td><td style="background:rgba(26,125,60,0.105)" title="Ipswich: 1.5% chance of finishing 9">2</td><td style="background:rgba(26,125,60,0.118)" title="Ipswich: 2.3% chance of finishing 10">2</td><td style="background:rgba(26,125,60,0.122)" title="Ipswich: 2.5% chance of finishing 11">3</td><td style="background:rgba(26,125,60,0.136)" title="Ipswich: 3.4% chance of finishing 12">3</td><td style="background:rgba(26,125,60,0.141)" title="Ipswich: 3.7% chance of finishing 13">4</td><td style="background:rgba(26,125,60,0.165)" title="Ipswich: 5.1% chance of finishing 14">5</td><td style="background:rgba(26,125,60,0.167)" title="Ipswich: 5.2% chance of finishing 15">5</td><td style="background:rgba(26,125,60,0.202)" title="Ipswich: 7.3% chance of finishing 16">7</td><td style="background:rgba(26,125,60,0.242)" title="Ipswich: 9.8% chance of finishing 17">10</td><td style="background:rgba(26,125,60,0.314)" title="Ipswich: 14.2% chance of finishing 18">14</td><td style="background:rgba(26,125,60,0.374)" title="Ipswich: 17.8% chance of finishing 19">18</td><td style="background:rgba(26,125,60,0.44)" title="Ipswich: 21.8% chance of finishing 20">22</td></tr><tr><th class="hm-team">Coventry</th><td></td><td></td><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.091)" title="Coventry: 0.7% chance of finishing 6">1</td><td style="background:rgba(26,125,60,0.096)" title="Coventry: 1.0% chance of finishing 7">1</td><td style="background:rgba(26,125,60,0.101)" title="Coventry: 1.3% chance of finishing 8">1</td><td style="background:rgba(26,125,60,0.104)" title="Coventry: 1.5% chance of finishing 9">1</td><td style="background:rgba(26,125,60,0.11)" title="Coventry: 1.8% chance of finishing 10">2</td><td style="background:rgba(26,125,60,0.117)" title="Coventry: 2.2% chance of finishing 11">2</td><td style="background:rgba(26,125,60,0.128)" title="Coventry: 2.9% chance of finishing 12">3</td><td style="background:rgba(26,125,60,0.133)" title="Coventry: 3.2% chance of finishing 13">3</td><td style="background:rgba(26,125,60,0.148)" title="Coventry: 4.1% chance of finishing 14">4</td><td style="background:rgba(26,125,60,0.169)" title="Coventry: 5.4% chance of finishing 15">5</td><td style="background:rgba(26,125,60,0.186)" title="Coventry: 6.4% chance of finishing 16">6</td><td style="background:rgba(26,125,60,0.231)" title="Coventry: 9.2% chance of finishing 17">9</td><td style="background:rgba(26,125,60,0.293)" title="Coventry: 12.9% chance of finishing 18">13</td><td style="background:rgba(26,125,60,0.416)" title="Coventry: 20.3% chance of finishing 19">20</td><td style="background:rgba(26,125,60,0.512)" title="Coventry: 26.1% chance of finishing 20">26</td></tr><tr><th class="hm-team">Hull</th><td></td><td></td><td></td><td></td><td></td><td></td><td style="background:rgba(26,125,60,0.092)" title="Hull: 0.7% chance of finishing 7">1</td><td style="background:rgba(26,125,60,0.095)" title="Hull: 0.9% chance of finishing 8">1</td><td style="background:rgba(26,125,60,0.097)" title="Hull: 1.0% chance of finishing 9">1</td><td style="background:rgba(26,125,60,0.101)" title="Hull: 1.3% chance of finishing 10">1</td><td style="background:rgba(26,125,60,0.109)" title="Hull: 1.7% chance of finishing 11">2</td><td style="background:rgba(26,125,60,0.116)" title="Hull: 2.2% chance of finishing 12">2</td><td style="background:rgba(26,125,60,0.121)" title="Hull: 2.5% chance of finishing 13">2</td><td style="background:rgba(26,125,60,0.133)" title="Hull: 3.2% chance of finishing 14">3</td><td style="background:rgba(26,125,60,0.147)" title="Hull: 4.1% chance of finishing 15">4</td><td style="background:rgba(26,125,60,0.178)" title="Hull: 5.9% chance of finishing 16">6</td><td style="background:rgba(26,125,60,0.219)" title="Hull: 8.4% chance of finishing 17">8</td><td style="background:rgba(26,125,60,0.281)" title="Hull: 12.2% chance of finishing 18">12</td><td style="background:rgba(26,125,60,0.433)" title="Hull: 21.3% chance of finishing 19">21</td><td class="hm-hi" style="background:rgba(26,125,60,0.636)" title="Hull: 33.6% chance of finishing 20">34</td></tr></tbody></table></div>
+
+  
+
+  
+
+  
+
+  
+
+  <div class="footer">Projection updated August 2, 2026 &middot; 10,000 simulations of the full season.<br>Follow <a href="https://x.com/PremProjections" target="_blank" rel="noopener">@PremProjections</a> on X for model updates as they post &mdash; question, correction or tip, <a href="https://x.com/messages/compose?recipient_id=2080736415361515520" target="_blank" rel="noopener">send a DM</a>.<br>Prem Projections is an independent, unofficial site and is not affiliated with, endorsed by, or connected to the Premier League or any of its clubs.</div>
+</div>
+
+<script>
+(function() {
+  var box = document.getElementById("livewire"), list = document.getElementById("lw-list");
+  if (!box || !list) return;
+  var items = [];
+  function ago(ts) {
+    var m = Math.round((Date.now() - ts) / 60000);
+    if (m < 1) return "now";
+    if (m < 60) return m + "m ago";
+    var h = Math.round(m / 60);
+    if (h < 24) return h + "h ago";
+    return Math.round(h / 24) + "d ago";
+  }
+  function esc(s) { var d = document.createElement("span"); d.textContent = s; return d.innerHTML; }
+  function draw() {
+    if (!items.length) return;
+    list.innerHTML = items.map(function(i) {
+      return '<li><a href="' + esc(i.link) + '" target="_blank" rel="noopener">' + esc(i.title) + '</a>' +
+             '<span class="lw-meta">' + esc(i.source) + ' &middot; ' + ago(i.ts) + '</span></li>';
+    }).join("");
+    box.style.display = "block";
+  }
+  function fail() {
+    if (!items.length) box.style.display = "none";
+  }
+  function load() {
+    fetch("https://api.premprojections.com/headlines", { cache: "no-store" })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.items && data.items.length) { items = data.items; draw(); }
+        else fail();
+      }).catch(fail);
+  }
+  load();
+  setInterval(load, 5 * 60 * 1000);   // refetch (throttled while backgrounded)
+  setInterval(draw, 60 * 1000);        // keep the "Xm ago" labels honest
+  document.addEventListener("visibilitychange", function() {
+    if (!document.hidden) load();      // catch up the moment the tab is foregrounded
+  });
+})();
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"f9b0958d6ba74353b522790f86c3fe76","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
