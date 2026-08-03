@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Rebuild viewer/squad.html + data/squad_view.json from a squad JSON."""
+"""Rebuild viewer/squad.html + data/squad_view.json from a squad JSON.
+
+Also embeds GW1–2 pros/cons table (from squad players.gw1/gw2 if present).
+"""
 from __future__ import annotations
 
 import argparse
@@ -9,11 +12,26 @@ import sys
 import urllib.request
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[3]
-# script at viewer/build_viewer.py -> parents[1]=FPL? 
-# Path: D:/Games/FPL/viewer/build_viewer.py -> parents[0]=viewer, parents[1]=FPL
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / ".cursor/skills/fpl-agent/scripts"))
+
+HE = {
+    "Lammens": "למנס",
+    "Shaw": "שו",
+    "Calafiori": "קאלאפיורי",
+    "Mukiele": "מוקיאלה",
+    "Mbeumo": "מבאומו",
+    "Eze": "איזה",
+    "Rogers": "רוג׳רס",
+    "Wirtz": "וירץ",
+    "Mateta": "מאטטה",
+    "Haaland": "האלאנד",
+    "Isak": "איסאק",
+    "Verbruggen": "ורברוגן",
+    "Willock": "ווילוק",
+    "Alderete": "אלדרטה",
+    "Mitchell": "מיטשל",
+}
 
 
 def get_json(url: str):
@@ -22,12 +40,37 @@ def get_json(url: str):
         return json.load(r)
 
 
+def build_gw12_from_live(squad: dict) -> list[dict]:
+    """Prefer analysis already on squad players; else empty."""
+    out = []
+    xi = set(squad.get("xi_ids") or [])
+    for p in squad.get("players") or []:
+        if "gw1" not in p or "gw2" not in p:
+            continue
+        out.append(
+            {
+                "id": p["id"],
+                "name": p.get("name_he") or HE.get(p["name"], p["name"]),
+                "name_en": p["name"],
+                "team": p["team"],
+                "pos": p["pos"],
+                "price": p["price"],
+                "xi": p["id"] in xi if xi else p.get("xi", True),
+                "captain": p.get("captain", False),
+                "vice": p.get("vice", False),
+                "gw1": p["gw1"],
+                "gw2": p["gw2"],
+            }
+        )
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument(
         "--squad",
         type=Path,
-        default=ROOT / "squads" / "eli_draft_legal.json",
+        default=ROOT / "squads" / "live.json",
     )
     args = ap.parse_args()
     squad = json.loads(args.squad.read_text(encoding="utf-8"))
@@ -76,6 +119,8 @@ def main() -> None:
         },
         "players": players,
     }
+    gw12 = build_gw12_from_live(squad)
+
     out_json = ROOT / "data" / "squad_view.json"
     out_json.parent.mkdir(parents=True, exist_ok=True)
     out_json.write_text(json.dumps(view, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -105,7 +150,24 @@ def main() -> None:
     if n2 != 1:
         raise SystemExit("Could not patch XI_IDS in squad.html")
 
-    # Refresh summary note from squad notes / captain
+    gw12_payload = json.dumps(gw12, ensure_ascii=False)
+    if "const GW12 =" in html2:
+        html2, n4 = re.subn(
+            r"const GW12 = .*?;",
+            f"const GW12 = {gw12_payload};",
+            html2,
+            count=1,
+            flags=re.S,
+        )
+        if n4 != 1:
+            raise SystemExit("Could not patch GW12 blob")
+    else:
+        html2 = html2.replace(
+            "const XI_IDS =",
+            f"const GW12 = {gw12_payload};\n    const XI_IDS =",
+            1,
+        )
+
     cap_name = next((p["name"] for p in players if p["captain"]), "?")
     vice_name = next((p["name"] for p in players if p["vice"]), "?")
     note = squad.get("notes") or (
@@ -125,9 +187,18 @@ def main() -> None:
     if n3 != 1:
         print("warn: could not patch summary note")
 
+    # subtitle
+    html2, _ = re.subn(
+        r'(<div class="sub">).*?(</div>)',
+        r"\1סגל ראשי · בוסט GW2 · ווילדקארד GW3 · בלי Salah\2",
+        html2,
+        count=1,
+        flags=re.S,
+    )
+
     html_path.write_text(html2, encoding="utf-8")
     print(f"Updated {out_json}")
-    print(f"Updated {html_path}")
+    print(f"Updated {html_path} (GW12 rows={len(gw12)})")
 
 
 if __name__ == "__main__":
