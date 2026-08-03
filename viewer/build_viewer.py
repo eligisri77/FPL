@@ -30,6 +30,7 @@ HE = {
     "Verbruggen": "ורברוגן",
     "Willock": "ווילוק",
     "Alderete": "אלדרטה",
+    "Ajer": "אייר",
     "Mitchell": "מיטשל",
 }
 
