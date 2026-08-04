@@ -129,45 +129,52 @@ def main() -> None:
     html_path = ROOT / "viewer" / "squad.html"
     html = html_path.read_text(encoding="utf-8")
     payload = json.dumps(view, ensure_ascii=False)
-    html2, n = re.subn(
-        r"const DATA = .*?;",
-        f"const DATA = {payload};",
+    xi_ids = squad.get("xi_ids") or [p["id"] for p in players[:11]]
+    xi_payload = json.dumps(xi_ids)
+    gw12_payload = json.dumps(gw12, ensure_ascii=False)
+
+    def patch_const(src: str, name: str, value: str) -> str:
+        """Replace a whole `const NAME = ...` line (safe with `;` inside JSON strings)."""
+        lines = src.splitlines(keepends=True)
+        out = []
+        found = False
+        for line in lines:
+            if line.lstrip().startswith(f"const {name} ="):
+                indent = line[: len(line) - len(line.lstrip())]
+                out.append(f"{indent}const {name} = {value};\n")
+                found = True
+            else:
+                out.append(line)
+        if not found:
+            raise SystemExit(f"Could not patch {name} blob in squad.html")
+        return "".join(out)
+
+    # First repair any previously corrupted GW12/DATA lines that spilled past `;`
+    # by collapsing junk until the next real const / blank / non-junk line.
+    html = re.sub(
+        r"(const GW12 = ).*?(?=\n\s*const XI_IDS =)",
+        rf"\1[];",
         html,
         count=1,
         flags=re.S,
     )
-    if n != 1:
-        raise SystemExit("Could not patch DATA blob in squad.html")
-
-    xi_ids = squad.get("xi_ids") or [p["id"] for p in players[:11]]
-    xi_payload = json.dumps(xi_ids)
-    html2, n2 = re.subn(
-        r"const XI_IDS = .*?;",
-        f"const XI_IDS = {xi_payload};",
-        html2,
+    html = re.sub(
+        r"(const DATA = ).*?(?=\n\s*const GW12 =)",
+        rf"\1{{}};",
+        html,
         count=1,
         flags=re.S,
     )
-    if n2 != 1:
-        raise SystemExit("Could not patch XI_IDS in squad.html")
 
-    gw12_payload = json.dumps(gw12, ensure_ascii=False)
-    if "const GW12 =" in html2:
-        html2, n4 = re.subn(
-            r"const GW12 = .*?;",
-            f"const GW12 = {gw12_payload};",
-            html2,
-            count=1,
-            flags=re.S,
-        )
-        if n4 != 1:
-            raise SystemExit("Could not patch GW12 blob")
-    else:
+    html2 = patch_const(html, "DATA", payload)
+    if "const GW12 =" not in html2:
         html2 = html2.replace(
             "const XI_IDS =",
-            f"const GW12 = {gw12_payload};\n    const XI_IDS =",
+            f"const GW12 = [];\n    const XI_IDS =",
             1,
         )
+    html2 = patch_const(html2, "GW12", gw12_payload)
+    html2 = patch_const(html2, "XI_IDS", xi_payload)
 
     cap_name = next((p["name"] for p in players if p["captain"]), "?")
     vice_name = next((p["name"] for p in players if p["vice"]), "?")
