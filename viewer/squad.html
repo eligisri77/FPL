@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eli FPL — Squad Viewer</title>
+  <style>
+    :root {
+      --bg: #0f1410;
+      --panel: #182018;
+      --pitch: #1f6b3a;
+      --pitch-line: rgba(255,255,255,0.18);
+      --ink: #f2f5f0;
+      --muted: #9aab9d;
+      --card: #f4f7f2;
+      --card-ink: #122016;
+      --accent: #c8f06c;
+      --warn: #e8b84a;
+      --bad: #e07a5f;
+      --ok: #6fbf73;
+      --font: "Segoe UI", "Heebo", Tahoma, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .sub { color: var(--muted); margin-top: 4px; font-size: 0.95rem; }
+    .stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid #2a3a2c;
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 96px;
+    }
+    .stat b { display: block; font-size: 1.15rem; }
+    .stat span { color: var(--muted); font-size: 0.8rem; }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+    }
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .pitch {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%),
+        repeating-linear-gradient(
+          0deg,
+          var(--pitch) 0 12.5%,
+          #1a5f34 12.5% 25%
+        );
+      border-radius: 16px;
+      border: 2px solid var(--pitch-line);
+      min-height: 640px;
+      position: relative;
+      padding: 18px 10px 22px;
+      overflow: hidden;
+    }
+    .pitch::before {
+      content: "";
+      position: absolute;
+      inset: 8% 18%;
+      border: 2px solid var(--pitch-line);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .pitch::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8%;
+      bottom: 8%;
+      width: 2px;
+      background: var(--pitch-line);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .player {
+      width: 104px;
+      background: var(--card);
+      color: var(--card-ink);
+      border-radius: 12px;
+      padding: 8px 8px 10px;
+      text-align: center;
+      position: relative;
+      border: 2px solid transparent;
+    }
+    .player.captain { border-color: #d4a017; }
+    .player.vice { border-color: #7a8fa3; }
+    .player.bench-card {
+      background: #e8ece6;
+    }
+    .badge {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      background: #d4a017;
+      color: #1a1400;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+    .badge.vc { background: #8ea0b0; color: #0f1418; }
+    .name {
+      font-weight: 700;
+      font-size: 0.82rem;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+    .meta {
+      font-size: 0.72rem;
+      color: #4d5c52;
+      margin-top: 2px;
+    }
+    .price {
+      margin-top: 6px;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .opp {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: #dfe8df;
+    }
+    .fdr-2 { background: #b8e0b8; }
+    .fdr-3 { background: #e6e2a8; }
+    .fdr-4 { background: #f0c49a; }
+    .fdr-5 { background: #efb0a4; }
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid #2a3a2c;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 7px 6px;
+      border-bottom: 1px solid #2a3a2c;
+      text-align: right;
+    }
+    th { color: var(--muted); font-weight: 600; }
+    .bench-title {
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+      margin: 28px 0 8px;
+      position: relative;
+      z-index: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #243328;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+    .gw12-wrap { margin-top: 22px; }
+    .gw12-wrap h2 { margin: 0 0 8px; font-size: 1.15rem; }
+    .gw12-sub { color: var(--muted); font-size: .85rem; margin-bottom: 12px; line-height: 1.4; }
+    .gw12-warn {
+      background: #2a2018; border: 1px solid #6a4a30; color: #e8a87c;
+      padding: 10px 12px; border-radius: 10px; margin-bottom: 12px; font-size: .85rem;
+    }
+    .gw12-table {
+      width: 100%; border-collapse: collapse; background: var(--panel);
+      border: 1px solid #2a3a2c; border-radius: 14px; overflow: hidden;
+    }
+    .gw12-table th, .gw12-table td {
+      vertical-align: top; padding: 12px 10px; border-bottom: 1px solid #2a3a2c;
+      text-align: right; font-size: .82rem;
+    }
+    .gw12-table th { background: #141c14; color: var(--muted); font-weight: 600; position: sticky; top: 0; }
+    .gw12-table .meta { color: var(--muted); font-size: .72rem; margin-top: 3px; }
+    .gw12-table .fix { color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    .gw12-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .gw12-lab { font-size: .7rem; font-weight: 700; margin-bottom: 4px; }
+    .gw12-lab.plus { color: #7dd87d; }
+    .gw12-lab.minus { color: #e8a87c; }
+    .gw12-table ul { margin: 0; padding-right: 16px; line-height: 1.35; }
+    .gw12-table ul.pros li { color: #cfe9c8; }
+    .gw12-table ul.cons li { color: #f0d2b8; }
+    .gw12-table tr.bn td { opacity: .9; }
+    @media (max-width: 860px) {
+      .gw12-table, .gw12-table thead, .gw12-table tbody, .gw12-table th, .gw12-table td, .gw12-table tr { display: block; }
+      .gw12-table th { display: none; }
+      .gw12-table tr { border-bottom: 8px solid var(--bg); }
+      .gw12-table td { border: none; }
+      .gw12-split { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Eli's Team <span class="pill">GW1–2</span></h1>
+        <div class="sub">סגל ראשי · בוסט GW2 · ווילדקארד GW3 · בלי Salah</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="cost">£99.5m</b><span>עלות</span></div>
+        <div class="stat"><b id="itb">£0.5m</b><span>בצד</span></div>
+        <div class="stat"><b>15/15</b><span>שחקנים</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <section class="pitch" id="pitch"></section>
+      <aside class="side">
+        <div class="panel">
+          <h2>טבלת סגל</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>שחקן</th>
+                <th>מחיר</th>
+                <th>יריב</th>
+                <th>EP</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody id="table"></tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <h2>סיכום</h2>
+          <p class="note">C: <b>Haaland</b> · VC: <b>Mbeumo</b><br/>סגל מצילום אלי 7/8. אזהרה: מבאומו+ברנו שני קשרי יונייטד — בניגוד לכלל אותה קבוצה+עמדה. רודוני עם דגל. בוסט GW2, WC GW3.</p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="gw12-wrap panel" id="gw12" style="padding:16px;">
+      <h2>יתרונות / חסרונות — מחזורים 1–2</h2>
+      <div class="gw12-sub">לפי Prem Projections · לכל שחקן בסגל הראשי</div>
+      <div class="gw12-warn" id="gw12-warn" hidden></div>
+      <table class="gw12-table">
+        <thead>
+          <tr><th>שחקן</th><th>מחזור 1</th><th>מחזור 2</th></tr>
+        </thead>
+        <tbody id="gw12-body"></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script>
+    const DATA = {"meta": {"cost": 99.5, "itb": 0.5, "gw": 1, "label": "eli_screenshot_aug7_v2"}, "players": [{"id": 496, "name": "Kinsky", "team": "TOT", "pos": "GK", "price": 4.5, "own": 19.1, "ep": 1.9, "opp": "BRE(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 423, "name": "Shaw", "team": "MUN", "pos": "DEF", "price": 4.5, "own": 24.7, "ep": 1.7, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": false}, {"id": 8, "name": "Calafiori", "team": "ARS", "pos": "DEF", "price": 5.5, "own": 16.2, "ep": 2.5, "opp": "COV(H)", "fdr": 2, "captain": false, "vice": false}, {"id": 539, "name": "O'Nien", "team": "SUN", "pos": "DEF", "price": 4.0, "own": 2.3, "ep": 1.0, "opp": "IPS(A)", "fdr": 2, "captain": false, "vice": false}, {"id": 427, "name": "Mbeumo", "team": "MUN", "pos": "MID", "price": 8.0, "own": 18.3, "ep": 2.8, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": true}, {"id": 426, "name": "B.Fernandes", "team": "MUN", "pos": "MID", "price": 12.0, "own": 48.7, "ep": 4.0, "opp": "HUL(A)", "fdr": 2, "captain": false, "vice": false}, {"id": 544, "name": "Xhaka", "team": "SUN", "pos": "MID", "price": 5.5, "own": 5.8, "ep": 2.0, "opp": "IPS(A)", "fdr": 2, "captain": false, "vice": false}, {"id": 398, "name": "Foden", "team": "MCI", "pos": "MID", "price": 7.0, "own": 7.5, "ep": 2.5, "opp": "BOU(H)", "fdr": 3, "captain": false, "vice": false}, {"id": 491, "name": "Igor Jesus", "team": "NFO", "pos": "FWD", "price": 6.0, "own": 5.0, "ep": 2.0, "opp": "LEE(H)", "fdr": 2, "captain": false, "vice": false}, {"id": 411, "name": "Haaland", "team": "MCI", "pos": "FWD", "price": 15.5, "own": 74.8, "ep": 4.0, "opp": "BOU(H)", "fdr": 3, "captain": true, "vice": false}, {"id": 379, "name": "Isak", "team": "LIV", "pos": "FWD", "price": 9.0, "own": 11.3, "ep": 2.7, "opp": "NEW(A)", "fdr": 3, "captain": false, "vice": false}, {"id": 57, "name": "Petrović", "team": "BOU", "pos": "GK", "price": 4.5, "own": 3.7, "ep": 1.9, "opp": "MCI(A)", "fdr": 5, "captain": false, "vice": false}, {"id": 183, "name": "Rudoni", "team": "COV", "pos": "MID", "price": 5.0, "own": 0.3, "ep": 1.1, "opp": "ARS(A)", "fdr": 5, "captain": false, "vice": false}, {"id": 87, "name": "Ajer", "team": "BRE", "pos": "DEF", "price": 4.5, "own": 1.5, "ep": 1.7, "opp": "TOT(H)", "fdr": 3, "captain": false, "vice": false}, {"id": 175, "name": "van Ewijk", "team": "COV", "pos": "DEF", "price": 4.0, "own": 16.3, "ep": 1.0, "opp": "ARS(A)", "fdr": 5, "captain": false, "vice": false}]};
+    const GW12 = [{"id": 496, "name": "קינסקי", "name_en": "Kinsky", "team": "TOT", "pos": "GK", "price": 4.5, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "BRE", "loc": "חוץ", "xg": 1.23, "conc": 1.26, "tot": 2.49, "pros": ["אין יתרון בולט מהמודל"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.23)", "סיכון לספוג (≈1.26 נגד)", "משחק חוץ"]}, "gw2": {"opp": "NEW", "loc": "בית", "xg": 1.13, "conc": 1.03, "tot": 2.16, "pros": ["הגנה סבירה (≈1.03 נגד)", "משחק בית"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.13)", "משחק סגור יחסית (≈2.16)"]}}, {"id": 423, "name": "שו", "name_en": "Shaw", "team": "MUN", "pos": "DEF", "price": 4.5, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "HUL", "loc": "חוץ", "xg": 1.83, "conc": 0.88, "tot": 2.71, "pros": ["התקפת הקבוצה חזקה (≈1.83 שערים)", "סופגים מעט (≈0.88 נגד) — פוטנציאל שער נקי"], "cons": ["משחק חוץ"]}, "gw2": {"opp": "IPS", "loc": "בית", "xg": 2.2, "conc": 0.75, "tot": 2.95, "pros": ["התקפת הקבוצה חזקה (≈2.20 שערים)", "סופגים מעט (≈0.75 נגד) — פוטנציאל שער נקי", "משחק בית"], "cons": ["אין חיסרון בולט מהמודל"]}}, {"id": 8, "name": "קאלאפיורי", "name_en": "Calafiori", "team": "ARS", "pos": "DEF", "price": 5.5, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "COV", "loc": "בית", "xg": 2.55, "conc": 0.5, "tot": 3.05, "pros": ["התקפת הקבוצה חזקה (≈2.55 שערים)", "סופגים מעט (≈0.50 נגד) — פוטנציאל שער נקי", "משחק פתוח (≈3.05 שערים במשחק)", "משחק בית", "ארסנל מול קובנטרי — כובשת/סופגת מעט מובילה"], "cons": ["אין חיסרון בולט מהמודל"]}, "gw2": {"opp": "AVL", "loc": "חוץ", "xg": 1.37, "conc": 0.95, "tot": 2.32, "pros": ["התקפה סבירה (≈1.37)", "הגנה סבירה (≈0.95 נגד)"], "cons": ["משחק חוץ"]}}, {"id": 539, "name": "או׳נין", "name_en": "O'Nien", "team": "SUN", "pos": "DEF", "price": 4.0, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "IPS", "loc": "חוץ", "xg": 1.07, "conc": 1.19, "tot": 2.26, "pros": ["הגנה סבירה (≈1.19 נגד)"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.07)", "משחק סגור יחסית (≈2.26)", "משחק חוץ"]}, "gw2": {"opp": "FUL", "loc": "בית", "xg": 1.3, "conc": 0.83, "tot": 2.13, "pros": ["התקפה סבירה (≈1.30)", "סופגים מעט (≈0.83 נגד) — פוטנציאל שער נקי", "משחק בית"], "cons": ["משחק סגור יחסית (≈2.13)"]}}, {"id": 427, "name": "מבאומו", "name_en": "Mbeumo", "team": "MUN", "pos": "MID", "price": 8.0, "xi": true, "captain": false, "vice": true, "gw1": {"opp": "HUL", "loc": "חוץ", "xg": 1.83, "conc": 0.88, "tot": 2.71, "pros": ["התקפת הקבוצה חזקה (≈1.83 שערים)"], "cons": ["משחק חוץ", "כפילות קישור יונייטד עם ברנו — בניגוד לכלל"]}, "gw2": {"opp": "IPS", "loc": "בית", "xg": 2.2, "conc": 0.75, "tot": 2.95, "pros": ["התקפת הקבוצה חזקה (≈2.20 שערים)", "משחק בית", "יונייטד בית מול איפסוויץ׳ — לוח מצוין לבוסט"], "cons": ["אין חיסרון בולט מהמודל"]}}, {"id": 426, "name": "ברנו", "name_en": "B.Fernandes", "team": "MUN", "pos": "MID", "price": 12.0, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "HUL", "loc": "חוץ", "xg": 1.83, "conc": 0.88, "tot": 2.71, "pros": ["התקפת הקבוצה חזקה (≈1.83 שערים)", "ברנו מול האל — לוח טוב, אבל כפילות קישור יונייטד עם מבאומו"], "cons": ["משחק חוץ"]}, "gw2": {"opp": "IPS", "loc": "בית", "xg": 2.2, "conc": 0.75, "tot": 2.95, "pros": ["התקפת הקבוצה חזקה (≈2.20 שערים)", "משחק בית"], "cons": ["אין חיסרון בולט מהמודל"]}}, {"id": 544, "name": "שאקה", "name_en": "Xhaka", "team": "SUN", "pos": "MID", "price": 5.5, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "IPS", "loc": "חוץ", "xg": 1.07, "conc": 1.19, "tot": 2.26, "pros": ["אין יתרון בולט מהמודל"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.07)", "משחק סגור יחסית (≈2.26)", "משחק חוץ"]}, "gw2": {"opp": "FUL", "loc": "בית", "xg": 1.3, "conc": 0.83, "tot": 2.13, "pros": ["התקפה סבירה (≈1.30)", "משחק בית"], "cons": ["משחק סגור יחסית (≈2.13)"]}}, {"id": 398, "name": "פודן", "name_en": "Foden", "team": "MCI", "pos": "MID", "price": 7.0, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "BOU", "loc": "בית", "xg": 2.24, "conc": 0.91, "tot": 3.15, "pros": ["התקפת הקבוצה חזקה (≈2.24 שערים)", "משחק פתוח (≈3.15 שערים במשחק)", "משחק בית", "פודן בסיטי מול בורנמות׳ — לוח התקפי חזק"], "cons": ["אין חיסרון בולט מהמודל"]}, "gw2": {"opp": "CRY", "loc": "חוץ", "xg": 1.5, "conc": 0.78, "tot": 2.28, "pros": ["התקפה סבירה (≈1.50)"], "cons": ["משחק סגור יחסית (≈2.28)", "משחק חוץ"]}}, {"id": 491, "name": "איגור ז׳זוס", "name_en": "Igor Jesus", "team": "NFO", "pos": "FWD", "price": 6.0, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "LEE", "loc": "בית", "xg": 1.28, "conc": 1.0, "tot": 2.28, "pros": ["משחק בית"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.28)", "משחק סגור יחסית (≈2.28)"]}, "gw2": {"opp": "LIV", "loc": "חוץ", "xg": 0.95, "conc": 1.7, "tot": 2.65, "pros": ["אין יתרון בולט מהמודל"], "cons": ["התקפת הקבוצה חלשה יחסית (≈0.95)", "משחק חוץ"]}}, {"id": 411, "name": "האלאנד", "name_en": "Haaland", "team": "MCI", "pos": "FWD", "price": 15.5, "xi": true, "captain": true, "vice": false, "gw1": {"opp": "BOU", "loc": "בית", "xg": 2.24, "conc": 0.91, "tot": 3.15, "pros": ["התקפת הקבוצה חזקה (≈2.24 שערים)", "משחק פתוח (≈3.15 שערים במשחק)", "משחק בית", "קפטן ברור מול בורנמות׳"], "cons": ["אין חיסרון בולט מהמודל"]}, "gw2": {"opp": "CRY", "loc": "חוץ", "xg": 1.5, "conc": 0.78, "tot": 2.28, "pros": ["התקפה סבירה (≈1.50)"], "cons": ["משחק סגור יחסית (≈2.28)", "משחק חוץ"]}}, {"id": 379, "name": "איסאק", "name_en": "Isak", "team": "LIV", "pos": "FWD", "price": 9.0, "xi": true, "captain": false, "vice": false, "gw1": {"opp": "NEW", "loc": "חוץ", "xg": 1.6, "conc": 1.45, "tot": 3.05, "pros": ["התקפה סבירה (≈1.60)", "משחק פתוח (≈3.05 שערים במשחק)", "המשחק הכי פתוח במחזור (ניוקאסל–ליברפול)"], "cons": ["משחק חוץ"]}, "gw2": {"opp": "NFO", "loc": "בית", "xg": 1.7, "conc": 0.95, "tot": 2.65, "pros": ["התקפת הקבוצה חזקה (≈1.70 שערים)", "משחק בית"], "cons": ["אין חיסרון בולט מהמודל"]}}, {"id": 57, "name": "פטרוביץ׳", "name_en": "Petrović", "team": "BOU", "pos": "GK", "price": 4.5, "xi": false, "captain": false, "vice": false, "gw1": {"opp": "MCI", "loc": "חוץ", "xg": 0.91, "conc": 2.24, "tot": 3.15, "pros": ["משחק פתוח (≈3.15 שערים במשחק)"], "cons": ["התקפת הקבוצה חלשה יחסית (≈0.91)", "סיכון לספוג (≈2.24 נגד)", "משחק חוץ", "שוער בורנמות׳ חוץ מול סיטי — קשה לבוסט"]}, "gw2": {"opp": "EVE", "loc": "בית", "xg": 1.18, "conc": 0.93, "tot": 2.11, "pros": ["הגנה סבירה (≈0.93 נגד)", "משחק בית"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.18)", "משחק סגור יחסית (≈2.11)"]}}, {"id": 183, "name": "רודוני", "name_en": "Rudoni", "team": "COV", "pos": "MID", "price": 5.0, "xi": false, "captain": false, "vice": false, "gw1": {"opp": "ARS", "loc": "חוץ", "xg": 0.5, "conc": 2.55, "tot": 3.05, "pros": ["משחק פתוח (≈3.05 שערים במשחק)"], "cons": ["התקפת הקבוצה חלשה יחסית (≈0.50)", "משחק חוץ", "דגל צהוב / ספק דקות", "קובנטרי חוץ מול ארסנל — חלש לבוסט"]}, "gw2": {"opp": "HUL", "loc": "בית", "xg": 1.5, "conc": 0.95, "tot": 2.45, "pros": ["התקפה סבירה (≈1.50)", "משחק בית"], "cons": ["אין חיסרון בולט מהמודל"]}}, {"id": 87, "name": "אייר", "name_en": "Ajer", "team": "BRE", "pos": "DEF", "price": 4.5, "xi": false, "captain": false, "vice": false, "gw1": {"opp": "TOT", "loc": "בית", "xg": 1.26, "conc": 1.23, "tot": 2.49, "pros": ["משחק בית"], "cons": ["התקפת הקבוצה חלשה יחסית (≈1.26)", "סיכון לספוג (≈1.23 נגד)"]}, "gw2": {"opp": "LEE", "loc": "חוץ", "xg": 0.97, "conc": 1.42, "tot": 2.39, "pros": ["אין יתרון בולט מהמודל"], "cons": ["התקפת הקבוצה חלשה יחסית (≈0.97)", "סיכון לספוג (≈1.42 נגד)", "משחק חוץ"]}}, {"id": 175, "name": "ואן אווייק", "name_en": "van Ewijk", "team": "COV", "pos": "DEF", "price": 4.0, "xi": false, "captain": false, "vice": false, "gw1": {"opp": "ARS", "loc": "חוץ", "xg": 0.5, "conc": 2.55, "tot": 3.05, "pros": ["משחק פתוח (≈3.05 שערים במשחק)"], "cons": ["התקפת הקבוצה חלשה יחסית (≈0.50)", "סיכון לספוג (≈2.55 נגד)", "משחק חוץ", "קובנטרי חוץ מול ארסנל — חלש מאוד לבוסט"]}, "gw2": {"opp": "HUL", "loc": "בית", "xg": 1.5, "conc": 0.95, "tot": 2.45, "pros": ["התקפה סבירה (≈1.50)", "הגנה סבירה (≈0.95 נגד)", "משחק בית"], "cons": ["אין חיסרון בולט מהמודל"]}}];
+    const XI_IDS = [496, 423, 8, 539, 427, 426, 544, 398, 491, 411, 379];
+
+    const byId = Object.fromEntries(DATA.players.map(p => [p.id, p]));
+    const xi = XI_IDS.map(id => byId[id]);
+    const bench = DATA.players.filter(p => !XI_IDS.includes(p.id));
+
+    document.getElementById('cost').textContent = `£${DATA.meta.cost.toFixed(1)}m`;
+    document.getElementById('itb').textContent = `£${DATA.meta.itb.toFixed(1)}m`;
+
+    function card(p, isBench=false) {
+      const cls = [
+        'player',
+        isBench ? 'bench-card' : '',
+        p.captain ? 'captain' : '',
+        p.vice ? 'vice' : '',
+      ].filter(Boolean).join(' ');
+      const badge = p.captain ? '<div class="badge">C</div>' :
+                    p.vice ? '<div class="badge vc">V</div>' : '';
+      return `
+        <div class="${cls}">
+          ${badge}
+          <div class="meta">${p.team} · ${p.pos}</div>
+          <div class="name">${p.name}</div>
+          <div class="price">£${p.price.toFixed(1)}m</div>
+          <div class="opp fdr-${p.fdr}">${p.opp}</div>
+        </div>`;
+    }
+
+    function row(players, isBench=false) {
+      return `<div class="row">${players.map(p => card(p, isBench)).join('')}</div>`;
+    }
+
+    const gks = xi.filter(p => p.pos === 'GK');
+    const defs = xi.filter(p => p.pos === 'DEF');
+    const mids = xi.filter(p => p.pos === 'MID');
+    const fwds = xi.filter(p => p.pos === 'FWD');
+
+    document.getElementById('pitch').innerHTML =
+      row(gks) + row(defs) + row(mids) + row(fwds) +
+      `<div class="bench-title">Bench</div>` + row(bench, true);
+
+    const tbody = document.getElementById('table');
+    const order = { GK: 1, DEF: 2, MID: 3, FWD: 4 };
+    [...DATA.players].sort((a,b) => order[a.pos]-order[b.pos] || b.price-a.price)
+      .forEach(p => {
+        const mark = p.captain ? ' (C)' : p.vice ? ' (VC)' : '';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><b>${p.name}${mark}</b><br/><span style="color:#9aab9d">${p.team} ${p.pos}</span></td>
+          <td>£${p.price.toFixed(1)}</td>
+          <td>${p.opp}</td>
+          <td>${p.ep.toFixed(1)}</td>
+          <td>${p.own.toFixed(1)}</td>`;
+        tbody.appendChild(tr);
+      });
+
+    function listHtml(items, cls) {
+      const arr = items && items.length ? items : ['—'];
+      return `<ul class="${cls}">${arr.map(x => `<li>${x}</li>`).join('')}</ul>`;
+    }
+    function gwCell(g) {
+      if (!g) return '—';
+      return `
+        <div class="fix">${g.opp} (${g.loc}) · קבוצה≈${Number(g.xg).toFixed(2)} · נגד≈${Number(g.conc).toFixed(2)}</div>
+        <div class="gw12-split">
+          <div><div class="gw12-lab plus">יתרונות</div>${listHtml(g.pros, 'pros')}</div>
+          <div><div class="gw12-lab minus">חסרונות</div>${listHtml(g.cons, 'cons')}</div>
+        </div>`;
+    }
+    const gwBody = document.getElementById('gw12-body');
+    const warn = document.getElementById('gw12-warn');
+    if (GW12 && GW12.length) {
+      const sunDefs = GW12.filter(p => p.team === 'SUN' && p.pos === 'DEF');
+      if (sunDefs.length >= 2) {
+        warn.hidden = false;
+        warn.textContent = 'שימו לב: מוקיאלה ואלדרטה שניהם בלמים של סנדרלנד — לפי הכללים אסור שני שחקנים מאותה קבוצה באותה עמדה.';
+      }
+      const posOrder = { GK: 1, DEF: 2, MID: 3, FWD: 4 };
+      [...GW12].sort((a, b) => {
+        const ax = a.xi ? 0 : 1, bx = b.xi ? 0 : 1;
+        return ax - bx || posOrder[a.pos] - posOrder[b.pos] || b.price - a.price;
+      }).forEach(p => {
+        const mark = p.captain ? ' (C)' : p.vice ? ' (VC)' : '';
+        const slot = p.xi ? 'הרכב' : 'ספסל';
+        const tr = document.createElement('tr');
+        if (!p.xi) tr.className = 'bn';
+        tr.innerHTML = `
+          <td><b>${p.name}${mark}</b><div class="meta">${p.pos} · ${p.team} · £${Number(p.price).toFixed(1)} · ${slot}</div></td>
+          <td>${gwCell(p.gw1)}</td>
+          <td>${gwCell(p.gw2)}</td>`;
+        gwBody.appendChild(tr);
+      });
+    } else {
+      gwBody.innerHTML = '<tr><td colspan="3" style="color:#9aab9d">אין נתוני יתרונות/חסרונות — הריצו build_viewer</td></tr>';
+    }
+  </script>
+</body>
+</html>

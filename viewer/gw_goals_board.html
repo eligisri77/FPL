@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>שערים צפויים (סטטיסטיקה חיצונית) — מחזורים 1–2</title>
+<style>
+:root {
+  --bg:#0f1410; --panel:#182018; --ink:#f2f5f0; --muted:#9aab9d;
+  --accent:#c8f06c; --line:#2a3a2c; --hi:#7dd87d; --lo:#e8a87c;
+}
+* { box-sizing: border-box; }
+body {
+  margin:0; font-family: Segoe UI, Tahoma, sans-serif;
+  background:var(--bg); color:var(--ink);
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { margin: 0 0 6px; font-size: 1.35rem; }
+.sub { color: var(--muted); margin-bottom: 18px; font-size: .9rem; line-height: 1.5; }
+.badge {
+  display:inline-block; background:#243024; color:var(--accent);
+  padding:3px 10px; border-radius:999px; font-weight:700; font-size:.75rem;
+  margin-right:8px; vertical-align: middle;
+}
+.gw { margin-bottom: 36px; }
+.gw h2 { margin: 0 0 8px; font-size: 1.25rem; }
+.mini { color: var(--muted); font-size: .78rem; margin: 0 0 12px; }
+.teams-row {
+  display:grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;
+}
+@media (max-width: 640px) {
+  .teams-row, .grid { grid-template-columns: 1fr !important; }
+}
+.team-box {
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px;
+}
+.team-box h3 { margin: 0 0 10px; font-size: .85rem; color: var(--muted); font-weight: 600; }
+.chip {
+  display:flex; align-items:baseline; gap:8px; margin-bottom:8px;
+}
+.chip .n { color: var(--accent); font-weight: 800; width: 1.2rem; }
+.chip b { font-size: 1.05rem; }
+.chip .v { color: var(--muted); font-size: .8rem; margin-right: auto; }
+.grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.panel {
+  background: var(--panel); border:1px solid var(--line);
+  border-radius: 12px; padding: 12px; overflow:hidden;
+}
+.panel h3 { margin: 0 0 10px; font-size: .92rem; }
+.panel h3.hi { color: var(--hi); }
+.panel h3.lo { color: var(--lo); }
+table { width:100%; border-collapse: collapse; }
+th, td { padding: 8px 6px; text-align: right; border-bottom: 1px solid var(--line); font-size: .82rem; }
+th { color: var(--muted); font-weight: 600; }
+.rank { color: var(--accent); font-weight: 800; width: 28px; }
+.fix .vs { color: var(--muted); margin: 0 4px; font-size: .75rem; }
+.home { font-weight: 700; }
+.away { font-weight: 600; color: #c5d4c7; }
+.proj { color: var(--accent); font-weight: 800; }
+.xg { color: var(--muted); }
+.note { color: var(--muted); font-size: .78rem; margin-top: 8px; line-height: 1.5; }
+a.back, a.ext { color: var(--accent); text-decoration: none; font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← חזרה</a>
+  <h1>שערים צפויים — מחזורים 1–2</h1>
+  <div class="sub">
+    מקור חיצוני: <a class="ext" href="https://premprojections.com/" target="_blank" rel="noopener">Prem Projections</a>
+    · עודכן: 2026-08-02 19:51:53 UTC<br/>
+    מקור חיצוני סטטיסטי (לא המודל של הפרויקט). מחזור 1: שערים צפויים כפי שפורסמו באתר. מחזור 2: שחזור פואסון מסיכויי 1X2 שפורסמו באותו מודל.
+  </div>
+  
+<section class="gw">
+  <h2>מחזור 1
+    <span class="badge">10 משחקים</span>
+  </h2>
+  <p class="mini">מקור: xG מפורסם ב־Prem Projections</p>
+
+  <div class="teams-row">
+    <div class="team-box">
+      <h3>כובשות הכי הרבה</h3>
+      <div class="chip"><span class="n">1</span><b>ARS</b><span class="v">≈2.73 שערים</span></div><div class="chip"><span class="n">2</span><b>MCI</b><span class="v">≈2.43 שערים</span></div><div class="chip"><span class="n">3</span><b>MUN</b><span class="v">≈1.90 שערים</span></div>
+    </div>
+    <div class="team-box def">
+      <h3>סופגות הכי מעט</h3>
+      <div class="chip"><span class="n">1</span><b>ARS</b><span class="v">≈0.56 נגדן</span></div><div class="chip"><span class="n">2</span><b>MCI</b><span class="v">≈0.99 נגדן</span></div><div class="chip"><span class="n">3</span><b>MUN</b><span class="v">≈1.08 נגדן</span></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3 class="hi">3 משחקים עם הכי הרבה שערים</h3>
+      <table>
+        <thead><tr>
+          <th>#</th><th>משחק</th><th>בית ≈</th><th>חוץ ≈</th><th>סה״כ ≈</th>
+        </tr></thead>
+        <tbody><tr>
+<td class="rank">1</td>
+<td class="fix"><span class="home">NEW</span>
+<span class="vs">מול</span>
+<span class="away">LIV</span></td>
+<td class="xg">1.76</td>
+<td class="xg">1.77</td>
+<td class="proj">3.53</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="fix"><span class="home">MCI</span>
+<span class="vs">מול</span>
+<span class="away">BOU</span></td>
+<td class="xg">2.43</td>
+<td class="xg">0.99</td>
+<td class="proj">3.42</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="fix"><span class="home">ARS</span>
+<span class="vs">מול</span>
+<span class="away">COV</span></td>
+<td class="xg">2.73</td>
+<td class="xg">0.56</td>
+<td class="proj">3.29</td>
+</tr></tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h3 class="lo">3 משחקים עם הכי מעט שערים</h3>
+      <table>
+        <thead><tr>
+          <th>#</th><th>משחק</th><th>בית ≈</th><th>חוץ ≈</th><th>סה״כ ≈</th>
+        </tr></thead>
+        <tbody><tr>
+<td class="rank">1</td>
+<td class="fix"><span class="home">IPS</span>
+<span class="vs">מול</span>
+<span class="away">SUN</span></td>
+<td class="xg">1.37</td>
+<td class="xg">1.13</td>
+<td class="proj">2.50</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="fix"><span class="home">NFO</span>
+<span class="vs">מול</span>
+<span class="away">LEE</span></td>
+<td class="xg">1.40</td>
+<td class="xg">1.11</td>
+<td class="proj">2.51</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="fix"><span class="home">BHA</span>
+<span class="vs">מול</span>
+<span class="away">AVL</span></td>
+<td class="xg">1.45</td>
+<td class="xg">1.18</td>
+<td class="proj">2.63</td>
+</tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="gw">
+  <h2>מחזור 2
+    <span class="badge">10 משחקים</span>
+  </h2>
+  <p class="mini">מקור: שחזור מסיכויי 1X2 של Prem Projections</p>
+
+  <div class="teams-row">
+    <div class="team-box">
+      <h3>כובשות הכי הרבה</h3>
+      <div class="chip"><span class="n">1</span><b>MUN</b><span class="v">≈2.20 שערים</span></div><div class="chip"><span class="n">2</span><b>LIV</b><span class="v">≈1.70 שערים</span></div><div class="chip"><span class="n">3</span><b>MCI</b><span class="v">≈1.50 שערים</span></div>
+    </div>
+    <div class="team-box def">
+      <h3>סופגות הכי מעט</h3>
+      <div class="chip"><span class="n">1</span><b>MUN</b><span class="v">≈0.75 נגדן</span></div><div class="chip"><span class="n">2</span><b>MCI</b><span class="v">≈0.78 נגדן</span></div><div class="chip"><span class="n">3</span><b>SUN</b><span class="v">≈0.82 נגדן</span></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="panel">
+      <h3 class="hi">3 משחקים עם הכי הרבה שערים</h3>
+      <table>
+        <thead><tr>
+          <th>#</th><th>משחק</th><th>בית ≈</th><th>חוץ ≈</th><th>סה״כ ≈</th>
+        </tr></thead>
+        <tbody><tr>
+<td class="rank">1</td>
+<td class="fix"><span class="home">MUN</span>
+<span class="vs">מול</span>
+<span class="away">IPS</span></td>
+<td class="xg">2.20</td>
+<td class="xg">0.75</td>
+<td class="proj">2.95</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="fix"><span class="home">LIV</span>
+<span class="vs">מול</span>
+<span class="away">NFO</span></td>
+<td class="xg">1.70</td>
+<td class="xg">0.95</td>
+<td class="proj">2.65</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="fix"><span class="home">COV</span>
+<span class="vs">מול</span>
+<span class="away">HUL</span></td>
+<td class="xg">1.50</td>
+<td class="xg">0.95</td>
+<td class="proj">2.45</td>
+</tr></tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <h3 class="lo">3 משחקים עם הכי מעט שערים</h3>
+      <table>
+        <thead><tr>
+          <th>#</th><th>משחק</th><th>בית ≈</th><th>חוץ ≈</th><th>סה״כ ≈</th>
+        </tr></thead>
+        <tbody><tr>
+<td class="rank">1</td>
+<td class="fix"><span class="home">BOU</span>
+<span class="vs">מול</span>
+<span class="away">EVE</span></td>
+<td class="xg">1.18</td>
+<td class="xg">0.93</td>
+<td class="proj">2.11</td>
+</tr><tr>
+<td class="rank">2</td>
+<td class="fix"><span class="home">SUN</span>
+<span class="vs">מול</span>
+<span class="away">FUL</span></td>
+<td class="xg">1.30</td>
+<td class="xg">0.82</td>
+<td class="proj">2.12</td>
+</tr><tr>
+<td class="rank">3</td>
+<td class="fix"><span class="home">TOT</span>
+<span class="vs">מול</span>
+<span class="away">NEW</span></td>
+<td class="xg">1.13</td>
+<td class="xg">1.03</td>
+<td class="proj">2.16</td>
+</tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+  <p class="note">≈ שערים צפויים לפי המודל החיצוני. לא הבטחה.
+  לרענון: <code>python .cursor/skills/fpl-agent/scripts/gw_goals_board.py</code></p>
+</div>
+</body>
+</html>

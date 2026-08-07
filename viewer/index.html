@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <title>Eli FPL</title>
+  <style>
+    :root {
+      --bg: #0f1410;
+      --panel: #182018;
+      --ink: #f2f5f0;
+      --muted: #9aab9d;
+      --accent: #c8f06c;
+      --line: #2a3a2c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Segoe UI, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+    .wrap { max-width: 520px; margin: 0 auto; }
+    h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    .sub { color: var(--muted); margin-bottom: 22px; font-size: .92rem; line-height: 1.45; }
+    .card {
+      display: block;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      color: inherit;
+      text-decoration: none;
+    }
+    .card:active { border-color: var(--accent); }
+    .card b { display: block; color: var(--accent); font-size: 1.05rem; margin-bottom: 4px; }
+    .card span { color: var(--muted); font-size: .85rem; line-height: 1.4; }
+    .hint {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Eli FPL</h1>
+    <div class="sub">סגלים ואלטרנטיבות ל־GW1–6 · פתיחה מהטלפון</div>
+
+    <a class="card" href="alternatives.html">
+      <b>כל הסגלים</b>
+      <span>Top 1K + Isak/Šeško · BB GW2 · LTFPL · שאר האלטרנטיבות</span>
+    </a>
+    <a class="card" href="squad.html">
+      <b>סגל ראשי</b>
+      <span>מגרש + טבלה + יתרונות/חסרונות GW1–2</span>
+    </a>
+    <a class="card" href="squad.html#gw12">
+      <b>יתרונות / חסרונות GW1–2</b>
+      <span>באותו דף הסגל — גלילה ישירות לטבלה</span>
+    </a>
+    <a class="card" href="goals_watchlist.html">
+      <b>רשימת כובשים</b>
+      <span>Top 20 צפויים ל־5 המחזורים הבאים</span>
+    </a>
+    <a class="card" href="keepers_watchlist.html">
+      <b>רשימת שוערים</b>
+      <span>Top 20 לפי ≈נקודות · CS · עצירות · פנדלים</span>
+    </a>
+    <a class="card" href="gw_goals_board.html">
+      <b>שערים במחזורים 1–2</b>
+      <span>לפי Prem Projections · 3 פתוחים + 3 סגורים · כובשות / סופגות</span>
+    </a>
+
+    <p class="hint">
+      טיפ: ב־Safari/Chrome אפשר «הוסף למסך הבית» לגישה מהירה.
+      לעדכון אחרי שינויים בסגל — לרענן את הדף.
+    </p>
+  </div>
+</body>
+</html>
