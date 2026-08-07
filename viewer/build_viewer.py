@@ -34,6 +34,7 @@ HE = {
     "van Ewijk": "ואן אווייק",
     "Guéhi": "גווהי",
     "E.Le Fée": "לה פה",
+    "Xhaka": "שאקה",
     "Verbruggen": "ורברוגן",
     "Willock": "ווילוק",
     "Alderete": "אלדרטה",
