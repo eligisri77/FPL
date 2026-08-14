@@ -40,6 +40,8 @@ HE = {
     "B.Fernandes": "ברנו",
     "Foden": "פודן",
     "Rudoni": "רודוני",
+    "Caicedo": "קאיסדו",
+    "Sakamoto": "סאקאמוטו",
     "Verbruggen": "ורברוגן",
     "Willock": "ווילוק",
     "Alderete": "אלדרטה",
