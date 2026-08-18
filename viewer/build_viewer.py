@@ -49,6 +49,16 @@ HE = {
     "Eze": "איזה",
     "Rogers": "רוג׳רס",
     "Mateta": "מאטטה",
+    "Aina": "איינה",
+    "Gvardiol": "גווארדיול",
+    "Diop": "דיופ",
+    "Gibbs-White": "גיבס-ווייט",
+    "Saka": "סאקה",
+    "Tonali": "טונאלי",
+    "Brobbey": "ברובי",
+    "Gyökeres": "ייקרש",
+    "Angulo": "אנגולו",
+    "Robertson": "רוברטסון",
 }
 
 
@@ -78,6 +88,7 @@ def build_gw12_from_live(squad: dict) -> list[dict]:
                 "vice": p.get("vice", False),
                 "gw1": p["gw1"],
                 "gw2": p["gw2"],
+                "alt": p.get("alt"),
             }
         )
     return out
