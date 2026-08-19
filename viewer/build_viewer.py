@@ -59,6 +59,11 @@ HE = {
     "Gyökeres": "ייקרש",
     "Angulo": "אנגולו",
     "Robertson": "רוברטסון",
+    "Tzolis": "צוליס",
+    "Muharemović": "מוהרמוביץ׳",
+    "Palmer": "פאלמר",
+    "Sarr": "סאר",
+    "Gomez": "גומז",
 }
 
 
