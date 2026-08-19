@@ -73,6 +73,93 @@ def get_json(url: str):
         return json.load(r)
 
 
+def _list_html(items: list | None, cls: str) -> str:
+    arr = items if items else ["—"]
+    return "<ul class='" + cls + "'>" + "".join(f"<li>{x}</li>" for x in arr) + "</ul>"
+
+
+def _gw_td(g: dict | None) -> str:
+    if not g:
+        return "<td>—</td>"
+    pts = (
+        f'<div class="pts">תחזית ≈ {float(g["pts"]):.1f}</div>'
+        if g.get("pts") is not None
+        else ""
+    )
+    return f"""  <td>
+    <div class="fix">{g.get("opp")} ({g.get("loc")}) · קבוצה≈{float(g.get("xg") or 0):.2f} · נגד≈{float(g.get("conc") or 0):.2f}</div>
+    {pts}
+    <div class="split">
+      <div><div class="lab plus">יתרונות</div>{_list_html(g.get("pros"), "pros")}</div>
+      <div><div class="lab minus">חסרונות</div>{_list_html(g.get("cons"), "cons")}</div>
+    </div>
+  </td>"""
+
+
+def write_gw12_table(gw12: list[dict], path: Path, squad: dict) -> None:
+    """Keep the standalone mobile table in sync with live.json."""
+    if not path.exists() or not gw12:
+        return
+    html = path.read_text(encoding="utf-8")
+    pos_order = {"GK": 1, "DEF": 2, "MID": 3, "FWD": 4}
+    rows = sorted(
+        gw12,
+        key=lambda p: (0 if p.get("xi") else 1, pos_order.get(p["pos"], 9), -p["price"]),
+    )
+    body = []
+    for p in rows:
+        mark = " (C)" if p.get("captain") else " (VC)" if p.get("vice") else ""
+        slot = "הרכב" if p.get("xi") else "ספסל"
+        cls = ' class="bn"' if not p.get("xi") else ""
+        alt = p.get("alt")
+        if alt:
+            you = float((p.get("gw1") or {}).get("pts") or 0) + float(
+                (p.get("gw2") or {}).get("pts") or 0
+            )
+            them = (
+                float(alt.get("pts_gw1") or 0) + float(alt.get("pts_gw2") or 0)
+                if alt.get("pts_gw1") is not None
+                else None
+            )
+            cmp = (
+                f'<span class="pts">אתה {you:.1f} · מחליף {them:.1f} (שני מחזורים)</span>'
+                if them is not None
+                else ""
+            )
+            alt_html = (
+                f'<div class="alt"><b>{alt.get("name_he") or alt.get("name")}</b> · '
+                f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}'
+                f'<span class="why">{alt.get("why") or ""}</span>{cmp}</div>'
+            )
+        else:
+            alt_html = '<span style="color:#9aab9d">—</span>'
+        body.append(
+            f'<tr{cls}>\n  <td class="name"><b>{p["name"]}{mark}</b>'
+            f'<div class="meta">{p["pos"]} · {p["team"]} · £{float(p["price"]):.1f} · {slot}</div></td>\n'
+            f"{_gw_td(p.get('gw1'))}\n{_gw_td(p.get('gw2'))}\n  <td>{alt_html}</td>\n</tr>"
+        )
+    tbody = "\n".join(body)
+    html2, n = re.subn(
+        r"(<tbody>\s*).*?(\s*</tbody>)",
+        rf"\1\n{tbody}\n\2",
+        html,
+        count=1,
+        flags=re.S,
+    )
+    if n != 1:
+        print("warn: could not patch squad_gw12_table tbody")
+        return
+    html2, _ = re.subn(
+        r'(<div class="sub">).*?(</div>)',
+        r"\1לפי הצילום שלך · מקור שערים: Prem Projections · תחזית נקודות: מודל אלי (לא ep הרשמי) · בלי כפל קפטן · בוסט GW2 · WC GW3\2",
+        html2,
+        count=1,
+        flags=re.S,
+    )
+    path.write_text(html2, encoding="utf-8")
+    print(f"Updated {path}")
+
+
 def build_gw12_from_live(squad: dict) -> list[dict]:
     """Prefer analysis already on squad players; else empty."""
     out = []
@@ -124,10 +211,13 @@ def main() -> None:
                 return teams[f["team_h"]]["short_name"] + "(A)", f.get("team_a_difficulty", 3)
         return "—", 3
 
+    live_by_id = {x["id"]: x for x in (squad.get("players") or [])}
     players = []
     for pid in squad["player_ids"]:
         p = by_id[pid]
         opp, fdr = next_fix(p["team"])
+        live = live_by_id.get(pid) or {}
+        model_ep = (live.get("gw1") or {}).get("pts")
         players.append(
             {
                 "id": pid,
@@ -136,7 +226,7 @@ def main() -> None:
                 "pos": {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}[p["element_type"]],
                 "price": p["now_cost"] / 10,
                 "own": float(p["selected_by_percent"] or 0),
-                "ep": float(p["ep_next"] or 0),
+                "ep": float(model_ep if model_ep is not None else (p["ep_next"] or 0)),
                 "opp": opp,
                 "fdr": fdr,
                 "captain": pid == squad.get("captain_id"),
@@ -236,8 +326,16 @@ def main() -> None:
         count=1,
         flags=re.S,
     )
+    html2, _ = re.subn(
+        r'(<div class="gw12-sub">).*?(</div>)',
+        r"\1לפי Prem Projections · תחזית נקודות: מודל אלי (לא ep הרשמי של FPL) · בלי כפל קפטן · מחליף עד אותו מחיר\2",
+        html2,
+        count=1,
+        flags=re.S,
+    )
 
     html_path.write_text(html2, encoding="utf-8")
+    write_gw12_table(gw12, ROOT / "viewer" / "squad_gw12_table.html", squad)
     print(f"Updated {out_json}")
     print(f"Updated {html_path} (GW12 rows={len(gw12)})")
 
