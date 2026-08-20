@@ -47,6 +47,8 @@ ROLE: dict[int, tuple[float, float, str]] = {
     502: (0.03, 0.12, "fb"),  # Robertson
     391: (0.04, 0.06, "cb"),  # Gvardiol
     334: (0.02, 0.03, "cb"),
+    332: (0.03, 0.08, "fb"),  # Justin
+    534: (0.03, 0.10, "fb"),  # Hume
     539: (0.02, 0.03, "cb"),
     87: (0.02, 0.03, "cb"),
     259: (0.02, 0.03, "cb"),  # Diop
@@ -107,9 +109,11 @@ def xpts(
     conc: float,
     pid: int | None = None,
 ) -> float:
-    xg_s, xa_s, role = ROLE.get(pid) if pid is not None else (None, None, None)
-    if xg_s is None:
+    got = ROLE.get(pid) if pid is not None else None
+    if got is None:
         xg_s, xa_s, role = default_role(pos, price, name)
+    else:
+        xg_s, xa_s, role = got
     p_xg = team_xg * xg_s
     p_xa = team_xg * xa_s
     appear = 2.0

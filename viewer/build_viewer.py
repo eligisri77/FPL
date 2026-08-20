@@ -61,6 +61,8 @@ HE = {
     "Robertson": "רוברטסון",
     "Tzolis": "צוליס",
     "Muharemović": "מוהרמוביץ׳",
+    "Justin": "ג׳סטין",
+    "Hume": "יום",
     "Palmer": "פאלמר",
     "Sarr": "סאר",
     "Gomez": "גומז",
