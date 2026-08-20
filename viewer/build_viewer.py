@@ -158,6 +158,18 @@ def write_gw12_table(gw12: list[dict], path: Path, squad: dict) -> None:
         count=1,
         flags=re.S,
     )
+    names = " · ".join(
+        p.get("name_he") or p.get("name") or "?"
+        for p in rows
+        if p.get("xi")
+    )
+    html2, _ = re.subn(
+        r'(<div class="warn">).*?(</div>)',
+        rf'\1שימו לב: מבאומו וברנו שני קשרים של יונייטד — לפי הכללים אסור שני שחקנים מאותה קבוצה באותה עמדה. סגל: {names}.\2',
+        html2,
+        count=1,
+        flags=re.S,
+    )
     path.write_text(html2, encoding="utf-8")
     print(f"Updated {path}")
 
