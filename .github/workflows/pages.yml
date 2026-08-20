@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -30,7 +30,6 @@ jobs:
           cp -r viewer _site/
           rm -f _site/viewer/*.py
           touch _site/.nojekyll
-          # Bust CDN/browser caches after every deploy
           echo "deployed=$(date -u +%Y%m%d%H%M%S)" > _site/version.txt
 
       - uses: actions/configure-pages@v5
@@ -41,22 +40,3 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
-
-      # Keep gh-pages branch in sync (old Pages source / bookmarks)
-      - name: Sync gh-pages branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin gh-pages || true
-          work=/tmp/gh-pages-sync
-          rm -rf "$work"
-          mkdir -p "$work"
-          cp -a _site/. "$work/"
-          cd "$work"
-          git init
-          git checkout -b gh-pages
-          git add -A
-          git commit -m "Sync Pages from main ${{ github.sha }}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages:gh-pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
