@@ -115,19 +115,18 @@ def write_gw12_table(gw12: list[dict], path: Path, squad: dict) -> None:
         cls = ' class="bn"' if not p.get("xi") else ""
         alt = p.get("alt")
         if alt:
-            you = float((p.get("gw1") or {}).get("pts") or 0) + float(
-                (p.get("gw2") or {}).get("pts") or 0
-            )
-            them = (
-                float(alt.get("pts_gw1") or 0) + float(alt.get("pts_gw2") or 0)
-                if alt.get("pts_gw1") is not None
-                else None
-            )
-            cmp = (
-                f'<span class="pts">אתה {you:.1f} · מחליף {them:.1f} (שני מחזורים)</span>'
-                if them is not None
-                else ""
-            )
+            y1 = float((p.get("gw1") or {}).get("pts") or 0)
+            y2 = float((p.get("gw2") or {}).get("pts") or 0)
+            a1 = alt.get("pts_gw1")
+            a2 = alt.get("pts_gw2")
+            if a1 is not None:
+                a2s = f"{float(a2):.1f}" if a2 is not None else "—"
+                cmp = (
+                    f'<span class="pts">מ1: אתה {y1:.1f} · מחליף {float(a1):.1f}</span>'
+                    f'<span class="pts">מ2: אתה {y2:.1f} · מחליף {a2s}</span>'
+                )
+            else:
+                cmp = ""
             alt_html = (
                 f'<div class="alt"><b>{alt.get("name_he") or alt.get("name")}</b> · '
                 f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}'
