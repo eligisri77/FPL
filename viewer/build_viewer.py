@@ -69,6 +69,7 @@ HE = {
     "Thiago": "תיאגו",
     "Gakpo": "גקפו",
     "N.Williams": "נ. ויליאמס",
+    "Maguire": "מאגווייר",
     "Palmer": "פאלמר",
     "Sarr": "סאר",
     "Gomez": "גומז",
@@ -363,7 +364,7 @@ def main() -> None:
     )
     html2, _ = re.subn(
         r'(<div class="gw12-sub">).*?(</div>)',
-        r"\1לפי Prem Projections · תחזית: מודל אלי · עמודת שדרוג עד ITB · בלי כפל קפטן\2",
+        r"\1לפי Prem Projections · תחזית: מודל אלי · מחליף בטווח ±£0.5 · בלי כפל קפטן\2",
         html2,
         count=1,
         flags=re.S,
