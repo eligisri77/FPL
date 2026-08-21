@@ -30,6 +30,8 @@ ROLE: dict[int, tuple[float, float, str]] = {
     379: (0.34, 0.10, "st"),  # Isak
     165: (0.30, 0.12, "st"),  # João Pedro
     106: (0.32, 0.08, "st"),  # Thiago BRE
+    367: (0.16, 0.12, "w"),  # Gakpo
+    469: (0.04, 0.12, "fb"),  # N.Williams
     491: (0.28, 0.08, "st"),  # Igor Jesus
     25: (0.36, 0.08, "st"),  # Gyökeres
     552: (0.32, 0.06, "st"),  # Brobbey

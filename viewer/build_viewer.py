@@ -67,6 +67,8 @@ HE = {
     "Gabriel": "גבריאל",
     "João Pedro": "ז׳ואאו פדרו",
     "Thiago": "תיאגו",
+    "Gakpo": "גקפו",
+    "N.Williams": "נ. ויליאמס",
     "Palmer": "פאלמר",
     "Sarr": "סאר",
     "Gomez": "גומז",
