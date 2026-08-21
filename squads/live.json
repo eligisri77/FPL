@@ -63,17 +63,17 @@
       "vice": false,
       "squad_position": 1,
       "alt": {
-        "id": 226,
-        "name": "Pickford",
-        "name_he": "פיקפורד",
-        "team": "EVE",
+        "id": 384,
+        "name": "Donnarumma",
+        "name_he": "דונארומה",
+        "team": "MCI",
         "pos": "GK",
         "price": 5.5,
         "delta": -0.5,
-        "why": "מחליף בטווח ±£0.5 · £-0.5",
+        "why": "מחליף בטווח ±£0.5 · £-0.5 · ייחודי ברשימה",
         "kind": "pm05",
-        "pts_gw1": 3.8,
-        "pts_gw2": 3.9
+        "pts_gw1": 4.3,
+        "pts_gw2": 4.6
       },
       "gw1": {
         "opp": "COV",
@@ -166,17 +166,17 @@
       "vice": false,
       "squad_position": 3,
       "alt": {
-        "id": 469,
-        "name": "N.Williams",
-        "name_he": "נ. ויליאמס",
-        "team": "NFO",
+        "id": 112,
+        "name": "Van Hecke",
+        "name_he": "ואן הק",
+        "team": "TOT",
         "pos": "DEF",
         "price": 5.0,
         "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי ברשימה",
         "kind": "pm05",
-        "pts_gw1": 4.1,
-        "pts_gw2": 2.8
+        "pts_gw1": 3.5,
+        "pts_gw2": 4.1
       },
       "gw1": {
         "opp": "IPS",
@@ -231,7 +231,7 @@
         "pos": "DEF",
         "price": 5.0,
         "delta": 0.0,
-        "why": "מחליף בטווח ±£0.5 · אותו מחיר",
+        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 4.1,
         "pts_gw2": 2.8
@@ -289,7 +289,7 @@
         "pos": "MID",
         "price": 7.0,
         "delta": 0.0,
-        "why": "מחליף בטווח ±£0.5 · אותו מחיר",
+        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 3.9,
         "pts_gw2": 4.2
@@ -345,7 +345,7 @@
         "pos": "MID",
         "price": 8.5,
         "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 5.4,
         "pts_gw2": 4.4
@@ -446,7 +446,7 @@
         "pos": "MID",
         "price": 7.0,
         "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 4.9,
         "pts_gw2": 4.0
@@ -496,17 +496,17 @@
       "vice": false,
       "squad_position": 9,
       "alt": {
-        "id": 55,
-        "name": "Watkins",
-        "name_he": "ווטקינס",
-        "team": "AVL",
+        "id": 401,
+        "name": "Marmoush",
+        "name_he": "Marmoush",
+        "team": "MCI",
         "pos": "FWD",
-        "price": 8.0,
-        "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "price": 7.0,
+        "delta": -0.5,
+        "why": "מחליף בטווח ±£0.5 · £-0.5 · ייחודי ברשימה",
         "kind": "pm05",
-        "pts_gw1": 3.9,
-        "pts_gw2": 3.5
+        "pts_gw1": 5.9,
+        "pts_gw2": 4.4
       },
       "gw1": {
         "opp": "FUL",
@@ -559,7 +559,7 @@
         "pos": "FWD",
         "price": 8.0,
         "delta": 0.0,
-        "why": "מחליף בטווח ±£0.5 · אותו מחיר",
+        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 3.9,
         "pts_gw2": 3.5
@@ -652,17 +652,17 @@
       "vice": false,
       "squad_position": 12,
       "alt": {
-        "id": 467,
-        "name": "Sels",
-        "name_he": "סלס",
-        "team": "NFO",
+        "id": 140,
+        "name": "Sánchez",
+        "name_he": "סאנצ׳ס",
+        "team": "CHE",
         "pos": "GK",
         "price": 5.0,
         "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי ברשימה",
         "kind": "pm05",
-        "pts_gw1": 4.0,
-        "pts_gw2": 3.3
+        "pts_gw1": 3.8,
+        "pts_gw2": 4.2
       },
       "gw1": {
         "opp": "MCI",
@@ -717,7 +717,7 @@
         "pos": "MID",
         "price": 5.5,
         "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 3.6,
         "pts_gw2": 3.6
@@ -767,17 +767,17 @@
       "vice": false,
       "squad_position": 14,
       "alt": {
-        "id": 469,
-        "name": "N.Williams",
-        "name_he": "נ. ויליאמס",
-        "team": "NFO",
+        "id": 204,
+        "name": "Mitchell",
+        "name_he": "מיטשל",
+        "team": "CRY",
         "pos": "DEF",
-        "price": 5.0,
-        "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "price": 4.5,
+        "delta": 0.0,
+        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי ברשימה",
         "kind": "pm05",
-        "pts_gw1": 4.1,
-        "pts_gw2": 2.8
+        "pts_gw1": 3.4,
+        "pts_gw2": 3.2
       },
       "gw1": {
         "opp": "TOT",
@@ -822,14 +822,14 @@
       "vice": false,
       "squad_position": 15,
       "alt": {
-        "id": 469,
-        "name": "N.Williams",
-        "name_he": "נ. ויליאמס",
+        "id": 473,
+        "name": "Aina",
+        "name_he": "איינה",
         "team": "NFO",
         "pos": "DEF",
-        "price": 5.0,
-        "delta": 0.5,
-        "why": "מחליף בטווח ±£0.5 · +£0.5",
+        "price": 4.5,
+        "delta": 0.0,
+        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי ברשימה",
         "kind": "pm05",
         "pts_gw1": 4.1,
         "pts_gw2": 2.8
