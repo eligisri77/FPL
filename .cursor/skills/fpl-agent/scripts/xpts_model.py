@@ -28,12 +28,14 @@ YELLOW = {"GK": -0.04, "DEF": -0.14, "MID": -0.12, "FWD": -0.08}
 ROLE: dict[int, tuple[float, float, str]] = {
     411: (0.48, 0.08, "st"),  # Haaland
     379: (0.34, 0.10, "st"),  # Isak
+    165: (0.30, 0.12, "st"),  # João Pedro
+    106: (0.32, 0.08, "st"),  # Thiago BRE
     491: (0.28, 0.08, "st"),  # Igor Jesus
     25: (0.36, 0.08, "st"),  # Gyökeres
     552: (0.32, 0.06, "st"),  # Brobbey
     426: (0.14, 0.22, "am"),  # Bruno
     154: (0.18, 0.20, "am"),  # Palmer
-    427: (0.20, 0.12, "cf"),  # Mbeumo (CF vs Hull)
+    427: (0.20, 0.12, "cf"),  # Mbeumo
     480: (0.12, 0.16, "am"),  # Gibbs-White
     557: (0.12, 0.14, "w"),  # Tzolis
     208: (0.14, 0.10, "w"),  # Sarr
@@ -41,6 +43,7 @@ ROLE: dict[int, tuple[float, float, str]] = {
     159: (0.03, 0.06, "dm"),  # Caicedo
     551: (0.08, 0.08, "cm"),  # Angulo
     127: (0.08, 0.10, "cm"),  # Gomez
+    4: (0.03, 0.04, "cb"),  # Gabriel
     8: (0.05, 0.10, "fb"),  # Calafiori
     175: (0.04, 0.10, "fb"),  # van Ewijk
     473: (0.04, 0.12, "fb"),  # Aina
@@ -51,7 +54,8 @@ ROLE: dict[int, tuple[float, float, str]] = {
     534: (0.03, 0.10, "fb"),  # Hume
     539: (0.02, 0.03, "cb"),
     87: (0.02, 0.03, "cb"),
-    259: (0.02, 0.03, "cb"),  # Diop
+    259: (0.02, 0.03, "cb"),
+    1: (0.002, 0.002, "gk"),  # Raya
     412: (0.002, 0.002, "gk"),
     57: (0.002, 0.002, "gk"),
     109: (0.002, 0.002, "gk"),

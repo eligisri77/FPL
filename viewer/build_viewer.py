@@ -63,9 +63,17 @@ HE = {
     "Muharemović": "מוהרמוביץ׳",
     "Justin": "ג׳סטין",
     "Hume": "יום",
+    "Raya": "ראיה",
+    "Gabriel": "גבריאל",
+    "João Pedro": "ז׳ואאו פדרו",
+    "Thiago": "תיאגו",
     "Palmer": "פאלמר",
     "Sarr": "סאר",
     "Gomez": "גומז",
+    "Saliba": "סאליבה",
+    "Semenyo": "סמניו",
+    "Ndiaye": "נדיאייה",
+    "Wirtz": "וירץ",
 }
 
 
@@ -121,15 +129,27 @@ def write_gw12_table(gw12: list[dict], path: Path, squad: dict) -> None:
             a2 = alt.get("pts_gw2")
             if a1 is not None:
                 a2s = f"{float(a2):.1f}" if a2 is not None else "—"
+                is_up = alt.get("kind") == "upgrade" or float(alt.get("delta") or 0) > 0
+                label = "שדרוג" if is_up else "מחליף"
+                delta = (
+                    f" (+£{float(alt['delta']):.1f})"
+                    if alt.get("delta") is not None
+                    else ""
+                )
                 cmp = (
-                    f'<span class="pts">מ1: אתה {y1:.1f} · מחליף {float(a1):.1f}</span>'
-                    f'<span class="pts">מ2: אתה {y2:.1f} · מחליף {a2s}</span>'
+                    f'<span class="pts">מ1: אתה {y1:.1f} · {label} {float(a1):.1f}</span>'
+                    f'<span class="pts">מ2: אתה {y2:.1f} · {label} {a2s}</span>'
                 )
             else:
                 cmp = ""
+                delta = (
+                    f" (+£{float(alt['delta']):.1f})"
+                    if alt.get("delta") is not None
+                    else ""
+                )
             alt_html = (
                 f'<div class="alt"><b>{alt.get("name_he") or alt.get("name")}</b> · '
-                f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}'
+                f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}{delta}'
                 f'<span class="why">{alt.get("why") or ""}</span>{cmp}</div>'
             )
         else:
@@ -341,7 +361,7 @@ def main() -> None:
     )
     html2, _ = re.subn(
         r'(<div class="gw12-sub">).*?(</div>)',
-        r"\1לפי Prem Projections · תחזית נקודות: מודל אלי (לא ep הרשמי של FPL) · בלי כפל קפטן · מחליף עד אותו מחיר\2",
+        r"\1לפי Prem Projections · תחזית: מודל אלי · עמודת שדרוג עד ITB · בלי כפל קפטן\2",
         html2,
         count=1,
         flags=re.S,
