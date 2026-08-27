@@ -21,25 +21,24 @@ ROOT = Path(__file__).resolve().parents[4]
 DATA = ROOT / "data"
 VIEWER = ROOT / "viewer"
 
-# Bet365 decimal odds for EPL GW1 (sources: Bet365 quotes via Flashscore /
-# market roundups dated mid–late Aug 2026). Fulham–Chelsea: Bet365 Chelsea ~19/20.
-# Odds change — refresh before using.
+# Bet365 decimal odds for current GW (sources: Bet365 via betting.bet,
+# refreshed ~2026-08-27). Odds change — check live before using.
 BOOKIE = "Bet365"
 BOOKIE_HE = "Bet365"
-GW = 1
+GW = 2
 
 # home, draw, away decimals
 ODDS: dict[tuple[str, str], tuple[float, float, float]] = {
-    ("ARS", "COV"): (1.17, 7.00, 14.00),
-    ("HUL", "MUN"): (7.00, 4.60, 1.39),
-    ("EVE", "CRY"): (2.10, 3.40, 3.20),
-    ("IPS", "SUN"): (2.65, 3.25, 2.50),
-    ("NFO", "LEE"): (2.20, 3.40, 3.00),
-    ("BRE", "TOT"): (2.37, 3.40, 2.70),
-    ("BHA", "AVL"): (2.20, 3.50, 2.85),
-    ("MCI", "BOU"): (1.44, 4.75, 5.75),
-    ("NEW", "LIV"): (3.30, 3.75, 1.93),
-    ("FUL", "CHE"): (3.50, 3.60, 1.95),
+    ("CRY", "MCI"): (4.60, 3.90, 1.67),
+    ("LIV", "NFO"): (1.53, 4.20, 5.50),
+    ("BOU", "EVE"): (2.05, 3.40, 3.40),
+    ("COV", "HUL"): (1.85, 3.50, 3.90),
+    ("TOT", "NEW"): (2.30, 3.50, 2.90),
+    ("CHE", "BHA"): (1.91, 3.70, 3.70),
+    ("LEE", "BRE"): (2.50, 3.30, 2.75),
+    ("SUN", "FUL"): (2.40, 3.20, 2.90),
+    ("MUN", "IPS"): (1.44, 4.50, 6.50),
+    ("AVL", "ARS"): (6.00, 4.00, 1.53),
 }
 
 HE_TEAM = {
@@ -310,7 +309,7 @@ h1 {{ margin:10px 0 6px; font-size:1.35rem; }}
   <div class="sub">{payload['note_he']}<br/>עודכן: {payload['updated']}</div>
   <div class="warn">18+ · הימורים ממכרים · זה לוח מידע ל־FPL בלבד, לא המלצה להמר. בדקו יחסים עדכניים באפליקציה לפני כל פעולה.</div>
   {body}
-  <p class="foot">מקור יחסי 1X2: {payload['bookie']} (סיכום שוק בריטי למחזור 1, אוג׳ 2026). תוצאה מדויקת משלימה מ־Prem Projections — לא יחס הימורים.</p>
+  <p class="foot">מקור יחסי 1X2: {payload['bookie']} (מחזור {payload['gw']}, אוג׳ 2026). תוצאה מדויקת משלימה מ־Prem Projections — לא יחס הימורים.</p>
 </div>
 </body>
 </html>
