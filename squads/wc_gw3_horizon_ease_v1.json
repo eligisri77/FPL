@@ -1,0 +1,22 @@
+{
+  "label": "wc_gw3_horizon_ease_v1",
+  "gw_from": 3,
+  "horizon": 6,
+  "formation": "3-4-3",
+  "player_ids": [385, 449, 88, 115, 426, 399, 367, 454, 411, 165, 464, 57, 258, 332, 565],
+  "xi_ids": [385, 449, 88, 115, 426, 399, 367, 454, 411, 165, 464],
+  "bench_ids": [57, 258, 332, 565],
+  "captain_id": 411,
+  "vice_id": 426,
+  "chip_plan": {
+    "GW2": "BB",
+    "GW3": "WC",
+    "GW4": null
+  },
+  "notes": "Wildcard template GW3–8: Horizon Ease (NEW/LIV/FUL/BHA) + early form. Haaland (C) vs COV. Keep Bruno. No Salah. No two same club/position. ITB £0.0 (target 0.2 — tweak later).",
+  "build_logic": [
+    "Target clubs: NEW (ease #1), LIV (#4), MCI (Haaland), BRE form mids/defs",
+    "Avoid Hull defender trap despite early CS haul — regression + tough Horizon Ease rank",
+    "Thiago / Maguire / Tzolis / Gabriel out vs current live squad"
+  ]
+}
