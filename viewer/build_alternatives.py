@@ -11,7 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 # (title he, squad path, note override optional)
 ALTS: list[tuple[str, Path]] = [
-    ("0) GW1–2 בוסט חזק + ווילדקארד 3 (ראשי)", ROOT / "squads" / "gw1_2_strong_bench_wc3.json"),
+    ("WC GW3 · Horizon Ease (תבנית חדשה)", ROOT / "squads" / "wc_gw3_horizon_ease_v1.json"),
+    ("0) GW1–2 בוסט חזק + ווילדקארד 3 (ראשי / חי)", ROOT / "squads" / "gw1_2_strong_bench_wc3.json"),
     ("1) חלופה עם איסאק", ROOT / "squads" / "gw1_2_bb_alt_isak.json"),
     ("2) גמישות (פחות זולים)", ROOT / "squads" / "gw1_flex.json"),
     ("3) שיא נקודות עונה שעברה", ROOT / "squads" / "last_season_points.json"),
