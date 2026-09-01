@@ -77,7 +77,38 @@ HE = {
     "Semenyo": "סמניו",
     "Ndiaye": "נדיאייה",
     "Wirtz": "וירץ",
+    "Cherki": "שרקי",
+    "Suzuki": "סוזוקי",
+    "Hall": "הול",
+    "M.Sangaré": "מ. סנגרה",
+    "Szoboszlai": "סובוסלאי",
+    "Wissa": "ויסה",
 }
+
+
+def horizon_gws(squad: dict) -> list[int]:
+    g0 = int(squad.get("gw_from") or 3)
+    h = int(squad.get("horizon") or 6)
+    return list(range(g0, g0 + h))
+
+
+def _alt_horizon_html(p: dict, gws: list[int]) -> str:
+    alt = p.get("alt")
+    if not alt:
+        return '<span style="color:#9aab9d">—</span>'
+    you = sum(float((p.get(f"gw{g}") or {}).get("pts") or 0) for g in gws)
+    them = sum(float(alt.get(f"pts_gw{g}") or 0) for g in gws)
+    delta = (
+        f" (+£{float(alt['delta']):.1f})"
+        if alt.get("delta") is not None
+        else ""
+    )
+    return (
+        f'<div class="alt"><b>{alt.get("name_he") or alt.get("name")}</b> · '
+        f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}{delta}'
+        f'<span class="why">{alt.get("why") or ""}</span>'
+        f'<span class="pts">6 מח׳: אתה {you:.1f} · מחליף {them:.1f}</span></div>'
+    )
 
 
 def get_json(url: str):
@@ -109,91 +140,88 @@ def _gw_td(g: dict | None) -> str:
   </td>"""
 
 
-def write_gw12_table(gw12: list[dict], path: Path, squad: dict) -> None:
-    """Keep the standalone mobile table in sync with live.json."""
-    if not path.exists() or not gw12:
+def write_gw12_table(horizon: list[dict], path: Path, squad: dict, gws: list[int]) -> None:
+    """Keep the standalone horizon table in sync with live.json."""
+    if not path.exists() or not horizon:
         return
     html = path.read_text(encoding="utf-8")
     pos_order = {"GK": 1, "DEF": 2, "MID": 3, "FWD": 4}
     rows = sorted(
-        gw12,
+        horizon,
         key=lambda p: (0 if p.get("xi") else 1, pos_order.get(p["pos"], 9), -p["price"]),
     )
+    gw_hdr = "".join(f"<th>מחזור {g}</th>" for g in gws)
     body = []
     for p in rows:
         mark = " (C)" if p.get("captain") else " (VC)" if p.get("vice") else ""
         slot = "הרכב" if p.get("xi") else "ספסל"
         cls = ' class="bn"' if not p.get("xi") else ""
-        alt = p.get("alt")
-        if alt:
-            y1 = float((p.get("gw1") or {}).get("pts") or 0)
-            y2 = float((p.get("gw2") or {}).get("pts") or 0)
-            a1 = alt.get("pts_gw1")
-            a2 = alt.get("pts_gw2")
-            if a1 is not None:
-                a2s = f"{float(a2):.1f}" if a2 is not None else "—"
-                is_up = alt.get("kind") == "upgrade" or float(alt.get("delta") or 0) > 0
-                label = "שדרוג" if is_up else "מחליף"
-                delta = (
-                    f" (+£{float(alt['delta']):.1f})"
-                    if alt.get("delta") is not None
-                    else ""
-                )
-                cmp = (
-                    f'<span class="pts">מ1: אתה {y1:.1f} · {label} {float(a1):.1f}</span>'
-                    f'<span class="pts">מ2: אתה {y2:.1f} · {label} {a2s}</span>'
-                )
-            else:
-                cmp = ""
-                delta = (
-                    f" (+£{float(alt['delta']):.1f})"
-                    if alt.get("delta") is not None
-                    else ""
-                )
-            alt_html = (
-                f'<div class="alt"><b>{alt.get("name_he") or alt.get("name")}</b> · '
-                f'{alt.get("team")} {alt.get("pos")} · £{float(alt.get("price") or 0):.1f}{delta}'
-                f'<span class="why">{alt.get("why") or ""}</span>{cmp}</div>'
-            )
-        else:
-            alt_html = '<span style="color:#9aab9d">—</span>'
+        gw_cells = "".join(_gw_td(p.get(f"gw{g}")) for g in gws)
+        tot = sum(float((p.get(f"gw{g}") or {}).get("pts") or 0) for g in gws)
         body.append(
             f'<tr{cls}>\n  <td class="name"><b>{p["name"]}{mark}</b>'
             f'<div class="meta">{p["pos"]} · {p["team"]} · £{float(p["price"]):.1f} · {slot}</div></td>\n'
-            f"{_gw_td(p.get('gw1'))}\n{_gw_td(p.get('gw2'))}\n  <td>{alt_html}</td>\n</tr>"
+            f"{gw_cells}\n  <td><div class=\"pts\">{tot:.1f}</div></td>\n"
+            f"  <td>{_alt_horizon_html(p, gws)}</td>\n</tr>"
         )
     tbody = "\n".join(body)
     html2, n = re.subn(
-        r"(<tbody>\s*).*?(\s*</tbody>)",
-        rf"\1\n{tbody}\n\2",
+        r"(<thead>\s*<tr>).*?(</tr>\s*</thead>)",
+        rf"\1<th>שחקן</th>{gw_hdr}<th>סה״כ 6</th><th>מחליף ±£0.5</th>\2",
         html,
         count=1,
         flags=re.S,
     )
     if n != 1:
-        print("warn: could not patch squad_gw12_table tbody")
-        return
-    html2, _ = re.subn(
-        r'(<div class="sub">).*?(</div>)',
-        r"\1לפי הצילום שלך · מקור שערים: Prem Projections · תחזית נקודות: מודל אלי (לא ep הרשמי) · בלי כפל קפטן · בוסט GW2 · WC GW3\2",
+        print("warn: could not patch horizon table thead")
+    html2, n2 = re.subn(
+        r"(<tbody>\s*).*?(\s*</tbody>)",
+        rf"\1\n{tbody}\n\2",
         html2,
         count=1,
         flags=re.S,
     )
-    names = " · ".join(
-        p.get("name_he") or p.get("name") or "?"
-        for p in rows
-        if p.get("xi")
-    )
+    if n2 != 1:
+        print("warn: could not patch horizon table tbody")
+        return
+    g0, g1 = gws[0], gws[-1]
     html2, _ = re.subn(
-        r'(<div class="warn">).*?(</div>)',
-        rf'\1שימו לב: מבאומו וברנו שני קשרים של יונייטד — לפי הכללים אסור שני שחקנים מאותה קבוצה באותה עמדה. סגל: {names}.\2',
+        r'(<div class="sub">).*?(</div>)',
+        rf"\1סגל WC · מחזורים {g0}–{g1} · תחזית: מודל אלי (לא ep הרשמי) · בלי כפל קפטן\2",
         html2,
         count=1,
         flags=re.S,
     )
     path.write_text(html2, encoding="utf-8")
     print(f"Updated {path}")
+
+
+def build_horizon_from_live(squad: dict, gws: list[int]) -> list[dict]:
+    """Build horizon rows from squad players gw* blocks."""
+    out = []
+    xi = set(squad.get("xi_ids") or [])
+    for p in squad.get("players") or []:
+        if not any(f"gw{g}" in p for g in gws):
+            continue
+        row = {
+            "id": p["id"],
+            "name": p.get("name_he") or HE.get(p["name"], p["name"]),
+            "name_en": p["name"],
+            "team": p["team"],
+            "pos": p["pos"],
+            "price": p["price"],
+            "xi": p["id"] in xi if xi else p.get("xi", True),
+            "captain": p.get("captain", False),
+            "vice": p.get("vice", False),
+            "alt": p.get("alt"),
+        }
+        total = 0.0
+        for g in gws:
+            row[f"gw{g}"] = p.get(f"gw{g}")
+            total += float((p.get(f"gw{g}") or {}).get("pts") or 0)
+        row["horizon_total"] = round(total, 1)
+        out.append(row)
+    return out
 
 
 def build_gw12_from_live(squad: dict) -> list[dict]:
@@ -235,7 +263,8 @@ def main() -> None:
     fix = get_json("https://fantasy.premierleague.com/api/fixtures/")
     teams = {t["id"]: t for t in boot["teams"]}
     by_id = {p["id"]: p for p in boot["elements"]}
-    gw = squad.get("gw_from") or 1
+    gw = squad.get("gw_from") or 3
+    gws = horizon_gws(squad)
 
     def next_fix(team_id: int):
         for f in fix:
@@ -253,11 +282,18 @@ def main() -> None:
         p = by_id[pid]
         opp, fdr = next_fix(p["team"])
         live = live_by_id.get(pid) or {}
-        model_ep = (live.get("gw1") or {}).get("pts")
+        model_ep = 0.0
+        for g in gws:
+            model_ep += float((live.get(f"gw{g}") or {}).get("pts") or 0)
+        if not model_ep:
+            model_ep = float(p.get("ep_next") or 0)
+        else:
+            model_ep = round(model_ep / len(gws), 1)
         players.append(
             {
                 "id": pid,
-                "name": p["web_name"],
+                "name": live.get("name_he") or HE.get(p["web_name"], p["web_name"]),
+                "name_en": p["web_name"],
                 "team": teams[p["team"]]["short_name"],
                 "pos": {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}[p["element_type"]],
                 "price": p["now_cost"] / 10,
@@ -279,7 +315,9 @@ def main() -> None:
         },
         "players": players,
     }
-    gw12 = build_gw12_from_live(squad)
+    gw_horizon = build_horizon_from_live(squad, gws)
+    gws_payload = json.dumps(gws)
+    gw_horizon_payload = json.dumps(gw_horizon, ensure_ascii=False)
 
     out_json = ROOT / "data" / "squad_view.json"
     out_json.parent.mkdir(parents=True, exist_ok=True)
@@ -290,7 +328,7 @@ def main() -> None:
     payload = json.dumps(view, ensure_ascii=False)
     xi_ids = squad.get("xi_ids") or [p["id"] for p in players[:11]]
     xi_payload = json.dumps(xi_ids)
-    gw12_payload = json.dumps(gw12, ensure_ascii=False)
+    gw12_payload = gw_horizon_payload
 
     def patch_const(src: str, name: str, value: str) -> str:
         """Replace a whole `const NAME = ...` line (safe with `;` inside JSON strings)."""
@@ -332,6 +370,13 @@ def main() -> None:
             f"const GW12 = [];\n    const XI_IDS =",
             1,
         )
+    if "const HORIZON_GWS =" not in html2:
+        html2 = html2.replace(
+            "const GW12 =",
+            "const HORIZON_GWS = [];\n    const GW12 =",
+            1,
+        )
+    html2 = patch_const(html2, "HORIZON_GWS", gws_payload)
     html2 = patch_const(html2, "GW12", gw12_payload)
     html2 = patch_const(html2, "XI_IDS", xi_payload)
 
@@ -354,26 +399,40 @@ def main() -> None:
     if n3 != 1:
         print("warn: could not patch summary note")
 
-    # subtitle
+    g0, g1 = gws[0], gws[-1]
+    html2, _ = re.subn(
+        r'(<h1>Eli\'s Team <span class="pill">).*?(</span></h1>)',
+        rf"\1GW{g0}–{g1}\2",
+        html2,
+        count=1,
+        flags=re.S,
+    )
     html2, _ = re.subn(
         r'(<div class="sub">).*?(</div>)',
-        r"\1סגל ראשי · בוסט GW2 · ווילדקארד GW3 · בלי Salah\2",
+        rf"\1סגל WC · מחזורים {g0}–{g1} · שרקי (C) · איסאק (VC) · בלי Salah\2",
+        html2,
+        count=1,
+        flags=re.S,
+    )
+    html2, _ = re.subn(
+        r'(<section class="gw12-wrap[^"]*"[^>]*>\s*<h2>).*?(</h2>)',
+        rf"\1יתרונות / חסרונות — מחזורים {g0}–{g1}\2",
         html2,
         count=1,
         flags=re.S,
     )
     html2, _ = re.subn(
         r'(<div class="gw12-sub">).*?(</div>)',
-        r"\1לפי Prem Projections · תחזית: מודל אלי · מחליף בטווח ±£0.5 · בלי כפל קפטן\2",
+        r"\1תחזית נקודות: מודל אלי · מחליף ±£0.5 (ייחודי) · בלי כפל קפטן · גלילה אופקית בטבלה\2",
         html2,
         count=1,
         flags=re.S,
     )
 
     html_path.write_text(html2, encoding="utf-8")
-    write_gw12_table(gw12, ROOT / "viewer" / "squad_gw12_table.html", squad)
+    write_gw12_table(gw_horizon, ROOT / "viewer" / "squad_gw12_table.html", squad, gws)
     print(f"Updated {out_json}")
-    print(f"Updated {html_path} (GW12 rows={len(gw12)})")
+    print(f"Updated {html_path} (horizon rows={len(gw_horizon)}, GW{g0}–{g1})")
 
 
 if __name__ == "__main__":
