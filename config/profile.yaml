@@ -30,7 +30,13 @@ constraints:
   same_club_same_position: false
 
 locked_players: []
-avoid_players: []
+avoid_players:
+  - G.Jesus                 # נמכר / לא זמין
+avoid_clubs_for_def_alts:
+  - CHE                     # לא מחליפי הגנה מצ'לסי
+  - MUN                     # לא מחליפי הגנה מיונייטד
+prefer_clubs_for_def_alts:
+  - ARS                     # מעדיף הגנת ארסנל (לא מול צ'לסי במשחק עצמו)
 prefer_players:
   - Haaland
   - B.Fernandes

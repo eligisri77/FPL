@@ -35,10 +35,13 @@ HE = {
     "Haaland": "האלאנד",
     "Semenyo": "סמניו",
     "Palmer": "פאלמר",
+    "White": "ווייט",
     "Gabriel": "גבריאל",
+    "Saliba": "סאליבה",
     "Gakpo": "גקפו",
     "Foden": "פודן",
     "Pickford": "פיקפורד",
+    "Verbruggen": "ורברוגן",
     "Trafford": "טראפורד",
     "Donnarumma": "דונארומה",
     "Gvardiol": "גווארדיול",
@@ -51,6 +54,37 @@ HE = {
 }
 
 PREFER = set(HE.keys()) | {"Semenyo", "Gabriel", "Guéhi", "Rogers", "Haaland"}
+
+
+def load_yaml_list(key: str) -> list[str]:
+    path = ROOT / "config" / "profile.yaml"
+    if not path.exists():
+        return []
+    items: list[str] = []
+    in_block = False
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith(f"{key}:"):
+            in_block = True
+            continue
+        if in_block:
+            if stripped.startswith("- "):
+                items.append(stripped[2:].split("#")[0].strip())
+            elif stripped and not stripped.startswith("#"):
+                break
+    return items
+
+
+def load_avoid_names() -> set[str]:
+    return set(load_yaml_list("avoid_players"))
+
+
+def load_avoid_def_clubs() -> set[str]:
+    return set(load_yaml_list("avoid_clubs_for_def_alts"))
+
+
+def load_prefer_def_clubs() -> set[str]:
+    return set(load_yaml_list("prefer_clubs_for_def_alts"))
 
 
 def load_fixtures() -> list[dict]:
@@ -146,17 +180,24 @@ def alt_candidates(
 ) -> list[tuple[float, float, dict]]:
     out = by_id[out_id]
     lo, hi = out["now_cost"] - 5, out["now_cost"] + 5
-    pos = {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}
+    pos_map = {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}
+    out_pos = pos_map[out["element_type"]]
+    avoid_def_clubs = load_avoid_def_clubs()
+    prefer_def_clubs = load_prefer_def_clubs()
     cands = []
     for p in by_id.values():
         if p["element_type"] != out["element_type"] or p["id"] == out_id:
+            continue
+        if p["web_name"] in load_avoid_names():
+            continue
+        short = teams[p["team"]]["short_name"]
+        if out_pos == "DEF" and short in avoid_def_clubs:
             continue
         if not (lo <= p["now_cost"] <= hi):
             continue
         if not can_swap(out_id, p, squad_ids, by_id):
             continue
         delta = (p["now_cost"] - out["now_cost"]) / 10
-        short = teams[p["team"]]["short_name"]
         horizon_pts = 0.0
         for gw in range(gw_from, gw_to + 1):
             pair = idx.get((short, gw))
@@ -164,7 +205,7 @@ def alt_candidates(
                 continue
             txg, conc = pair
             horizon_pts += xpts(
-                pos=pos[p["element_type"]],
+                pos=pos_map[p["element_type"]],
                 price=p["now_cost"] / 10,
                 name=p["web_name"],
                 team_xg=txg,
@@ -176,6 +217,8 @@ def alt_candidates(
         score += float(p.get("selected_by_percent") or 0) * 0.02
         if p["web_name"] in PREFER:
             score += 2.0
+        if out_pos == "DEF" and short in prefer_def_clubs:
+            score += 3.0
         cands.append((score, delta, p))
     cands.sort(key=lambda x: -x[0])
     return cands

@@ -161,13 +161,12 @@ def write_gw12_table(horizon: list[dict], path: Path, squad: dict, gws: list[int
         body.append(
             f'<tr{cls}>\n  <td class="name"><b>{p["name"]}{mark}</b>'
             f'<div class="meta">{p["pos"]} · {p["team"]} · £{float(p["price"]):.1f} · {slot}</div></td>\n'
-            f"{gw_cells}\n  <td><div class=\"pts\">{tot:.1f}</div></td>\n"
-            f"  <td>{_alt_horizon_html(p, gws)}</td>\n</tr>"
+            f"{gw_cells}\n  <td><div class=\"pts\">{tot:.1f}</div></td>\n</tr>"
         )
     tbody = "\n".join(body)
     html2, n = re.subn(
         r"(<thead>\s*<tr>).*?(</tr>\s*</thead>)",
-        rf"\1<th>שחקן</th>{gw_hdr}<th>סה״כ 6</th><th>מחליף ±£0.5</th>\2",
+        rf"\1<th>שחקן</th>{gw_hdr}<th>סה״כ 6</th>\2",
         html,
         count=1,
         flags=re.S,
@@ -423,7 +422,7 @@ def main() -> None:
     )
     html2, _ = re.subn(
         r'(<div class="gw12-sub">).*?(</div>)',
-        r"\1תחזית נקודות: מודל אלי · מחליף ±£0.5 (ייחודי) · בלי כפל קפטן · גלילה אופקית בטבלה\2",
+        r"\1תחזית נקודות: מודל אלי · בלי כפל קפטן · גלילה אופקית בטבלה · מחליפים בטבלה נפרדת למטה\2",
         html2,
         count=1,
         flags=re.S,
