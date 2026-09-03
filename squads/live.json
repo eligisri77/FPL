@@ -160,21 +160,21 @@
         "pts": 2.9
       },
       "alt": {
-        "id": 2,
-        "name": "Arrizabalaga",
-        "name_he": "Arrizabalaga",
-        "team": "ARS",
+        "id": 28,
+        "name": "Martinez",
+        "name_he": "Martinez",
+        "team": "CHE",
         "pos": "GK",
         "price": 5.0,
         "delta": 0.5,
         "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי · GW3–8",
         "kind": "pm05",
-        "pts_gw3": 4.6,
-        "pts_gw4": 5.4,
-        "pts_gw5": 4.7,
-        "pts_gw6": 5.1,
-        "pts_gw7": 4.6,
-        "pts_gw8": 5.0
+        "pts_gw3": 3.9,
+        "pts_gw4": 5.6,
+        "pts_gw5": 4.2,
+        "pts_gw6": 4.5,
+        "pts_gw7": 4.2,
+        "pts_gw8": 4.6
       }
     },
     {
@@ -1555,21 +1555,21 @@
         "pts": 3.3
       },
       "alt": {
-        "id": 3,
-        "name": "Meslier",
-        "name_he": "Meslier",
-        "team": "ARS",
+        "id": 350,
+        "name": "A.Becker",
+        "name_he": "A.Becker",
+        "team": "LIV",
         "pos": "GK",
-        "price": 5.0,
-        "delta": 0.0,
-        "why": "מחליף בטווח ±£0.5 · אותו מחיר · ייחודי · GW3–8",
+        "price": 5.5,
+        "delta": 0.5,
+        "why": "מחליף בטווח ±£0.5 · +£0.5 · ייחודי · GW3–8",
         "kind": "pm05",
-        "pts_gw3": 4.6,
-        "pts_gw4": 5.4,
-        "pts_gw5": 4.7,
-        "pts_gw6": 5.1,
-        "pts_gw7": 4.6,
-        "pts_gw8": 5.0
+        "pts_gw3": 5.2,
+        "pts_gw4": 4.7,
+        "pts_gw5": 4.2,
+        "pts_gw6": 3.9,
+        "pts_gw7": 4.2,
+        "pts_gw8": 4.6
       }
     },
     {
