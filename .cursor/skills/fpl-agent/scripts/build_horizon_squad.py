@@ -207,8 +207,10 @@ def alt_candidates(
             continue
         if p["web_name"] in load_avoid_names():
             continue
-        # GK must have played minutes (rule out clear backup/3rd GKs)
-        if out_pos == "GK" and p.get("minutes", 0) < 45 and p.get("starts", 0) < 1:
+        # Skip barely-playing backups (e.g. Nyoni 13') — need real minutes or a start
+        mins = int(p.get("minutes") or 0)
+        starts = int(p.get("starts") or 0)
+        if mins < 60 and starts < 1:
             continue
         short = teams[p["team"]]["short_name"]
         if out_pos == "DEF" and short in avoid_def_clubs:
@@ -235,6 +237,9 @@ def alt_candidates(
         score = horizon_pts
         score += float(p.get("form") or 0) * 0.35
         score += float(p.get("selected_by_percent") or 0) * 0.02
+        # Prefer players who actually start
+        score += min(starts, 3) * 0.8
+        score += min(mins, 180) / 180.0 * 1.0
         if p["web_name"] in PREFER:
             score += 2.0
         if out_pos == "DEF" and short in prefer_def_clubs:
