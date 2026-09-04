@@ -169,6 +169,14 @@ def can_swap(out_id: int, in_p: dict, squad_ids: list[int], by_id: dict) -> bool
     return True
 
 
+# Price bands for 3 alts: ~-0.5 / same / ~+0.5 (tolerance ±0.2 around targets)
+ALT_BANDS = {
+    "cheaper": {"lo": -0.7, "hi": -0.3, "target": -0.5, "label": "זול יותר (~£-0.5)"},
+    "same": {"lo": -0.2, "hi": 0.2, "target": 0.0, "label": "אותו מחיר"},
+    "richer": {"lo": 0.3, "hi": 0.7, "target": 0.5, "label": "יקר יותר (~£+0.5)"},
+}
+
+
 def alt_candidates(
     out_id: int,
     squad_ids: list[int],
@@ -178,8 +186,9 @@ def alt_candidates(
     gw_from: int,
     gw_to: int,
 ) -> list[tuple[float, float, dict]]:
+    """Candidates within ±£0.7 of out player (covers 0.3–0.7 bands)."""
     out = by_id[out_id]
-    lo, hi = out["now_cost"] - 5, out["now_cost"] + 5
+    lo, hi = out["now_cost"] - 7, out["now_cost"] + 7
     pos_map = {1: "GK", 2: "DEF", 3: "MID", 4: "FWD"}
     out_pos = pos_map[out["element_type"]]
     avoid_def_clubs = load_avoid_def_clubs()
@@ -189,6 +198,9 @@ def alt_candidates(
         if p["element_type"] != out["element_type"] or p["id"] == out_id:
             continue
         if p["web_name"] in load_avoid_names():
+            continue
+        # GK must have played minutes (rule out clear backup/3rd GKs)
+        if out_pos == "GK" and p.get("minutes", 0) < 45 and p.get("starts", 0) < 1:
             continue
         short = teams[p["team"]]["short_name"]
         if out_pos == "DEF" and short in avoid_def_clubs:
@@ -222,6 +234,49 @@ def alt_candidates(
         cands.append((score, delta, p))
     cands.sort(key=lambda x: -x[0])
     return cands
+
+
+def build_alt_payload(
+    p: dict,
+    delta: float,
+    teams: dict,
+    pos_map: dict,
+    idx: dict[tuple[str, int], tuple[float, float]],
+    gw_from: int,
+    gw_to: int,
+    kind: str,
+) -> dict:
+    band = ALT_BANDS[kind]
+    sign = (
+        f"+£{delta:.1f}"
+        if delta > 0.05
+        else (f"£{delta:.1f}" if delta < -0.05 else "אותו מחיר")
+    )
+    alt = {
+        "id": p["id"],
+        "name": p["web_name"],
+        "name_he": HE.get(p["web_name"], p["web_name"]),
+        "team": teams[p["team"]]["short_name"],
+        "pos": pos_map[p["element_type"]],
+        "price": p["now_cost"] / 10,
+        "delta": round(delta, 1),
+        "kind": kind,
+        "why": f"{band['label']} · {sign} · ייחודי · GW{gw_from}–{gw_to}",
+    }
+    for gw in range(gw_from, gw_to + 1):
+        pair = idx.get((alt["team"], gw))
+        if not pair:
+            continue
+        txg, conc = pair
+        alt[f"pts_gw{gw}"] = xpts(
+            pos=alt["pos"],
+            price=alt["price"],
+            name=alt["name"],
+            team_xg=txg,
+            conc=conc,
+            pid=p["id"],
+        )
+    return alt
 
 
 def enrich_squad(squad: dict, gw_from: int = GW_FROM, gw_to: int = GW_TO) -> dict:
@@ -303,52 +358,35 @@ def enrich_squad(squad: dict, gw_from: int = GW_FROM, gw_to: int = GW_TO) -> dic
             }
         players.append(row)
 
-    # unique alts — XI first
+    # 3 unique alts per player: cheaper / same / richer — XI first
     order = sorted(players, key=lambda r: (0 if r.get("xi") else 1, -r["price"], r["pos"]))
     used: set[int] = set()
     for row in order:
         cands = alt_candidates(row["id"], squad_ids, by_id, teams, idx, gw_from, gw_to)
-        picked = None
-        for score, delta, p in cands:
-            if p["id"] in used:
+        alts: dict[str, dict | None] = {"cheaper": None, "same": None, "richer": None}
+        for kind, band in ALT_BANDS.items():
+            best = None
+            best_key = None
+            for score, delta, p in cands:
+                if p["id"] in used:
+                    continue
+                if not (band["lo"] <= delta <= band["hi"]):
+                    continue
+                # prefer higher score, then closer to band target
+                key = (score, -abs(delta - band["target"]))
+                if best is None or key > best_key:
+                    best = (delta, p)
+                    best_key = key
+            if not best:
                 continue
-            picked = (delta, p)
-            break
-        if not picked:
-            row["alt"] = None
-            continue
-        delta, p = picked
-        used.add(p["id"])
-        sign = (
-            f"+£{delta:.1f}"
-            if delta > 0
-            else (f"£{delta:.1f}" if delta < 0 else "אותו מחיר")
-        )
-        alt = {
-            "id": p["id"],
-            "name": p["web_name"],
-            "name_he": HE.get(p["web_name"], p["web_name"]),
-            "team": teams[p["team"]]["short_name"],
-            "pos": pos_map[p["element_type"]],
-            "price": p["now_cost"] / 10,
-            "delta": delta,
-            "why": f"מחליף בטווח ±£0.5 · {sign} · ייחודי · GW{gw_from}–{gw_to}",
-            "kind": "pm05",
-        }
-        for gw in range(gw_from, gw_to + 1):
-            pair = idx.get((alt["team"], gw))
-            if not pair:
-                continue
-            txg, conc = pair
-            alt[f"pts_gw{gw}"] = xpts(
-                pos=alt["pos"],
-                price=alt["price"],
-                name=alt["name"],
-                team_xg=txg,
-                conc=conc,
-                pid=p["id"],
+            delta, p = best
+            used.add(p["id"])
+            alts[kind] = build_alt_payload(
+                p, delta, teams, pos_map, idx, gw_from, gw_to, kind
             )
-        row["alt"] = alt
+        row["alts"] = alts
+        # backward-compat single alt: prefer same → richer → cheaper
+        row["alt"] = alts["same"] or alts["richer"] or alts["cheaper"]
 
     squad["players"] = players
     squad["gw_from"] = gw_from

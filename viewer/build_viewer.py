@@ -213,6 +213,7 @@ def build_horizon_from_live(squad: dict, gws: list[int]) -> list[dict]:
             "captain": p.get("captain", False),
             "vice": p.get("vice", False),
             "alt": p.get("alt"),
+            "alts": p.get("alts"),
         }
         total = 0.0
         for g in gws:

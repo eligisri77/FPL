@@ -21,24 +21,24 @@ ROOT = Path(__file__).resolve().parents[4]
 DATA = ROOT / "data"
 VIEWER = ROOT / "viewer"
 
-# Bet365 decimal odds for current GW (sources: Bet365 via betting.bet,
-# refreshed ~2026-08-27). Odds change — check live before using.
+# UK bookmaker 1X2 odds for GW3 (Bet365 where quoted; else UK market
+# scan via Betfinder ~2026-09-04). Odds change — check live before using.
 BOOKIE = "Bet365"
-BOOKIE_HE = "Bet365"
-GW = 2
+BOOKIE_HE = "Bet365 / UK market"
+GW = 3
 
 # home, draw, away decimals
 ODDS: dict[tuple[str, str], tuple[float, float, float]] = {
-    ("CRY", "MCI"): (4.60, 3.90, 1.67),
-    ("LIV", "NFO"): (1.53, 4.20, 5.50),
-    ("BOU", "EVE"): (2.05, 3.40, 3.40),
-    ("COV", "HUL"): (1.85, 3.50, 3.90),
-    ("TOT", "NEW"): (2.30, 3.50, 2.90),
-    ("CHE", "BHA"): (1.91, 3.70, 3.70),
-    ("LEE", "BRE"): (2.50, 3.30, 2.75),
-    ("SUN", "FUL"): (2.40, 3.20, 2.90),
-    ("MUN", "IPS"): (1.44, 4.50, 6.50),
-    ("AVL", "ARS"): (6.00, 4.00, 1.53),
+    ("IPS", "LIV"): (5.00, 4.50, 1.55),   # Bet365 ~4/1 · 7/2 · 11/20
+    ("NEW", "BOU"): (2.10, 3.60, 3.30),   # Bet365
+    ("BRE", "SUN"): (1.65, 4.00, 5.50),
+    ("BHA", "LEE"): (1.95, 3.60, 3.80),
+    ("FUL", "CRY"): (2.30, 3.50, 3.10),
+    ("MCI", "COV"): (1.18, 8.50, 15.00),
+    ("NFO", "TOT"): (2.40, 3.40, 2.90),
+    ("HUL", "AVL"): (4.10, 3.70, 1.88),
+    ("EVE", "MUN"): (3.30, 3.60, 2.15),
+    ("ARS", "CHE"): (1.70, 4.00, 5.00),   # Bet365 ~7/10 home
 }
 
 HE_TEAM = {
@@ -309,7 +309,7 @@ h1 {{ margin:10px 0 6px; font-size:1.35rem; }}
   <div class="sub">{payload['note_he']}<br/>עודכן: {payload['updated']}</div>
   <div class="warn">18+ · הימורים ממכרים · זה לוח מידע ל־FPL בלבד, לא המלצה להמר. בדקו יחסים עדכניים באפליקציה לפני כל פעולה.</div>
   {body}
-  <p class="foot">מקור יחסי 1X2: {payload['bookie']} (מחזור {payload['gw']}, אוג׳ 2026). תוצאה מדויקת משלימה מ־Prem Projections — לא יחס הימורים.</p>
+  <p class="foot">מקור יחסי 1X2: {payload['bookie']} / UK market (מחזור {payload['gw']}, ספט׳ 2026). תוצאה מדויקת משלימה מ־Prem Projections — לא יחס הימורים.</p>
 </div>
 </body>
 </html>
