@@ -51,6 +51,14 @@ HE = {
     "Elanga": "אילאנגה",
     "Watkins": "ווטקינס",
     "Mateta": "מאטטה",
+    "Armstrong": "ארמסטרונג",
+    "Castagne": "קסטן",
+    "Gonzalo": "גונסאלו",
+    "Mbeumo": "מבאומו",
+    "Palmer": "פאלמר",
+    "Haaland": "האלאנד",
+    "Thomas": "תומס",
+    "Willock": "ווילוק",
 }
 
 PREFER = set(HE.keys()) | {"Semenyo", "Gabriel", "Guéhi", "Rogers", "Haaland"}

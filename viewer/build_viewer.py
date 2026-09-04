@@ -83,6 +83,12 @@ HE = {
     "M.Sangaré": "מ. סנגרה",
     "Szoboszlai": "סובוסלאי",
     "Wissa": "ויסה",
+    "Armstrong": "ארמסטרונג",
+    "Castagne": "קסטן",
+    "Gonzalo": "גונסאלו",
+    "Mbeumo": "מבאומו",
+    "Thomas": "תומס",
+    "Willock": "ווילוק",
 }
 
 
