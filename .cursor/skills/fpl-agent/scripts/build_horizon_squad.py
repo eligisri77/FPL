@@ -417,13 +417,18 @@ def enrich_squad(squad: dict, gw_from: int = GW_FROM, gw_to: int = GW_TO) -> dic
 def main() -> None:
     path = ROOT / "squads" / "live.json"
     squad = json.loads(path.read_text(encoding="utf-8"))
-    squad = enrich_squad(squad)
+    g0 = int(squad.get("gw_from") or GW_FROM)
+    # if label says gw5 but gw_from was reset, prefer next-horizon from label/notes
+    h = int(squad.get("horizon") or (GW_TO - GW_FROM + 1))
+    # keep intended window if squad already set a modern gw_from>=3
+    if "gw5" in str(squad.get("label", "")).lower() or "GW5" in str(squad.get("notes", "")):
+        g0, h = 5, 6
+    g1 = g0 + h - 1
+    squad = enrich_squad(squad, gw_from=g0, gw_to=g1)
     path.write_text(json.dumps(squad, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Enriched {path}")
-    tot = 0.0
+    print(f"Enriched {path} (GW{g0}–{g1})")
     for p in squad["players"]:
-        s = sum((p.get(f"gw{g}") or {}).get("pts", 0) for g in range(GW_FROM, GW_TO + 1))
-        tot += s
+        s = sum((p.get(f"gw{g}") or {}).get("pts", 0) for g in range(g0, g1 + 1))
         print(f"  {p['name_he']:14} horizon≈{s:5.1f}")
 
 
